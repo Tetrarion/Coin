@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 export default function CreateHead(){
 
     return (
@@ -31,7 +33,7 @@ export default function CreateHead(){
                     Change(24Hr)
                 </div>
                 <div className="col-lg text-center">
-                    
+                    <nav><Link to={'/storepage'}>Store</Link></nav>
                 </div>
             </div>
         </div>

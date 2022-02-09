@@ -4,7 +4,7 @@ export default function CreateBlock(props){
 
     return (
         <div className="body">
-            <div className="row py-3 align-items-center" key={props.id}>
+            <div className="row py-3 align-items-center" id={props.id} key={props.id}>
                     <div className="col-lg text-center">
                         {props.rank}
                     </div>
@@ -38,7 +38,7 @@ export default function CreateBlock(props){
                         {Fixed(props.changePercent24Hr)}%
                     </div>
                     <div className="col-lg text-center">
-                        Add
+                        <button onClick={props.handleTaskSubmit}>+</button>
                     </div>
                 </div>
             </div>
