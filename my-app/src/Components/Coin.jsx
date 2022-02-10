@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeCoin }  from "../Store/actions";
 
@@ -9,17 +8,17 @@ const Coin = ({ task }) => {
     const dispatch = useDispatch();
     return (
         
-                <div className="row" id={id}>
-                    <div className='col-lg-1'>
+                <div className="row my-1" id={id}>
+                    <div className='col-lg-3'>
                         {name}
                     </div>
-                    <div className='col-lg-1'>
+                    <div className='col-lg-3'>
                         {count}
                     </div>
-                    <div className='col-lg-1'>
-                        {price}
-                    </div>
                     <div className='col-lg-3'>
+                        ${price}
+                    </div>
+                    <div className='col-lg'>
                         <span onClick={() => dispatch(removeCoin(id))}>Удалить</span>
                     </div>
                 </div>

@@ -48,7 +48,6 @@ export function MainPage() {
         let price = coininf.priceUsd*count;
         price = Fixed(price);
         let name = coininf.name;
-        price = '$' + price;
         dispatch(actions.addCoin({
           title: {
               name: name,

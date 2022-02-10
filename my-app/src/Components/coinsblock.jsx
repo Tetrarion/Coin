@@ -1,4 +1,5 @@
 import { Fixed } from '../Functions/Fixed';
+import { Link } from 'react-router-dom';
 
 export default function CreateBlock(props){
 
@@ -9,12 +10,12 @@ export default function CreateBlock(props){
                         {props.rank}
                     </div>
                     <div className="col-lg-2 text-center">
-                        <div>
+                    <Link to={`/infopage/${props.id}`} style={{ textDecoration: 'none', color: 'black'}}><div>
                             {props.name}
                         </div>
                         <div>
                             {props.symbol}
-                        </div>
+                        </div></Link>
                     </div>
                     <div className="col-lg text-center">
                         ${Fixed(props.priceUsd)}
