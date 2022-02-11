@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GetInfo } from "../../API/api";
 import { Fixed } from "../../Functions/Fixed";
+import History from "../../Components/History";
 
 export default function InfoPage(){
     const [info, SetInfo] = useState('');
@@ -11,6 +12,7 @@ export default function InfoPage(){
 
     useEffect(async () => {
         let coininf = await GetInfo(`assets/${prodId}`);
+        
         SetInfo(() => 
             <div className="container">
                 <div className="row py-3">
@@ -55,6 +57,7 @@ export default function InfoPage(){
     return (
         <div className="info">
             {info}
+            <History prodId={prodId}/>
         </div>
     )
 }

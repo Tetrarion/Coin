@@ -1,6 +1,21 @@
 import {Link} from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Fixed } from '../Functions/Fixed';
 
-export default function CreateHead(){
+export default function CreateHead({ tasks }){
+    const [totalprice, SetTotalPrice] = useState(0);
+
+    let Price = 0;
+
+    useEffect(() => {
+        if (!tasks.length) return SetTotalPrice(0);
+        for (let task of tasks){
+            Price = Price + Number(task.price);
+        }
+        let price = Fixed(Price);
+        SetTotalPrice(price);
+    });
+
 
     return (
         <div className="head">
@@ -33,7 +48,7 @@ export default function CreateHead(){
                     Change(24Hr)
                 </div>
                 <div className="col-lg text-center">
-                    <nav><Link to={'/storepage'}>Store</Link></nav>
+                    <nav><Link to={'/storepage'}>Store </Link>(${totalprice})</nav>
                 </div>
             </div>
         </div>

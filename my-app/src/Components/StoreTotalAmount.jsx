@@ -10,7 +10,7 @@ const TotalAmount = ({ tasks }) => {
     const [totalprice, SetTotalPrice] = useState(0);
 
     useEffect(() => {
-        if (!tasks.length) return;
+        if (!tasks.length) return SetTotalPrice(0);
         for (let task of tasks){
             Price = Price + Number(task.price);
         }

@@ -4,7 +4,7 @@ import CreateBlock from '../../Components/coinsblock';
 import CreateHead from "../../Components/coinshead";
 import CreateScroll from "../../Components/coinsscroll";
 import { choose } from "../../Functions/Choose";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../Store/actions";
 import { Fixed } from "../../Functions/Fixed";
 
@@ -13,6 +13,8 @@ export function MainPage() {
     const [coins, SetCoins] = useState('');
     const [page, SetPage] = useState(1);
     const [time, SetTime] = useState(0);
+
+    const tasks = useSelector(state => state);
     const dispatch = useDispatch();
     
 
@@ -69,7 +71,7 @@ export function MainPage() {
     return (
         <div className="mainpage">
             <div className="container">
-                <CreateHead/>
+                <CreateHead tasks={ tasks }/>
                 {coins}
                 <CreateScroll click={click}/>
             </div>
