@@ -1,4 +1,4 @@
-export default function CreateScroll(prop){
+export default function Pagination(prop){
 
     return (
         <div className="scroll">

@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { GetInfo } from "../../API/api";
-import CreateBlock from '../../Components/coinsblock';
-import CreateHead from "../../Components/coinshead";
-import CreateScroll from "../../Components/coinsscroll";
-import { choose } from "../../Functions/Choose";
+import CoinBlock from '../../Components/ListPageComponents/CoinBlock';
+import Header from "../../Components/ListPageComponents/Header";
+import Pagination from "../../Components/ListPageComponents/Pagination";
+import { choose } from "../../Functions/choose";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../Store/actions";
-import { Fixed } from "../../Functions/Fixed";
+import { Fixed } from "../../Functions/fixed";
 
-export function MainPage() {
+export default function ListPage() {
     const minute = 6e4;
+    
     const [coins, SetCoins] = useState('');
     const [page, SetPage] = useState(1);
     const [time, SetTime] = useState(0);
@@ -23,22 +24,7 @@ export function MainPage() {
         let pages = choose(page);
         SetCoins(coinsinf.map((coin, index) => {
             if (index > pages[0] && index < pages[1]){
-                return (
-                <CreateBlock
-                id={coin.id}
-                rank={coin.rank}
-                name={coin.name}
-                symbol={coin.symbol}
-                priceUsd={coin.priceUsd}
-                marketCapUsd={coin.marketCapUsd}
-                vwap24Hr={coin.vwap24Hr}
-                supply={coin.supply}
-                maxSupply={coin.maxSupply}
-                volumeUsd24Hr={coin.volumeUsd24Hr}
-                changePercent24Hr={coin.changePercent24Hr}
-                handleTaskSubmit={handleTaskSubmit}
-            />
-                )
+                return <CoinBlock coin={coin} handleTaskSubmit={handleTaskSubmit}/>
             }
         }
         ))
@@ -71,9 +57,9 @@ export function MainPage() {
     return (
         <div className="mainpage">
             <div className="container">
-                <CreateHead tasks={ tasks }/>
+                <Header tasks={ tasks }/>
                 {coins}
-                <CreateScroll click={click}/>
+                <Pagination click={click}/>
             </div>
         </div>
 

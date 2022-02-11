@@ -1,7 +1,7 @@
 import React from 'react';
 import Coin from './Coin';
 
-const CoinList = ({ tasks }) => {
+const StoreCoinList = ({ tasks }) => {
   if (tasks.length)
     return (
           tasks.map(task => 
@@ -10,4 +10,4 @@ const CoinList = ({ tasks }) => {
     )
   else return null;
 }
-export default CoinList;
+export default StoreCoinList;

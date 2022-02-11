@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AreaChart, Area, YAxis, XAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { GetInfo } from '../API/api';
+import { GetInfo } from '../../API/api';
 
 export default function History(prop){
     const [history, SetHistory] = useState('');

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GetInfo } from "../../API/api";
-import { Fixed } from "../../Functions/Fixed";
-import History from "../../Components/History";
+import { Fixed } from "../../Functions/fixed";
+import History from "../../Components/InfoPageComponents/History";
 
 export default function InfoPage(){
     const [info, SetInfo] = useState('');

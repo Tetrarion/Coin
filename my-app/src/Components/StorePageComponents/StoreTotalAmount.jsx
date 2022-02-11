@@ -1,21 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Fixed } from "../Functions/Fixed";
+import { TotalPrice } from "../../Functions/totalprice";
 
 const TotalAmount = ({ tasks }) => {
-    let Price = 0;
-
-    const { id, name, count, price } = tasks;
     const [totalprice, SetTotalPrice] = useState(0);
 
     useEffect(() => {
         if (!tasks.length) return SetTotalPrice(0);
-        for (let task of tasks){
-            Price = Price + Number(task.price);
-        }
-        let price = Fixed(Price);
-        SetTotalPrice(price);
+        let totalprice = TotalPrice(tasks);
+        SetTotalPrice(totalprice);
     });
 
     return (

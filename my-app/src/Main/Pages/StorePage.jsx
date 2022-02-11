@@ -1,6 +1,6 @@
-import CoinList from "../../Components/CoinList";
+import StoreCoinList from "../../Components/StorePageComponents/StoreCoinList";
 import { useSelector } from "react-redux";
-import TotalAmount from "../../Components/StoreTotalAmount";
+import TotalAmount from "../../Components/StorePageComponents/StoreTotalAmount";
 
 export default function StorePage(){
     const tasks = useSelector(state => state);
@@ -23,7 +23,7 @@ export default function StorePage(){
                        
                     </div>
                 </div>
-                <CoinList tasks={ tasks }/>
+                <StoreCoinList tasks={ tasks }/>
             </div>
         </div>
     )
