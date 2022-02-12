@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TotalPrice } from "../../Functions/totalprice";
 
 const TotalAmount = ({ tasks }) => {
+
     const [totalprice, SetTotalPrice] = useState(0);
 
     useEffect(() => {

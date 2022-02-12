@@ -1,6 +1,7 @@
 import StoreCoinList from "../../Components/StorePageComponents/StoreCoinList";
 import { useSelector } from "react-redux";
 import TotalAmount from "../../Components/StorePageComponents/StoreTotalAmount";
+import Header from "../../Components/StorePageComponents/Header";
 
 export default function StorePage(){
     const tasks = useSelector(state => state);
@@ -9,20 +10,7 @@ export default function StorePage(){
         <div className="store">
             <div className="container">
                 <TotalAmount tasks={ tasks }/>
-                <div className="row">
-                    <div className="col-lg">
-                        Name
-                    </div>
-                    <div className="col-lg">
-                        Count
-                    </div>
-                    <div className="col-lg">
-                        Price
-                    </div>
-                    <div className="col-lg">
-                       
-                    </div>
-                </div>
+                <Header/>
                 <StoreCoinList tasks={ tasks }/>
             </div>
         </div>

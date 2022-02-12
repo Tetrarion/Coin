@@ -1,47 +1,55 @@
 import { Fixed } from '../../Functions/fixed';
 import { Link } from 'react-router-dom';
 
-export default function CoinBlock(props){
+export default function CoinBlock ({ coins, handleTaskSubmit, loading }) {
+
+    if (loading) {
+        return <h2>Loading ...</h2>
+    }
 
     return (
         <div className="body">
-            <div className="row py-3 align-items-center" id={props.coin.id} key={props.coin.id}>
-                    <div className="col-lg text-center">
-                        {props.rank}
-                    </div>
-                    <div className="col-lg-2 text-center">
-                    <Link to={`/infopage/${props.coin.id}`} style={{ textDecoration: 'none', color: 'black'}}><div>
-                            {props.coin.name}
+            {
+                coins.map(coin => (
+                    <div className="row py-3 align-items-center" id={coin.id} key={coin.id}>
+                            <div className="col-lg text-center">
+                                {coin.rank}
+                            </div>
+                            <div className="col-lg-2 text-center">
+                            <Link to={`/infopage/${coin.id}`} style={{ textDecoration: 'none', color: 'black'}}><div>
+                                    {coin.name}
+                                </div>
+                                <div>
+                                    {coin.symbol}
+                                </div></Link>
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.priceUsd)}
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.marketCapUsd)}
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.vwap24Hr)}
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.supply)}
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.maxSupply)}
+                            </div>
+                            <div className="col-lg text-center">
+                                ${Fixed(coin.volumeUsd24Hr)}
+                            </div>
+                            <div className="col-lg text-center">
+                                {Fixed(coin.changePercent24Hr)}%
+                            </div>
+                            <div className="col-lg text-center">
+                                <button onClick={handleTaskSubmit}>+</button>
+                            </div>
                         </div>
-                        <div>
-                            {props.coin.symbol}
-                        </div></Link>
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.priceUsd)}
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.marketCapUsd)}
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.vwap24Hr)}
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.supply)}
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.maxSupply)}
-                    </div>
-                    <div className="col-lg text-center">
-                        ${Fixed(props.coin.volumeUsd24Hr)}
-                    </div>
-                    <div className="col-lg text-center">
-                        {Fixed(props.coin.changePercent24Hr)}%
-                    </div>
-                    <div className="col-lg text-center">
-                        <button onClick={props.handleTaskSubmit}>+</button>
-                    </div>
-                </div>
-            </div>
+                ))
+            }
+        </div>
     )
 }

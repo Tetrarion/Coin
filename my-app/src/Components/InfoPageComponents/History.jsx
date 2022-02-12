@@ -5,10 +5,13 @@ import { GetInfo } from '../../API/api';
 export default function History(prop){
     const [history, SetHistory] = useState('');
 
-    useEffect(async () => {
-        let history = await GetInfo(`assets/${prop.prodId}/history?interval=d1`);
-        SetHistory(history);
-    }, [])
+    useEffect(() => {
+        const getHistory = async () => {
+            let history = await GetInfo(`assets/${prop.prodId}/history?interval=d1`);
+            SetHistory(history);
+        }
+        getHistory();
+    }, []);
     
     return (
         <div className="row justify-content-center">
