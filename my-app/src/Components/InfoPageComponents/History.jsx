@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react';
 import { AreaChart, Area, YAxis, XAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { GetInfo } from '../../API/api';
+import { getInfo } from '../../API/api';
 
 export default function History({ prodId }){
     const [history, SetHistory] = useState('');
 
+    const getHistory = async () => {
+        let history = await getInfo(`assets/${prodId}/history?interval=d1`);
+        SetHistory(history);
+    };
+
     useEffect(() => {
-        const getHistory = async () => {
-            let history = await GetInfo(`assets/${prodId}/history?interval=d1`);
-            SetHistory(history);
-        }
         getHistory();
     }, []);
     
     return (
         <div className="history">
             <div className="row justify-content-center">
-                <AreaChart width={1000} height={400} data={history}
+                <AreaChart width={700} height={400} data={history}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     <defs>
                         <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">

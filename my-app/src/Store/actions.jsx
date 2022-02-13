@@ -5,7 +5,7 @@ export const addCoin = ( task ) => ({
     payload: {
       name: task.title.name,
       count: task.title.count,
-      price: task.title.price,
+      priceUsd: task.title.priceUsd,
       key: task.title.key
     }
   });

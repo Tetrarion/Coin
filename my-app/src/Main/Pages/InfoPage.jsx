@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { GetInfo } from "../../API/api";
+import { getInfo } from "../../API/api";
 import History from "../../Components/InfoPageComponents/History";
 import { useDispatch } from "react-redux";
 import Information from "../../Components/InfoPageComponents/Information";
@@ -14,12 +14,13 @@ export default function InfoPage(){
     const params = useParams();
     const prodId = params.id;
 
+    const getInformation = async () => {
+        let coininf = await getInfo(`assets/${prodId}`); 
+        SetInfo(coininf);
+    };
+
     useEffect(() => {
-        const getInfo = async () => {
-            let coininf = await GetInfo(`assets/${prodId}`); 
-            SetInfo(coininf);
-        };
-        getInfo();
+        getInformation();
     }, []);
 
     return (

@@ -1,13 +1,13 @@
-import { Fixed } from "./fixed";
+import { fixed } from "./fixed";
 
-export function TotalPrice(tasks){
+export function totalPrice(tasks){
     let price = 0;
 
     for (let task of tasks){
-        price = price + Number(task.price);
+        price = price + Number(task.priceUsd);
     }
 
-    let totalprice = Fixed(price);
+    let totalprice = fixed(price);
 
     return totalprice;
 }

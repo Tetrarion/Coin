@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { handleCoinSubmit } from "../../Functions/handleCoinSubmit";
 
 export default function ListPage ({ coins, tasks }) {
-    
     const [currentPage, setCurrentPage] = useState(1);
     const [coinsPerPage] = useState(10);
 

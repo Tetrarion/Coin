@@ -3,7 +3,7 @@ import './Styles/styles.css';
 import { BrowserRouter, Routes ,Route } from 'react-router-dom';
 import StorePage from "./Main/Pages/StorePage";
 import InfoPage from "./Main/Pages/InfoPage";
-import { GetInfo } from "./API/api";
+import { getInfo } from "./API/api";
 import { useEffect, useState } from "react";
 import Header from "./Head/Header";
 import { useSelector } from "react-redux";
@@ -16,12 +16,12 @@ function App() {
 
   const tasks = useSelector(state => state);
 
-  useEffect(() => {
-    const getCoins = async () => {
-        let coinsInfo = await GetInfo('assets');
-        setCoins(coinsInfo);
-    };
+  const getCoins = async () => {
+    let coinsInfo = await getInfo('assets');
+    setCoins(coinsInfo);
+};
 
+  useEffect(() => {
     getCoins();
   }, [time]);
 

@@ -1,11 +1,10 @@
-import { Fixed } from "../../Functions/fixed"
+import { fixed } from "../../Functions/fixed"
 
 export default function Information ({ coininf, handleCoinSubmit }) {
-    
     return (
         <div className="container">
             <div className="row py-3 align-items-center">
-                <div className="col-lg">
+                <div className="col-lg col-sm">
                     <div>
                         {coininf.name}
                     </div>
@@ -13,33 +12,33 @@ export default function Information ({ coininf, handleCoinSubmit }) {
                         {coininf.symbol}
                     </div>
                 </div>
-                <div className="col-lg">
-                    priceUsd: ${Fixed(coininf.priceUsd)}
+                <div className="col-lg col-sm">
+                    priceUsd: ${fixed(coininf.priceUsd)}
                 </div>
-                <div className="col-lg ">
+                <div className="col-lg col-sm">
                     <button onClick={handleCoinSubmit}>+</button>
                 </div>
             </div>
             <div className="row py-3">
-                <div className="col-lg">
-                    marketCapUsd: ${Fixed(coininf.marketCapUsd)}
+                <div className="col-lg col-sm">
+                    marketCapUsd: ${fixed(coininf.marketCapUsd)}
                 </div>
-                <div className="col-lg">
-                    vwap24Hr: ${Fixed(coininf.vwap24Hr)}
+                <div className="col-lg col-sm">
+                    vwap24Hr: ${fixed(coininf.vwap24Hr)}
                 </div>
-                <div className="col-lg">
-                    supply: ${Fixed(coininf.supply)}
+                <div className="col-lg col-sm">
+                    supply: ${fixed(coininf.supply)}
                 </div>
             </div>
             <div className="row py-3">
-                <div className="col-lg">
-                    maxSupply: ${Fixed(coininf.maxSupply)}
+                <div className="col-lg col-sm">
+                    maxSupply: ${fixed(coininf.maxSupply)}
                 </div>
-                <div className="col-lg">
-                    olumeUsd24Hr: ${Fixed(coininf.volumeUsd24Hr)}
+                <div className="col-lg col-sm">
+                    olumeUsd24Hr: ${fixed(coininf.volumeUsd24Hr)}
                 </div>
-                <div className="col-lg">
-                    changePercent24Hr: {Fixed(coininf.changePercent24Hr)}%  
+                <div className="col-lg col-sm">
+                    changePercent24Hr: {fixed(coininf.changePercent24Hr)}%  
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-export function Fixed(num){
+export function fixed(num){
     let count = Number(num).toFixed(2);
     let countfix =  Number(num).toFixed(0);
     let len = countfix.toString();

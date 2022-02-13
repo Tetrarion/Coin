@@ -1,17 +1,16 @@
-import { Fixed } from '../../Functions/fixed';
+import { fixed } from '../../Functions/fixed';
 import { Link } from 'react-router-dom';
 
 export default function CoinBlock ({ coins, handleCoinSubmit }) {
-
     return (
         <div className="coins-block">
             {
                 coins.map(coin => (
-                    <div className="row py-3 align-items-center" id={coin.id} key={coin.id}>
-                            <div className="col-lg text-center">
+                    <div className="row py-2 align-items-center" id={coin.id} key={coin.id}>
+                            <div className="col-lg col-sm text-center">
                                 {coin.rank}
                             </div>
-                            <div className="col-lg-2 text-center">
+                            <div className="col-lg col-sm text-center">
                             <Link to={`/infopage/${coin.id}`} style={{ textDecoration: 'none', color: 'black'}}><div>
                                     {coin.name}
                                 </div>
@@ -19,28 +18,28 @@ export default function CoinBlock ({ coins, handleCoinSubmit }) {
                                     {coin.symbol}
                                 </div></Link>
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.priceUsd)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.priceUsd)}
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.marketCapUsd)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.marketCapUsd)}
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.vwap24Hr)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.vwap24Hr)}
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.supply)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.supply)}
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.maxSupply)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.maxSupply)}
                             </div>
-                            <div className="col-lg text-center">
-                                ${Fixed(coin.volumeUsd24Hr)}
+                            <div className="col-lg col-sm text-center">
+                                ${fixed(coin.volumeUsd24Hr)}
                             </div>
-                            <div className="col-lg text-center">
-                                {Fixed(coin.changePercent24Hr)}%
+                            <div className="col-lg col-sm text-center">
+                                {fixed(coin.changePercent24Hr)}%
                             </div>
-                            <div className="col-lg text-center">
+                            <div className="col-lg col-sm text-center">
                                 <button onClick={handleCoinSubmit}>+</button>
                             </div>
                         </div>

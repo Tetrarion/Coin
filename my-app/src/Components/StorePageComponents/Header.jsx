@@ -1,18 +1,15 @@
+import { storePageNames } from "../../Data/storePageNames"
+
 export default function Header () {
     return (
         <div className="row">
-            <div className="col-lg">
-                Name
-            </div>
-            <div className="col-lg">
-                 Count
-            </div>
-            <div className="col-lg">
-                Price
-            </div>
-            <div className="col-lg">
-                       
-            </div>
+            {
+                storePageNames.map(name => (
+                    <div className="col-lg col-sm text-center">
+                        {name}
+                    </div>
+                ))
+            }
         </div>
     )
 }

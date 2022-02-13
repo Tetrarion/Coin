@@ -1,15 +1,14 @@
-import { Fixed } from "../../Functions/fixed";
+import { fixed } from "../../Functions/fixed";
 
 export default function HeaderBlocks ({ currentCoins }) {
-
     return (
         currentCoins.map(coin => (
-            <div className="col-lg text-center">
+            <div className="col-lg col-sm text-center">
                 <div>
                      №{coin.rank} {coin.name}
                 </div>
                 <div>
-                    {Fixed(coin.priceUsd)}
+                    ${fixed(coin.priceUsd)}
                 </div>
             </div>
         ))
