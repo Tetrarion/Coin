@@ -10,11 +10,10 @@ export default function reducer(state = [], action) {
         name: action.payload.name,
         count: action.payload.count,
         price: action.payload.price,
+        key: action.payload.key
       }];
     case actions.COIN_REMOVE: {
-      state = state.filter(task => action.payload.id !== task.id);
-      localStorage.setItem('state', JSON.stringify(state));
-      return state;
+      return state.filter(task => action.payload.id !== task.id);
     }
     default:
       return state;

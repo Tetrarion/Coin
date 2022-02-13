@@ -1,14 +1,10 @@
 import { Fixed } from '../../Functions/fixed';
 import { Link } from 'react-router-dom';
 
-export default function CoinBlock ({ coins, handleTaskSubmit, loading }) {
-
-    if (loading) {
-        return <h2>Loading ...</h2>
-    }
+export default function CoinBlock ({ coins, handleCoinSubmit }) {
 
     return (
-        <div className="body">
+        <div className="coins-block">
             {
                 coins.map(coin => (
                     <div className="row py-3 align-items-center" id={coin.id} key={coin.id}>
@@ -45,7 +41,7 @@ export default function CoinBlock ({ coins, handleTaskSubmit, loading }) {
                                 {Fixed(coin.changePercent24Hr)}%
                             </div>
                             <div className="col-lg text-center">
-                                <button onClick={handleTaskSubmit}>+</button>
+                                <button onClick={handleCoinSubmit}>+</button>
                             </div>
                         </div>
                 ))

@@ -1,7 +1,3 @@
-.body, .head .row {
-    border: 2px black solid;
-}
-
 .store .row {
     border: 2px black solid;
 }
@@ -14,15 +10,26 @@
     background-color: maroon;
 }
 
-.info .col-lg-2 {
-    border: 1px black solid;
-}
-
-.info .col-lg {
-    border: 1px black solid;
-}
-
 a {
     text-decoration: none;
     color: black;
+}
+
+.list-page .coins-block .row {
+    border: 2px black solid;
+    border-radius: 30px;
+    margin-top: 3px;
+}
+
+.header .row {
+    border: 2px black solid;
+}
+
+.info-page .container {
+    border: 2px black solid;
+    border-radius: 30px;
+}
+
+.history {
+    margin-top: 30px;
 }
