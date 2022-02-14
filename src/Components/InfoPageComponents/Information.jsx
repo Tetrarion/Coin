@@ -1,4 +1,4 @@
-import { fixed } from "../../Functions/fixed"
+import { fixed } from "../../Functions/fixed";
 
 export default function Information ({ coininf, handleCoinSubmit }) {
     return (

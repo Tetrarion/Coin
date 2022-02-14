@@ -8,6 +8,7 @@
 
 .store span:hover  {
     background-color: maroon;
+    cursor: pointer;
 }
 
 a {

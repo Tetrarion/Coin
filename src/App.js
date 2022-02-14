@@ -33,7 +33,7 @@ function App() {
     <BrowserRouter>
       <Header coins={coins} tasks={tasks}/>
       <Routes>
-        <Route path="/" element={<ListPage coins={coins} tasks={tasks}/>} />
+        <Route path="/*" element={<ListPage coins={coins} tasks={tasks}/>} />
         <Route path="/storepage" element={<StorePage tasks={tasks}/>} />
         <Route path="/infopage/:id" element={<InfoPage/>} />
       </Routes>
