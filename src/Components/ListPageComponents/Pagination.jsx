@@ -9,7 +9,7 @@ export default function Pagination ({ coinsPerPage, totalCoins, pagination }) {
         <div className="row justify-content-center mt-2">
             {
                 pageNumbers.map(number => (
-                    <div className="col-lg-auto" key={number} onClick={() => pagination(number)}>
+                    <div className="col-lg-auto col-sm-auto" key={number} onClick={() => pagination(number)}>
                         <a href="#">
                             {number}
                         </a>
