@@ -56,6 +56,9 @@ export default function Header ({ coins, tasks }) {
                 <div className="row align-items-center mb-4 mt-2">
                     <HeaderBlocks currentCoins={currentCoins}/>
                     <div className="col-lg col-sm text-center">
+                        <Link to={'/*'}>List page</Link>
+                    </div>
+                    <div className="col-lg col-sm text-center">
                     <Link to={'/storepage'}>Store:</Link> ${totalprice} {priceDifferences} ({priceProcent}%)
                     </div>
                 </div>

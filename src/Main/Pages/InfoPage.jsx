@@ -25,7 +25,7 @@ export default function InfoPage(){
 
     return (
         <div className="info-page">
-            <Information coininf={info} handleCoinSubmit={() => {handleCoinSubmit(prodId, dispatch)}}/>
+            <Information coininf={info} handleCoinSubmit={(event) => {handleCoinSubmit(prodId, dispatch, event.target.parentElement)}}/>
             <History prodId={prodId}/>
         </div>
     )

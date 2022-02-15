@@ -5,7 +5,7 @@ export default function Header () {
         <div className="row">
             {
                 storePageNames.map(name => (
-                    <div className="col-lg col-sm text-center">
+                    <div className="col-lg col-sm">
                         {name}
                     </div>
                 ))

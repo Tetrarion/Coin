@@ -10,6 +10,7 @@ export default function reducer(state = [], action) {
         name: action.payload.name,
         count: action.payload.count,
         priceUsd: action.payload.priceUsd,
+        totalpriceUsd: action.payload.totalpriceUsd,
         key: action.payload.key
       }];
     case actions.COIN_REMOVE: {

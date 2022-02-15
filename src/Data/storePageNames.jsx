@@ -1,1 +1,1 @@
-export const storePageNames = ['Name', 'Count', 'Price', ' '];
+export const storePageNames = ['Name', 'Count', 'Price', 'Total price', ' '];

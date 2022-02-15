@@ -4,7 +4,7 @@ export function totalPrice(tasks){
     let price = 0;
 
     for (let task of tasks){
-        price = price + Number(task.priceUsd);
+        price = price + Number(task.totalpriceUsd);
     }
 
     let totalprice = fixed(price);

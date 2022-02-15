@@ -1,12 +1,12 @@
 import { fixed } from '../../Functions/fixed';
 import { Link } from 'react-router-dom';
 
-export default function CoinBlock ({ coins, handleCoinSubmit }) {
+export default function CoinBlock ({ coins, handleCoinSubmit, showInputForCount, clearText }) {
     return (
         <div className="coins-block">
             {
                 coins.map(coin => (
-                    <div className="row py-2 align-items-center" id={coin.id} key={coin.id}>
+                    <div className="row py-2 align-items-center" id={coin.id} key={coin.id} onClick={showInputForCount}>
                             <div className="col-lg col-sm text-center">
                                 {coin.rank}
                             </div>
@@ -39,8 +39,11 @@ export default function CoinBlock ({ coins, handleCoinSubmit }) {
                             <div className="col-lg col-sm text-center">
                                 {fixed(coin.changePercent24Hr)}%
                             </div>
-                            <div className="col-lg col-sm text-center">
-                                <button onClick={handleCoinSubmit}>+</button>
+                            <div className="col-lg col-sm">
+                                <div className='display none'>
+                                    <input type="text" onBlur={clearText}/>
+                                    <button onClick={handleCoinSubmit}>+</button>
+                                </div>
                             </div>
                         </div>
                 ))

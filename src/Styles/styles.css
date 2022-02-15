@@ -3,7 +3,7 @@
 }
 
 .col-lg-auto:hover {
-     background-color: aqua;
+    background-color: aqua;
 }
 
 .store span:hover  {
@@ -34,3 +34,22 @@ a {
 .history {
     margin-top: 30px;
 }
+
+.selected {
+    background-color: aqua;
+}
+
+input {
+    width: 50px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.none {
+    display: none;
+}
+
+.error {
+    border-color: red;
+}
+

@@ -16,6 +16,7 @@ export default function Information ({ coininf, handleCoinSubmit }) {
                     priceUsd: ${fixed(coininf.priceUsd)}
                 </div>
                 <div className="col-lg col-sm">
+                    <input type="text"/>
                     <button onClick={handleCoinSubmit}>+</button>
                 </div>
             </div>

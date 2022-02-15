@@ -6,6 +6,7 @@ export const addCoin = ( task ) => ({
       name: task.title.name,
       count: task.title.count,
       priceUsd: task.title.priceUsd,
+      totalpriceUsd: task.title.totalpriceUsd,
       key: task.title.key
     }
   });
