@@ -8,7 +8,7 @@ import { showInputForCount } from "../../Functions/showInputForCount";
 
 export default function ListPage ({ coins, tasks }) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [coinsPerPage] = useState(10);
+    const [coinsPerPage] = useState(18);
 
     const dispatch = useDispatch();    
 

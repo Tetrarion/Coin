@@ -53,7 +53,7 @@ export default function Header ({ coins, tasks }) {
     return (
         <div className="header">
             <div className="container">
-                <div className="row align-items-center mb-4 mt-2">
+                <div className="row align-items-center mb-4 mt-2 py-2">
                     <HeaderBlocks currentCoins={currentCoins}/>
                     <div className="col-lg col-sm text-center">
                         <Link to={'/*'}>List page</Link>

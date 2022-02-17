@@ -17,7 +17,7 @@ export default function Information ({ coininf, handleCoinSubmit }) {
                 </div>
                 <div className="col-lg col-sm">
                     <input type="text"/>
-                    <button onClick={handleCoinSubmit}>+</button>
+                    <button onClick={handleCoinSubmit}>Add</button>
                 </div>
             </div>
             <div className="row py-3">

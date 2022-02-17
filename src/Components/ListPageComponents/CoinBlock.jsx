@@ -11,7 +11,7 @@ export default function CoinBlock ({ coins, handleCoinSubmit, showInputForCount,
                                 {coin.rank}
                             </div>
                             <div className="col-lg col-sm text-center">
-                            <Link to={`/infopage/${coin.id}`} style={{ textDecoration: 'none', color: 'black'}}><div>
+                            <Link to={`/infopage/${coin.id}`} style={{ textDecoration: 'none', color: 'white'}}><div>
                                     {coin.name}
                                 </div>
                                 <div>
@@ -31,18 +31,15 @@ export default function CoinBlock ({ coins, handleCoinSubmit, showInputForCount,
                                 ${fixed(coin.supply)}
                             </div>
                             <div className="col-lg col-sm text-center">
-                                ${fixed(coin.maxSupply)}
-                            </div>
-                            <div className="col-lg col-sm text-center">
                                 ${fixed(coin.volumeUsd24Hr)}
                             </div>
                             <div className="col-lg col-sm text-center">
                                 {fixed(coin.changePercent24Hr)}%
                             </div>
-                            <div className="col-lg col-sm">
+                            <div className="col-lg-12 col-sm-12 text-center">
                                 <div className='display none'>
-                                    <input type="text" onBlur={clearText}/>
-                                    <button onClick={handleCoinSubmit}>+</button>
+                                        <input type="text" onBlur={clearText}/>
+                                        <button onClick={handleCoinSubmit}>Add</button>
                                 </div>
                             </div>
                         </div>

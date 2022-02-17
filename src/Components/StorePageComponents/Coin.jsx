@@ -22,7 +22,7 @@ const Coin = ({ task }) => {
                 ${totalpriceUsd}
             </div>
             <div className='col-lg col-sm'>
-                <span onClick={() => dispatch(removeCoin(id))}>Удалить</span>
+                <span onClick={() => dispatch(removeCoin(id))}>Remove</span>
             </div>
         </div>
     
