@@ -1,31 +1,36 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { removeCoin }  from "../../Store/actions";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import fixed from '../../Functions/fixed';
+import * as actions from '../../Store/actions';
 
-const Coin = ({ task }) => {
-    const { id, name, count, priceUsd, totalpriceUsd } = task;
-    
-    const dispatch = useDispatch();
+function Coin({ task }) {
+  const {
+    id, name, count, priceUsd, totalpriceUsd,
+  } = task;
 
-    return (
-        <div className="row my-1" id={id}>
-            <div className='col-lg col-sm'>
-                {name}
-            </div>
-            <div className='col-lg col-sm'>
-                {count}
-            </div>
-            <div className='col-lg col-sm'>
-                ${priceUsd}
-            </div>
-            <div className='col-lg col-sm'>
-                ${totalpriceUsd}
-            </div>
-            <div className='col-lg col-sm'>
-                <span onClick={() => dispatch(removeCoin(id))}>Remove</span>
-            </div>
-        </div>
-    
-    )
+  const dispatch = useDispatch();
+
+  return (
+    <div className="coin" id={id}>
+      <div className="coin__purchase-info">
+        {name}
+      </div>
+      <div className="coin__purchase-info">
+        {count}
+      </div>
+      <div className="coin__purchase-info">
+        $
+        {fixed(priceUsd)}
+      </div>
+      <div className="coin__purchase-info">
+        $
+        {fixed(totalpriceUsd)}
+      </div>
+      <div className="coin__purchase-info">
+        <button className="form-button form-button--color--red" onClick={() => dispatch(actions.removeCoin(id))} tabIndex={0} onKeyDown={() => dispatch(actions.removeCoin(id))}>Remove</button>
+      </div>
+    </div>
+  );
 }
+
 export default Coin;

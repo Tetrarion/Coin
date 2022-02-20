@@ -1,30 +1,35 @@
-export default function Pagination ({ coinsPerPage, totalCoins, pagination }) {
-    const pageNumbers = [];
+import React from 'react';
 
-    for (let i = 1; i <= Math.ceil(totalCoins / coinsPerPage); i++){
-        pageNumbers.push(i);
+function Pagination({ coinsPerPage, totalCoins, pagination }) {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalCoins / coinsPerPage); i += 1) {
+    pageNumbers.push(i);
+  }
+
+  const selected = (number, event) => {
+    pagination(number);
+    const selectedBlock = document.querySelector('.pagination__list-item--selected');
+    if (selectedBlock) {
+      selectedBlock.classList.remove('pagination__list-item--selected');
     }
+    event.currentTarget.classList.add('pagination__list-item--selected');
+  };
 
-    const selected = ( number, event ) => {
-        pagination(number);
-        let selected = document.querySelector('.selected');
-        if (selected) {
-            selected.classList.remove('selected');
-        }
-        event.currentTarget.classList.add('selected');
-    };
-
-    return (
-        <div className="row justify-content-center mt-2">
-            {
-                pageNumbers.map(number => (
-                    <div className="col-lg-auto col-sm-auto" key={number} onClick={(event) => selected(number, event)}>
-                        <a href="#">
-                            {number}
-                        </a>
-                    </div>
-                ))
-            }
-        </div>
-    )
+  return (
+    <div className="pagination">
+      <ul className="pagination__list">
+        {
+                    pageNumbers.map((number) => (
+                      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                      <li className="pagination__list-item" key={number} onClick={(event) => selected(number, event)} onKeyDown={(event) => selected(number, event)} role="button" tabIndex={0}>
+                        {number}
+                      </li>
+                    ))
+                }
+      </ul>
+    </div>
+  );
 }
+
+export default Pagination;

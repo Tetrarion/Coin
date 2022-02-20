@@ -1,15 +1,18 @@
-import { storePageNames } from "../../Data/storePageNames"
+import React from 'react';
+import { storePageNames } from '../../Data/storePageNames';
 
-export default function Header () {
-    return (
-        <div className="row">
-            {
-                storePageNames.map(name => (
-                    <div className="col-lg col-sm">
-                        {name}
+export default function Header() {
+  return (
+    <div className="header-top">
+      <ul className="header-top__list">
+        {
+                  storePageNames.map((name) => (
+                    <div className="header-top__list-item">
+                      {name}
                     </div>
-                ))
-            }
-        </div>
-    )
+                  ))
+              }
+      </ul>
+    </div>
+  );
 }

@@ -1,13 +1,12 @@
-import { fixed } from "./fixed";
+function totalPrice(tasks) {
+  let price = 0;
 
-export function totalPrice(tasks){
-    let price = 0;
+  // eslint-disable-next-line no-restricted-syntax
+  for (const task of tasks) {
+    price += task.totalpriceUsd;
+  }
 
-    for (let task of tasks){
-        price = price + Number(task.totalpriceUsd);
-    }
-
-    let totalprice = fixed(price);
-
-    return totalprice;
+  return price;
 }
+
+export default totalPrice;

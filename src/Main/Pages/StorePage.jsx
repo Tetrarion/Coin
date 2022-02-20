@@ -1,13 +1,16 @@
-import StoreCoinList from "../../Components/StorePageComponents/StoreCoinList";
-import Header from "../../Components/StorePageComponents/Header";
+import React from 'react';
+import StoreCoinList from '../../Components/StorePageComponents/StoreCoinList';
+import Header from '../../Components/StorePageComponents/Header';
 
-export default function StorePage({ tasks }){
-    return (
-        <div className="store">
-            <div className="container">
-                <Header/>
-                <StoreCoinList tasks={ tasks }/>
-            </div>
-        </div>
-    )
+function StorePage({ tasks }) {
+  return (
+    <div className="basket">
+      <Header />
+      <div className="coins-purchase-list">
+        <StoreCoinList tasks={tasks} />
+      </div>
+    </div>
+  );
 }
+
+export default StorePage;
