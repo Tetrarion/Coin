@@ -155,12 +155,11 @@
 }
 
 .coins-purchase-list {
-    margin-left: 9%;
+    margin-left: 10%;
 }
 
 .basket__info-string {
-    margin-top: 15%;
-    text-align: center;
+    margin: 15% 0 0 29%;
 }
 
 .info-page__form {
