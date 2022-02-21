@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     getCoins();
-  }, [time]);
+  }, []);
 
   setInterval(() => {
     setTime(time + 1);
@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<ListPage coins={coins} tasks={tasks} />} />
         <Route path="/storepage" element={<StorePage tasks={tasks} />} />
-        <Route path="/infopage/:id" element={<InfoPage coins={coins} />} />
+        <Route path="/infopage/:id" element={<InfoPage />} />
       </Routes>
     </BrowserRouter>
 

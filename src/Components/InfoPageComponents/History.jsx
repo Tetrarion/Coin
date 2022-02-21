@@ -5,16 +5,35 @@ import {
 } from 'recharts';
 import { getInfo } from '../../API/api';
 
-function History({ prodId }) {
+function History({ id, choosedValue }) {
   const [history, SetHistory] = useState('');
 
-  const getHistory = async () => {
-    SetHistory(await getInfo(`assets/${prodId}/history?interval=d1`));
+  const getHistory = async (interval) => {
+    let truncatedArray = [];
+    const dateInformation = await getInfo(`assets/${id}/history?interval=${interval}`);
+    if (interval === 'd1') {
+      truncatedArray = dateInformation.map((dateinfo) => {
+        const container = {};
+        container.priceUsd = dateinfo.priceUsd;
+        container.date = dateinfo.date.substr(0, 10);
+        return container;
+      });
+    } else {
+      truncatedArray = dateInformation.map((dateinfo) => {
+        const container = {};
+        container.priceUsd = dateinfo.priceUsd;
+        container.date = dateinfo.date.substr(11, 5);
+        return container;
+      });
+    }
+    SetHistory(truncatedArray);
   };
 
   useEffect(() => {
-    getHistory();
-  }, []);
+    const selectValue = document.querySelector('.info-page__select');
+    const select = selectValue.value;
+    getHistory(select);
+  }, [choosedValue]);
 
   return (
     <div className="chart">

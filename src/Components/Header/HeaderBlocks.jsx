@@ -4,7 +4,7 @@ import fixed from '../../Functions/fixed';
 export default function HeaderBlocks({ currentCoins }) {
   return (
     currentCoins.map((coin) => (
-      <div className="popular-coins__info">
+      <div className="popular-coins__info" key={coin.id}>
         <div className="popular-coins__info-name">
           №
           {coin.rank}

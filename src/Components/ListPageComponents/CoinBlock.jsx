@@ -6,10 +6,10 @@ function CoinBlock({
   coins, handleCoinSubmit, showInputForCount, clearText,
 }) {
   return (
-    <div className="coins-list" onClick={showInputForCount} onKeyDown={showInputForCount} role="button" tabIndex={0}>
+    <div className="coins-list">
       {
                   coins.map((coin) => (
-                    <div className="coin" id={coin.id} key={coin.id}>
+                    <div className="coin" id={coin.id} key={coin.id} onClick={showInputForCount} onKeyDown={showInputForCount} role="button" tabIndex={0}>
                       <div className="coin__info">
                         {coin.rank}
                       </div>
