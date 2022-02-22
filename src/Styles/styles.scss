@@ -1,3 +1,42 @@
+$sm-font-size: 17px;
+$lg-font-size: 20px;
+
+%list-page-top-style {
+    display: inline-block;
+    font-size: 20px;
+    width: 25%;
+    text-align:center;
+    vertical-align: middle;
+    font-family : Impact;
+}
+
+%basket-top-style {
+    display: inline-block;
+    font-size: 20px;
+    width: 25%;
+    text-align:center;
+    vertical-align: middle;
+    font-family : Impact;
+}
+
+%text-link {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+
+%coin-info {
+    @extend %text-link;
+    text-align:center;
+    width: 25%;
+    padding: 20px 0;
+    vertical-align: middle;
+}
+
+#root {
+    font-size: $sm-font-size;
+}
+
 .header {
     border: 2px rgb(0, 0, 0) solid;
     width: 100%;
@@ -6,33 +45,24 @@
 
 .popular-coins__info {
     display: inline-block;
-    font-size: 20px;
     margin: 10px 30px;
 }
 
-.popular-coins {
-    margin-left: 0;
-}
-
 .navigation {
-    float: none;
     text-align:center;
 }
 
 .navigation__link {
-    display: inline-block;
-    font-size: 20px;
+    @extend %text-link;
     box-shadow: 5px 5px 5px black;
     border-radius: 10px;
     padding: 5px;
     margin: 10px 10px;
-    text-decoration: none;
-    color: black;
     transition: 0.5s;
-}
 
-.navigation__link:hover {
-    background-color: aqua;
+    &:hover {
+        background-color: aqua;
+    }
 }
 
 .popular-coins {
@@ -44,26 +74,21 @@
 }
 
 .popular-coins__top {
-    font-size: 20px;
     font-weight : bold;
 }
 
-.header-top__specifications-item {
-    display: inline-block;
-    font-size: 20px;
-    width: 25%;
-    text-align:center;
-    vertical-align: middle;
-    font-family : Impact;
+.list-page__top-item {
+    @extend %list-page-top-style;
 }
 
-.header-top__specifications {
+.list-page__top {
     margin-top: 30px;
     padding: 0;
     text-align:center;
 }
 
-.header-top__specifications-item--sm--none {
+.list-page__top-item-sm {
+    @extend %list-page-top-style;
     display: none;
 }
 
@@ -75,20 +100,18 @@
     border: 1px rgb(180, 176, 176) solid;
     text-align:center;
     width: 100%;
+
+    &:hover {
+        background-color: rgb(230, 225, 225);
+    }
 }
 
 .coin__info {
-    display: inline-block;
-    font-size: 20px;
-    text-align:center;
-    width: 25%;
-    padding: 20px 0;
-    vertical-align: middle;
-    text-decoration: none;
-    color: black;
+    @extend %coin-info;
 }
 
-.coin__info--sm--none {
+.coin__info-sm {
+    @extend %coin-info;
     display: none;
 }
 
@@ -98,12 +121,12 @@
 }
 
 .coin__form-input {
+    font-size: $sm-font-size;
     margin: 0 20px 10px 0;
-    font-size: 20px;
 }
 
 .form-button {
-    font-size: 20px;
+    font-size: $sm-font-size;
     padding: 5px 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -122,7 +145,6 @@
 }
 
 .pagination__list-item {
-    font-size: 20px;
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -130,10 +152,10 @@
     transition: 0.5s;
     cursor: pointer;
     margin: 0 5px;
-}
 
-.pagination__list-item:hover {
-    background-color: aqua;
+    &:hover {
+        background-color: aqua;
+    }
 }
 
 .pagination__list {
@@ -145,35 +167,21 @@
     background-color: aqua;
 }
 
-.header-top__list-item {
-    display: inline-block;
-    font-size: 20px;
-    width: 25%;
-    text-align: center;
-    font-family: Impact;
+.basket__top-item {
+    @extend %basket-top-style;
 }
 
-.header-top__list {
-    margin-top: 30px;
+.basket__top {
+    margin: 17% 0 0 0;
     padding: 0;
-    text-align: center;
-}
-
-.header-top {
-    margin: 40px 0 0 0 ;
 }
 
 .coin__purchase-info {
     display: inline-block;
     width: 25%;
     text-align: center;
-    font-size: 20px;
     margin-bottom: 10px;
     margin-top: 15px;
-}
-
-.coins-purchase-list {
-    margin-left: 0;
 }
 
 .basket__info-string {
@@ -184,11 +192,11 @@
 .info-page__form {
     text-align: center;
     margin-top: 20px;
+    font-size: $sm-font-size;
 }
 
 .info-page__form-input {
     margin: 0 20px 10px 0;
-    font-size: 20px;
 }
 
 .info-page__list {
@@ -196,7 +204,6 @@
 }
 
 .info-page__list-item {
-    font-size: 20px;
     width: 37%;
     text-align: center;
     display: inline-block;
@@ -205,11 +212,14 @@
 }
 
 .info-page__select {
-    font-size: 20px;
     margin-bottom: 10px;
+    font-size: $sm-font-size;
 } 
 
 @media screen and (min-width:960px) {
+    #root {
+        font-size: $lg-font-size;
+    }
     .navigation {
         float: right;
     }
@@ -219,30 +229,32 @@
     .popular-coins {
         margin: 0;
     }
-    .header-top__specifications {
+    .list-page__top {
         margin-top: 70px;
     }
-    .header-top__specifications-item {
+    .list-page__top-item {
         width: 10%;
     }
-    .header-top__specifications-item--sm--none {
+    .list-page__top-item-sm {
+        width: 10%;
         display: inline-block;
     }
     .coin__info {
         width: 12.5%;
     }
-    .coin__info--sm--none {
+    .coin__info-sm {
+        width: 12.5%;
         display: inline-block;
     }
     .coin__form-input {
         margin-right: 30px;
     }
-    .header-top__list {
-        margin-top: 70px;
-        width: 100%;
+    .basket__top {
+        margin: 70px 0 20px 9%;
+        width: 83%;
     }
-    .header-top__list-item {
-        width: 16%;
+    .basket__top-item {
+        width: 20%;
     }
     .coin__purchase-info {
         width: 20%;

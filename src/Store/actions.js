@@ -1,13 +1,20 @@
 import * as actions from './actionTypes';
+import { getInfo } from '../API/api';
 
-export const addCoin = (task) => ({
+export const loadCoin = (task) => async (dispatch) => {
+  // eslint-disable-next-line no-use-before-define
+  dispatch(addCoin({
+    info: await getInfo(`assets/${task.id}`),
+    count: task.count,
+  }));
+};
+export const addCoin = (data) => ({
   type: actions.COIN_ADD,
   payload: {
-    name: task.title.name,
-    count: task.title.count,
-    priceUsd: task.title.priceUsd,
-    totalpriceUsd: task.title.totalpriceUsd,
-    key: task.title.key,
+    name: data.info.name,
+    count: data.count,
+    priceUsd: data.info.priceUsd,
+    key: data.info.id,
   },
 });
 export const removeCoin = (id) => ({

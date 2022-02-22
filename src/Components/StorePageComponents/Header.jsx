@@ -3,16 +3,14 @@ import { storePageNames } from '../../Data/storePageNames';
 
 export default function Header() {
   return (
-    <div className="header-top">
-      <ul className="header-top__list">
-        {
-                  storePageNames.map((name) => (
-                    <div className="header-top__list-item">
-                      {name}
-                    </div>
-                  ))
-              }
-      </ul>
-    </div>
+    <ul className="basket__top">
+      {
+                storePageNames.map((name) => (
+                  <div className="basket__top-item">
+                    {name}
+                  </div>
+                ))
+            }
+    </ul>
   );
 }

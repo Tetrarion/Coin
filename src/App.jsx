@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ListPage from './Main/Pages/ListPage';
-import './Styles/styles.css';
+import './Styles/styles.scss';
 import StorePage from './Main/Pages/StorePage';
 import InfoPage from './Main/Pages/InfoPage';
 import { getInfo } from './API/api';

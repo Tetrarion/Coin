@@ -25,19 +25,19 @@ function CoinBlock({
                         $
                         {fixed(coin.priceUsd)}
                       </div>
-                      <div className="coin__info coin__info--sm--none">
+                      <div className="coin__info-sm">
                         $
                         {fixed(coin.marketCapUsd)}
                       </div>
-                      <div className="coin__info coin__info--sm--none">
+                      <div className="coin__info-sm">
                         $
                         {fixed(coin.vwap24Hr)}
                       </div>
-                      <div className="coin__info coin__info--sm--none">
+                      <div className="coin__info-sm">
                         $
                         {fixed(coin.supply)}
                       </div>
-                      <div className="coin__info coin__info--sm--none">
+                      <div className="coin__info-sm">
                         $
                         {fixed(coin.volumeUsd24Hr)}
                       </div>
