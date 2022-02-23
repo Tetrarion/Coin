@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Coin/static/css/main.e38b83b0.css",
-    "main.js": "/Coin/static/js/main.e28f8c9e.js",
+    "main.css": "/Coin/static/css/main.4ac80190.css",
+    "main.js": "/Coin/static/js/main.5ce2c26f.js",
     "index.html": "/Coin/index.html",
-    "main.e38b83b0.css.map": "/Coin/static/css/main.e38b83b0.css.map",
-    "main.e28f8c9e.js.map": "/Coin/static/js/main.e28f8c9e.js.map"
+    "main.4ac80190.css.map": "/Coin/static/css/main.4ac80190.css.map",
+    "main.5ce2c26f.js.map": "/Coin/static/js/main.5ce2c26f.js.map"
   },
   "entrypoints": [
-    "static/css/main.e38b83b0.css",
-    "static/js/main.e28f8c9e.js"
+    "static/css/main.4ac80190.css",
+    "static/js/main.5ce2c26f.js"
   ]
 }
