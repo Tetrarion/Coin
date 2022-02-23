@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     getCoins();
-  }, []);
+  }, [time]);
 
   setInterval(() => {
     setTime(time + 1);
