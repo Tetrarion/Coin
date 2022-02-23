@@ -5,10 +5,8 @@ import * as actions from '../../Store/actions';
 
 function Coin({ task }) {
   const {
-    id, name, count, priceUsd,
+    id, name, count, priceUsd, coinTotalPrice,
   } = task;
-
-  const totalPrice = Number(priceUsd * count);
 
   const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ function Coin({ task }) {
       </div>
       <div className="coin__purchase-info">
         $
-        {fixed(totalPrice)}
+        {fixed(coinTotalPrice)}
       </div>
       <div className="coin__purchase-info">
         <button className="form-button form-button--color--red" onClick={() => dispatch(actions.removeCoin(id))} tabIndex={0} onKeyDown={() => dispatch(actions.removeCoin(id))}>Remove</button>

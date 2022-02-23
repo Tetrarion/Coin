@@ -1,16 +1,16 @@
 import * as actions from './actionTypes';
 
-let lastId = 0;
 // eslint-disable-next-line default-param-last
 export default function reducer(state = [], action) {
   switch (action.type) {
     case actions.COIN_ADD:
       return [...state, {
         // eslint-disable-next-line no-plusplus
-        id: ++lastId,
+        id: Math.random(),
         name: action.payload.name,
         count: action.payload.count,
         priceUsd: action.payload.priceUsd,
+        coinTotalPrice: action.payload.coinTotalPrice,
         key: action.payload.key,
       }];
     case actions.COIN_REMOVE: {

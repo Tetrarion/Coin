@@ -1,4 +1,4 @@
-function priceDiff(array, tasks) {
+function priceDiff(array, tasks, totalAmount) {
   let price = 0;
 
   // eslint-disable-next-line no-restricted-syntax
@@ -12,6 +12,7 @@ function priceDiff(array, tasks) {
       }
     }
   }
+  price -= totalAmount;
 
   return price;
 }

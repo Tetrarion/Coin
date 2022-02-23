@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import fixed from '../../Functions/fixed';
 
 function CoinBlock({
-  coins, handleCoinSubmit, showInputForCount, clearText,
+  coins, handleCoinSubmit, showInputForCount,
 }) {
   return (
     <div className="coins-list">
@@ -46,7 +46,7 @@ function CoinBlock({
                         %
                       </div>
                       <div className="coin__form coin__form--display--none">
-                        <input className="coin__form-input" type="number" onBlur={clearText} />
+                        <input className="coin__form-input" type="number" />
                         <button className="form-button form-button--color--green" onClick={handleCoinSubmit}>Add to basket</button>
                       </div>
                     </div>

@@ -38,10 +38,8 @@ function Header({ coins, tasks }) {
   const getPriceDifferences = (totalAmount) => {
     if (!tasks.length) return setPriceDifferences(null);
     const array = getUpdateCoins();
-    const updatePrice = priceDiff(array, tasks);
-    let priceDifference = totalAmount - updatePrice;
-    priceDifference = fixed(priceDifference);
-    setPriceDifferences(priceDifference);
+    const priceDifference = priceDiff(array, tasks, totalAmount);
+    setPriceDifferences(fixed(priceDifference));
     return priceDifference;
   };
 

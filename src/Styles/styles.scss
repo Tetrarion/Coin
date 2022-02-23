@@ -261,6 +261,7 @@ $lg-font-size: 20px;
         margin: 20px auto;
     }
     .info-page__form-input {
+        font-size: $lg-font-size;
         margin-right: 20px;
     }
     .info-page__list-item {
@@ -277,6 +278,9 @@ $lg-font-size: 20px;
     }
     .basket__info-string {
         margin: 18% 0 0 -13%;
+    }
+    .chart {
+        font-size: $sm-font-size;
     }
 }
 

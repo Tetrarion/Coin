@@ -1,50 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import fixed from '../../Functions/fixed';
+import { getInfo } from '../../API/api';
 
-function Information({ coininf }) {
-  const {
-    name, symbol, priceUsd, marketCapUsd, vwap24Hr, supply, maxSupply, volumeUsd24Hr,
-    changePercent24Hr,
-  } = coininf;
+function Information({ id }) {
+  const [info, SetInfo] = useState('');
+
+  const getInformation = async () => {
+    SetInfo(await getInfo(`assets/${id}`));
+  };
+
+  useEffect(() => {
+    getInformation();
+  }, []);
 
   return (
     <div className="info-page__list">
       <div className="info-page__list-item">
         <div>
-          {name}
+          {info.name}
         </div>
         <div>
-          {symbol}
+          {info.symbol}
         </div>
       </div>
       <div className="info-page__list-item">
         price: $
-        {fixed(priceUsd)}
+        {fixed(info.priceUsd)}
       </div>
       <div className="info-page__list-item">
         marketCap: $
-        {fixed(marketCapUsd)}
+        {fixed(info.marketCapUsd)}
       </div>
       <div className="info-page__list-item">
         vwap (24Hr): $
-        {fixed(vwap24Hr)}
+        {fixed(info.vwap24Hr)}
       </div>
       <div className="info-page__list-item">
         supply: $
-        {fixed(supply)}
+        {fixed(info.supply)}
       </div>
       <div className="info-page__list-item">
         maxSupply: $
-        {fixed(maxSupply)}
+        {fixed(info.maxSupply)}
       </div>
       <div className="info-page__list-item">
         volume (24Hr): $
-        {fixed(volumeUsd24Hr)}
+        {fixed(info.volumeUsd24Hr)}
       </div>
       <div className="info-page__list-item">
         changePercent (24Hr):
         {' '}
-        {fixed(changePercent24Hr)}
+        {fixed(info.changePercent24Hr)}
         %
       </div>
     </div>

@@ -6,6 +6,6 @@ export async function getInfo(url) {
     const info = await axiosInstance.get(`${url}`);
     return info.data.data;
   } catch (err) {
-    return err.massage;
+    return getInfo(url);
   }
 }
