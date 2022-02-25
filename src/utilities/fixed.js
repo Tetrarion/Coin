@@ -1,4 +1,4 @@
-function fixed(num) {
+export default function fixed(num) {
   let count = Number(num).toFixed(2);
   const countfix = Number(num).toFixed(0);
   const len = countfix.toString();
@@ -14,5 +14,3 @@ function fixed(num) {
   }
   return count;
 }
-
-export default fixed;

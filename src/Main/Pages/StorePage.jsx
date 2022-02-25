@@ -6,9 +6,7 @@ function StorePage({ tasks }) {
   return (
     <div className="basket">
       <Header />
-      <div className="coins-purchase-list">
-        <StoreCoinList tasks={tasks} />
-      </div>
+      <StoreCoinList tasks={tasks} />
     </div>
   );
 }

@@ -1,40 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import fixed from '../../Functions/fixed';
+import fixed from '../../utilities/fixed';
+import showInputForCount from '../../utilities/showInputForCount';
+import * as actions from '../../Store/actions';
 
-function CoinBlock({
-  coins, handleCoinSubmit, showInputForCount,
-}) {
-  // useEffect(() => {
-  //   // eslint-disable-next-line array-callback-return
-  //   coins.map(async (coin) => {
-  //     const item = sessionStorage.getItem(`${coin.id}`);
-  //     const element = document.getElementById(`${coin.id}`);
-  //     if (item !== coin.priceUsd) {
-  //       if (item > coin.priceUsd) {
-  //         element.classList.add('red');
-  //       }
-  //       if (item < coin.priceUsd) {
-  //         element.classList.add('green');
-  //       }
-  //       if (item === undefined) return;
-  //       sessionStorage.setItem(`${coin.id}`, coin.priceUsd);
-  //     }
-  //   });
-  // });
+function CoinBlock({ coins }) {
+  const dispatch = useDispatch();
 
-  // const removeAll = () => {
-  //   const redClass = document.querySelectorAll('.red');
-  //   const greenClass = document.querySelectorAll('.green');
-  //   redClass.forEach((element) => {
-  //     element.classList.remove('red');
-  //   });
-  //   greenClass.forEach((element) => {
-  //     element.classList.remove('green');
-  //   });
-  // };
-
-  // setTimeout(removeAll, 2000);
+  const [inputValue, setInputValue] = useState(0);
 
   return (
     <div className="coins-list">
@@ -77,8 +51,8 @@ function CoinBlock({
                         %
                       </div>
                       <div className="coin__form coin__form--display--none">
-                        <input className="coin__form-input" type="number" />
-                        <button className="form-button form-button--color--green" onClick={handleCoinSubmit}>Add to basket</button>
+                        <input className="coin__form-input" type="number" onChange={(e) => setInputValue(e.target.value)} />
+                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue)); }}>Add to basket</button>
                       </div>
                     </div>
                   ))

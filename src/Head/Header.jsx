@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderBlocks from '../Components/Header/HeaderBlocks';
-import totalPrice from '../Functions/totalprice';
-import priceDiff from '../Functions/priceDiff';
-import fixed from '../Functions/fixed';
+import totalPrice from '../utilities/totalprice';
+import priceDiff from '../utilities/priceDiff';
+import fixed from '../utilities/fixed';
 
 function Header({ coins, tasks }) {
   const [totalprice, SetTotalPrice] = useState(0);

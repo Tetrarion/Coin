@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import fixed from '../../Functions/fixed';
-import { getInfo } from '../../API/api';
+import fixed from '../../utilities/fixed';
+import getInfo from '../../API/api';
 
-function Information({ id }) {
+export default function Information({ id }) {
   const [info, SetInfo] = useState('');
 
-  const getInformation = async () => {
-    SetInfo(await getInfo(`assets/${id}`));
-  };
-
   useEffect(() => {
+    const getInformation = async () => {
+      SetInfo(await getInfo(`assets/${id}`));
+    };
     getInformation();
-  }, []);
+  }, [id]);
 
   return (
     <div className="info-page__list">
@@ -56,5 +55,3 @@ function Information({ id }) {
     </div>
   );
 }
-
-export default Information;

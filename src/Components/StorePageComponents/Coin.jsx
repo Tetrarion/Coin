@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import fixed from '../../Functions/fixed';
+import fixed from '../../utilities/fixed';
 import * as actions from '../../Store/actions';
 
 function Coin({ task }) {

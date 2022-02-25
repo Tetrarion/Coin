@@ -5,7 +5,7 @@ import ListPage from './Main/Pages/ListPage';
 import './Styles/styles.scss';
 import StorePage from './Main/Pages/StorePage';
 import InfoPage from './Main/Pages/InfoPage';
-import { getInfo } from './API/api';
+import getInfo from './API/api';
 import Header from './Head/Header';
 
 function App() {
@@ -13,13 +13,12 @@ function App() {
 
   const tasks = useSelector((state) => state);
 
-  const getCoins = async () => {
-    const response = await getInfo('assets');
-    setCoins(response);
-    setTimeout(getCoins, 1000);
-  };
-
   useEffect(() => {
+    const getCoins = async () => {
+      const response = await getInfo('assets');
+      setCoins(response);
+      setTimeout(getCoins, 1000);
+    };
     getCoins();
   }, []);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import fixed from '../../Functions/fixed';
+import fixed from '../../utilities/fixed';
 
 export default function HeaderBlocks({ currentCoins }) {
   return (

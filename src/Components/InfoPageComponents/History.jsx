@@ -3,36 +3,16 @@ import React, { useEffect, useState } from 'react';
 import {
   AreaChart, Area, YAxis, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
-import { getInfo } from '../../API/api';
+import getHistory from '../../utilities/getHistory';
 
-function History({ id, choosedValue }) {
-  const [history, SetHistory] = useState('');
-
-  const getHistory = async (interval) => {
-    let truncatedArray = [];
-    const dateInformation = await getInfo(`assets/${id}/history?interval=${interval}`);
-    if (interval === 'd1') {
-      truncatedArray = dateInformation.map((dateinfo) => {
-        const container = {};
-        container.priceUsd = dateinfo.priceUsd;
-        container.date = dateinfo.date.substr(0, 10);
-        return container;
-      });
-    } else {
-      truncatedArray = dateInformation.map((dateinfo) => {
-        const container = {};
-        container.priceUsd = dateinfo.priceUsd;
-        container.date = dateinfo.date.substr(11, 5);
-        return container;
-      });
-    }
-    SetHistory(truncatedArray);
-  };
+export default function History({ id, choosedValue }) {
+  const [history, setHistory] = useState('');
 
   useEffect(() => {
-    const selectValue = document.querySelector('.info-page__select');
-    const select = selectValue.value;
-    getHistory(select);
+    async function data() {
+      setHistory(await getHistory(choosedValue, id));
+    }
+    data();
   }, [choosedValue]);
 
   return (
@@ -61,5 +41,3 @@ function History({ id, choosedValue }) {
     </div>
   );
 }
-
-export default History;

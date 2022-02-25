@@ -1,4 +1,5 @@
 import * as actions from './actionTypes';
+import getInfo from '../API/api';
 
 export const addCoin = (data) => ({
   type: actions.COIN_ADD,
@@ -14,3 +15,13 @@ export const removeCoin = (id) => ({
   type: actions.COIN_REMOVE,
   payload: { id },
 });
+export const loadCoin = (id, count) => async (dispatch) => {
+  if (count === 0 || count === ' ') return;
+  const response = await getInfo(`assets/${id}`);
+  const coinTotalPrice = response.priceUsd * count;
+  dispatch(addCoin({
+    response,
+    count,
+    coinTotalPrice,
+  }));
+};

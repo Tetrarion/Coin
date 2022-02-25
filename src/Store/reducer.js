@@ -5,7 +5,6 @@ export default function reducer(state = [], action) {
   switch (action.type) {
     case actions.COIN_ADD:
       return [...state, {
-        // eslint-disable-next-line no-plusplus
         id: Math.random(),
         name: action.payload.name,
         count: action.payload.count,
