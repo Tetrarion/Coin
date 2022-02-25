@@ -9,26 +9,19 @@ import { getInfo } from './API/api';
 import Header from './Head/Header';
 
 function App() {
-  const minute = 6e4;
-
   const [coins, setCoins] = useState([]);
-  const [time, setTime] = useState(0);
 
   const tasks = useSelector((state) => state);
 
   const getCoins = async () => {
-    const coinsData = await getInfo('assets');
-    if (coinsData === ' ') return;
-    setCoins(coinsData);
+    const response = await getInfo('assets');
+    setCoins(response);
+    setTimeout(getCoins, 1000);
   };
 
   useEffect(() => {
     getCoins();
-  }, [time]);
-
-  setInterval(() => {
-    setTime(time + 1);
-  }, minute);
+  }, []);
 
   return (
     <BrowserRouter>
