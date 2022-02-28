@@ -1,0 +1,38 @@
+.coin {
+    border: 1px rgb(180, 176, 176) solid;
+    text-align: center;
+
+    &:hover {
+        background-color: rgb(230, 225, 225);
+    }
+
+    &__info {
+        @extend %coin-info;
+
+        &-sm {
+            display: none;
+        }
+    }
+
+    &__form {
+        text-align:center;
+        margin: 15px auto;
+
+        &-input {
+            font-size: $sm-font-size;
+            margin: 0 20px 10px 0;
+        }
+
+        &--display--none {
+            display: none;
+        }
+    }
+
+    &__purchase-info {
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 15px;
+    }
+}

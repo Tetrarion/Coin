@@ -1,0 +1,103 @@
+@media screen and (min-width:960px) {
+    #root {
+        font-size: $lg-font-size;
+    }
+    
+    .navigation {
+        display: inline;
+        &__link {
+            margin: 28px 20px; 
+            float: right;
+        }
+    }
+
+    .popular-coins {
+        &__info {
+            float: left;
+        }
+    }
+
+    .popular-coins {
+        margin: 0;
+    }
+
+    .list-page {
+        &__top {
+            margin-top: 70px;
+
+            &-item {
+                width: 10%;
+
+                &-sm {
+                    width: 10%;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .coin {
+        width: 90%;
+        &__info {
+            width: 12.5%;
+
+            &-sm {
+                width: 12.5%;
+                display: inline-block;
+            }
+        }
+
+        &__form-input {
+            margin-right: 30px;
+        }
+
+        &__purchase-info {
+            width: 20%;
+            margin: 20px auto;
+        }
+    }
+
+    .form-button {
+        &__text {
+            font-size: $lg-font-size;
+        }
+    }
+
+    .basket {
+        &__top {
+            margin: 70px 0 20px 9%;
+            width: 83%;
+
+            &-item {
+                width: 20%;
+            }
+        }
+
+        &__info-string {
+            margin: 18% 0 0 -13%;
+        }
+    }
+
+    .info-page {
+        &__form-input {
+            font-size: $lg-font-size;
+            margin-right: 20px;
+        }
+
+        &__list-item {
+            width: 25%;
+        }
+    }
+
+    .coins-list {
+        margin-left: 9%;
+    }
+
+    .coins-purchase-list {
+        margin-left: 10%;
+    }
+    
+    .chart {
+        font-size: $sm-font-size;
+    }
+}

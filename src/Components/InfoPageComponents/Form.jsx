@@ -9,7 +9,9 @@ export default function Form({ id }) {
   return (
     <div className="info-page__form">
       <input className="info-page__form-input" type="number" onChange={(e) => setInputValue(e.target.value)} />
-      <button className="form-button form-button--color--green" onClick={() => dispatch(actions.loadCoin(id, inputValue))}>Add to basket</button>
+      <button className="form-button form-button--color--green" onClick={() => dispatch(actions.loadCoin(id, inputValue))}>
+        <div className="form-button__text">Add to basket</div>
+      </button>
     </div>
   );
 }

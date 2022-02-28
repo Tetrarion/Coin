@@ -9,12 +9,21 @@ function CoinBlock({ coins }) {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState(0);
+  const [prevElement, setPrevElement] = useState('');
+
+  const savePrevElement = (targetElement) => {
+    if (prevElement !== targetElement) {
+      showInputForCount(targetElement, prevElement);
+      setPrevElement(targetElement);
+    }
+  };
 
   return (
     <div className="coins-list">
       {
                   coins.map((coin) => (
-                    <div className="coin" id={coin.id} key={coin.id} onClick={showInputForCount} onKeyDown={showInputForCount} role="button" tabIndex={0}>
+                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+                    <div className="coin" id={coin.id} key={coin.id} onClick={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
                       <div className="coin__info">
                         {coin.rank}
                       </div>
@@ -52,7 +61,9 @@ function CoinBlock({ coins }) {
                       </div>
                       <div className="coin__form coin__form--display--none">
                         <input className="coin__form-input" type="number" onChange={(e) => setInputValue(e.target.value)} />
-                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue)); }}>Add to basket</button>
+                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue)); }}>
+                          <div className="form-button__text">Add to basket</div>
+                        </button>
                       </div>
                     </div>
                   ))
