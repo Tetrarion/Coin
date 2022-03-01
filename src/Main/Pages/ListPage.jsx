@@ -10,17 +10,22 @@ function ListPage({ coins, loading }) {
   const [coinsPerPage] = useState(12);
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(0);
+  const [array, setArray] = useState(coins);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
   const lastCoinsIndex = currentPage * coinsPerPage;
   const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
 
+  useEffect(() => {
+    setArray(coins);
+  }, [loading]);
+
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    setCurrentCoins(coins.slice(firstCoinsIndex, lastCoinsIndex));
-    setTotalCoins(coins.length);
-  }, [loading]);
+    setCurrentCoins(array.slice(firstCoinsIndex, lastCoinsIndex));
+    setTotalCoins(array.length);
+  }, [firstCoinsIndex, lastCoinsIndex, array]);
 
   const search = (text) => {
     const searchCoins = [];
@@ -32,13 +37,12 @@ function ListPage({ coins, loading }) {
       }
     });
     setCurrentPage(1);
-    setCurrentCoins(searchCoins.slice(firstCoinsIndex, lastCoinsIndex));
+    setArray(searchCoins);
     setTotalCoins(searchCoins.length);
   };
 
   const sortName = (name) => {
-    setCurrentCoins(sortCoins(name, coins).slice(firstCoinsIndex, lastCoinsIndex));
-    setTotalCoins(coins.length);
+    setArray(sortCoins(name, coins));
   };
 
   return (
