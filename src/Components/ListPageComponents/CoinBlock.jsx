@@ -19,7 +19,7 @@ function CoinBlock({ coins }) {
   };
 
   return (
-    <div className="coins-list">
+    <div className="list-page__coins-list">
       {
                   coins.map((coin) => (
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events

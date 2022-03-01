@@ -10,6 +10,7 @@ import Header from './Head/Header';
 
 function App() {
   const [coins, setCoins] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const tasks = useSelector((state) => state);
 
@@ -20,13 +21,14 @@ function App() {
       setTimeout(getCoins, 3000);
     };
     getCoins();
+    setTimeout(() => setLoading(true), 1000);
   }, []);
 
   return (
     <BrowserRouter>
       <Header coins={coins} tasks={tasks} />
       <Routes>
-        <Route path="/*" element={<ListPage coins={coins} tasks={tasks} />} />
+        <Route path="/*" element={<ListPage coins={coins} loading={loading} />} />
         <Route path="/storepage" element={<StorePage tasks={tasks} />} />
         <Route path="/infopage/:id" element={<InfoPage />} />
       </Routes>

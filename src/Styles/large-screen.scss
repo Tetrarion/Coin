@@ -17,10 +17,6 @@
         }
     }
 
-    .popular-coins {
-        margin: 0;
-    }
-
     .list-page {
         &__top {
             margin-top: 70px;
@@ -33,6 +29,10 @@
                     display: inline-block;
                 }
             }
+        }
+
+        &__coins-list {
+            margin-left: 9%;
         }
     }
 
@@ -76,6 +76,10 @@
         &__info-string {
             margin: 18% 0 0 -13%;
         }
+
+        &__coins-purchase-list {
+            margin-left: 10%;
+        }
     }
 
     .info-page {
@@ -87,14 +91,6 @@
         &__list-item {
             width: 25%;
         }
-    }
-
-    .coins-list {
-        margin-left: 9%;
-    }
-
-    .coins-purchase-list {
-        margin-left: 10%;
     }
     
     .chart {

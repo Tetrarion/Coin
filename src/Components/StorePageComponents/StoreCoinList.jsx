@@ -4,7 +4,7 @@ import Coin from './Coin';
 function StoreCoinList({ tasks }) {
   if (tasks.length) {
     return (
-      <div className="coins-purchase-list">
+      <div className="basket__coins-purchase-list">
         {
         tasks.map((task) => <Coin key={task.id} task={task} />)
         }

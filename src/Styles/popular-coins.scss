@@ -1,0 +1,12 @@
+.popular-coins {
+    display: inline-block;
+    text-align:center;
+    font-weight : bold;
+    font-family : Impact;
+    color: rgb(70, 70, 248);
+
+    &__info {
+        display: inline-block;
+        margin: 10px 30px;
+    }
+}
