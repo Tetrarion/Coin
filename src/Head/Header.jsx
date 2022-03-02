@@ -10,7 +10,8 @@ function Header({ coins, tasks }) {
   const [priceDifferences, setPriceDifferences] = useState(null);
   const [priceProcent, setPriceProcent] = useState(null);
 
-  const currentCoins = coins.slice(0, 3);
+  const currentCoins = coins.slice(0, 4);
+  currentCoins.splice(2, 1);
 
   const getUpdateCoins = () => {
     const array = [];

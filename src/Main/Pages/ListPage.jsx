@@ -14,6 +14,7 @@ function ListPage({ coins, loading }) {
   const [array, setArray] = useState([]);
   const [sortName, setSortName] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [cryptocurrency, setCryptocurrency] = useState([]);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
@@ -25,15 +26,19 @@ function ListPage({ coins, loading }) {
   }, [loading]);
 
   useEffect(() => {
+    setCryptocurrency(coins);
+  }, [coins]);
+
+  useEffect(() => {
     setCurrentCoins(array.slice(firstCoinsIndex, lastCoinsIndex));
     setTotalCoins(array.length);
-  }, [firstCoinsIndex, lastCoinsIndex, array, coins]);
+  }, [firstCoinsIndex, lastCoinsIndex, array]);
 
   const search = (text) => {
     setSearchText(text);
     const searchArray = [];
     // eslint-disable-next-line array-callback-return
-    coins.map((coin) => {
+    cryptocurrency.map((coin) => {
       const name = coin.name.substr(0, text.length);
       if (name.toLowerCase() === text.toLowerCase()) {
         searchArray.push(coin);
@@ -45,8 +50,8 @@ function ListPage({ coins, loading }) {
 
   useEffect(() => {
     if (searchText.length !== 0) return;
-    setArray(sortCoins(sortName, coins));
-  }, [sortName, coins]);
+    setArray(sortCoins(sortName, cryptocurrency));
+  }, [sortName, searchText, cryptocurrency]);
 
   const sort = (name) => setSortName(name);
 
