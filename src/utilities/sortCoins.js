@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
-export const sortCoins = (sortItem, coins) => {
-  switch (sortItem) {
+export const sortCoins = (sortName, coins) => {
+  switch (sortName) {
     case 'name':
       return coins.sort((a, b) => {
         const nameA = a.name.toUpperCase();
@@ -13,8 +13,6 @@ export const sortCoins = (sortItem, coins) => {
         }
         return 0;
       });
-    case 'rank':
-      return coins.sort((a, b) => a.rank - b.rank);
     case 'price':
       return coins.sort((a, b) => a.priceUsd - b.priceUsd);
     default:

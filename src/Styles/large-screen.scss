@@ -19,7 +19,7 @@
 
     .list-page {
         &__top {
-            margin-top: 70px;
+            margin-top: 10px;
 
             &-item {
                 width: 10%;
@@ -33,6 +33,22 @@
 
         &__coins-list {
             margin-left: 9%;
+        }
+    }
+
+    .search {
+        &__bar {
+            margin-top: 60px;
+        }
+
+        &__img {
+            margin-left: 9%;
+        }
+    }
+
+    .select {
+        &__list {
+            margin-left: 9%;  
         }
     }
 
@@ -74,7 +90,7 @@
         }
 
         &__info-string {
-            margin: 18% 0 0 -13%;
+            margin: 18% 0 0 -3%;
         }
 
         &__coins-purchase-list {
@@ -89,6 +105,7 @@
         }
 
         &__list-item {
+            margin: 30px 0;
             width: 25%;
         }
     }

@@ -3,14 +3,15 @@ import CoinBlock from '../../Components/ListPageComponents/CoinBlock';
 import Header from '../../Components/ListPageComponents/Header';
 import Pagination from '../../Components/ListPageComponents/Pagination';
 import { sortCoins } from '../../utilities/sortCoins';
-import Search from '../../Components/ListPageComponents/Search';
+import Select from '../../Components/ListPageComponents/Select';
+import SearchBar from '../../Components/ListPageComponents/SearchBar';
 
 function ListPage({ coins, loading }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [coinsPerPage] = useState(12);
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(0);
-  const [array, setArray] = useState(coins);
+  const [array, setArray] = useState([]);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
@@ -21,11 +22,10 @@ function ListPage({ coins, loading }) {
     setArray(coins);
   }, [loading]);
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     setCurrentCoins(array.slice(firstCoinsIndex, lastCoinsIndex));
     setTotalCoins(array.length);
-  }, [firstCoinsIndex, lastCoinsIndex, array]);
+  }, [firstCoinsIndex, lastCoinsIndex, array, coins]);
 
   const search = (text) => {
     const searchCoins = [];
@@ -38,7 +38,6 @@ function ListPage({ coins, loading }) {
     });
     setCurrentPage(1);
     setArray(searchCoins);
-    setTotalCoins(searchCoins.length);
   };
 
   const sortName = (name) => {
@@ -47,8 +46,8 @@ function ListPage({ coins, loading }) {
 
   return (
     <div className="list-page">
-      <input className="search-line" type="text" onChange={(event) => search(event.target.value)} />
-      <Search sortName={sortName} />
+      <SearchBar search={search} />
+      <Select sortName={sortName} />
       <Header />
       <CoinBlock coins={currentCoins} />
       <Pagination coinsPerPage={coinsPerPage} totalCoins={totalCoins} pagination={pagination} />

@@ -18,7 +18,7 @@ function App() {
     const getCoins = async () => {
       const response = await getInfo('assets');
       setCoins(response);
-      setTimeout(getCoins, 3000);
+      setTimeout(getCoins, 2000);
     };
     getCoins();
     setTimeout(() => setLoading(true), 1000);

@@ -5,7 +5,7 @@ import Header from '../../Components/StorePageComponents/Header';
 function StorePage({ tasks }) {
   return (
     <div className="basket">
-      <Header />
+      <Header tasks={tasks} />
       <StoreCoinList tasks={tasks} />
     </div>
   );
