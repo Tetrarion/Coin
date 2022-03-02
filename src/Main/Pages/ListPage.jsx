@@ -12,6 +12,8 @@ function ListPage({ coins, loading }) {
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(0);
   const [array, setArray] = useState([]);
+  const [sortName, setSortName] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
@@ -28,26 +30,30 @@ function ListPage({ coins, loading }) {
   }, [firstCoinsIndex, lastCoinsIndex, array, coins]);
 
   const search = (text) => {
-    const searchCoins = [];
+    setSearchText(text);
+    const searchArray = [];
     // eslint-disable-next-line array-callback-return
     coins.map((coin) => {
       const name = coin.name.substr(0, text.length);
       if (name.toLowerCase() === text.toLowerCase()) {
-        searchCoins.push(coin);
+        searchArray.push(coin);
       }
     });
     setCurrentPage(1);
-    setArray(searchCoins);
+    setArray(searchArray);
   };
 
-  const sortName = (name) => {
-    setArray(sortCoins(name, coins));
-  };
+  useEffect(() => {
+    if (searchText.length !== 0) return;
+    setArray(sortCoins(sortName, coins));
+  }, [sortName, coins]);
+
+  const sort = (name) => setSortName(name);
 
   return (
     <div className="list-page">
       <SearchBar search={search} />
-      <Select sortName={sortName} />
+      <Select sortName={sort} />
       <Header />
       <CoinBlock coins={currentCoins} />
       <Pagination coinsPerPage={coinsPerPage} totalCoins={totalCoins} pagination={pagination} />
