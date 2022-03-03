@@ -11,18 +11,20 @@ function ListPage({ coins, loading }) {
   const [coinsPerPage] = useState(12);
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(0);
-  const [array, setArray] = useState([]);
+  const [sortedCoins, setSortedCoins] = useState([]);
   const [sortName, setSortName] = useState('');
   const [searchText, setSearchText] = useState('');
   const [cryptocurrency, setCryptocurrency] = useState([]);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
+  const sort = (name) => setSortName(name);
+
   const lastCoinsIndex = currentPage * coinsPerPage;
   const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
 
   useEffect(() => {
-    setArray(coins);
+    setSortedCoins(coins);
   }, [loading]);
 
   useEffect(() => {
@@ -30,9 +32,14 @@ function ListPage({ coins, loading }) {
   }, [coins]);
 
   useEffect(() => {
-    setCurrentCoins(array.slice(firstCoinsIndex, lastCoinsIndex));
-    setTotalCoins(array.length);
-  }, [firstCoinsIndex, lastCoinsIndex, array]);
+    if (searchText.length !== 0) return;
+    setSortedCoins(sortCoins(sortName, cryptocurrency));
+  }, [sortName, searchText, cryptocurrency]);
+
+  useEffect(() => {
+    setCurrentCoins(sortedCoins.slice(firstCoinsIndex, lastCoinsIndex));
+    setTotalCoins(sortedCoins.length);
+  }, [currentPage, sortedCoins]);
 
   const search = (text) => {
     setSearchText(text);
@@ -45,15 +52,8 @@ function ListPage({ coins, loading }) {
       }
     });
     setCurrentPage(1);
-    setArray(searchArray);
+    setSortedCoins(searchArray);
   };
-
-  useEffect(() => {
-    if (searchText.length !== 0) return;
-    setArray(sortCoins(sortName, cryptocurrency));
-  }, [sortName, searchText, cryptocurrency]);
-
-  const sort = (name) => setSortName(name);
 
   return (
     <div className="list-page">

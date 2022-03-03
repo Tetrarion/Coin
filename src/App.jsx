@@ -7,6 +7,7 @@ import StorePage from './Main/Pages/StorePage';
 import InfoPage from './Main/Pages/InfoPage';
 import getInfo from './API/api';
 import Header from './Head/Header';
+import Message from './Components/Message';
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -18,7 +19,7 @@ function App() {
     const getCoins = async () => {
       const response = await getInfo('assets');
       setCoins(response);
-      setTimeout(getCoins, 2000);
+      setTimeout(getCoins, 6000);
     };
     getCoins();
     setTimeout(() => setLoading(true), 1000);
@@ -32,6 +33,7 @@ function App() {
         <Route path="/storepage" element={<StorePage tasks={tasks} />} />
         <Route path="/infopage/:id" element={<InfoPage />} />
       </Routes>
+      <Message />
     </BrowserRouter>
 
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import fixed from '../../utilities/fixed';
@@ -10,6 +10,7 @@ function CoinBlock({ coins }) {
 
   const [inputValue, setInputValue] = useState(0);
   const [prevElement, setPrevElement] = useState('');
+  const [message, setMessage] = useState('');
 
   const savePrevElement = (targetElement) => {
     if (prevElement !== targetElement) {
@@ -18,9 +19,14 @@ function CoinBlock({ coins }) {
     }
   };
 
+  useEffect(() => {
+    setMessage(document.querySelector('.message'));
+  }, []);
+
   return (
     <div className="list-page__coins-list">
       {
+                  // eslint-disable-next-line no-return-assign
                   coins.map((coin) => (
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
                     <div className="coin" id={coin.id} key={coin.id} onClick={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
@@ -60,8 +66,15 @@ function CoinBlock({ coins }) {
                         %
                       </div>
                       <div className="coin__form coin__form--display--none">
-                        <input className="coin__form-input" type="number" onChange={(e) => setInputValue(e.target.value)} />
-                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue)); }}>
+                        <input
+                          className="coin__form-input"
+                          type="number"
+                          onChange={(e) => {
+                            setInputValue(e.target.valueAsNumber);
+                          }}
+                          // onInput={(e) => { e.target.value = e.target.value.replace(/-/g, '1'); }}
+                        />
+                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue, message)); }}>
                           <div className="form-button__text">Add to basket</div>
                         </button>
                       </div>
