@@ -23,7 +23,11 @@ export default function Information({ id }) {
         </div>
       </div>
       <div className="info-page__list-item">
-        price: $
+        price:
+        {' '}
+        <br />
+        {' '}
+        $
         {fixed(info.priceUsd)}
       </div>
       <div className="info-page__list-item">
@@ -35,7 +39,11 @@ export default function Information({ id }) {
         {fixed(info.vwap24Hr)}
       </div>
       <div className="info-page__list-item">
-        supply: $
+        supply:
+        {' '}
+        <br />
+        {' '}
+        $
         {fixed(info.supply)}
       </div>
       <div className="info-page__list-item">
