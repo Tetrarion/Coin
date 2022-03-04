@@ -11,25 +11,23 @@ import Message from './Components/Message';
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const tasks = useSelector((state) => state);
 
   useEffect(() => {
     const getCoins = async () => {
-      const response = await getInfo('assets');
+      const response = await getInfo('?offset=0&limit=100');
       setCoins(response);
       setTimeout(getCoins, 10000);
     };
     getCoins();
-    setTimeout(() => setLoading(true), 1000);
   }, []);
 
   return (
     <BrowserRouter>
       <Header coins={coins} tasks={tasks} />
       <Routes>
-        <Route path="/*" element={<ListPage coins={coins} loading={loading} />} />
+        <Route path="/*" element={<ListPage />} />
         <Route path="/storepage" element={<StorePage tasks={tasks} />} />
         <Route path="/infopage/:id" element={<InfoPage />} />
       </Routes>

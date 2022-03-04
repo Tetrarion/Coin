@@ -7,7 +7,7 @@ export default function Information({ id }) {
 
   useEffect(() => {
     const getInformation = async () => {
-      SetInfo(await getInfo(`assets/${id}`));
+      SetInfo(await getInfo(`${id}`));
     };
     getInformation();
   }, [id]);
