@@ -11,18 +11,16 @@ function ListPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [coinsPerPage] = useState(10);
   const [currentCoins, setCurrentCoins] = useState([]);
-  const [totalCoins] = useState(2000);
+  const [totalCoins, setTotalCoins] = useState(2000);
   const [time, setTime] = useState(0);
   // const [sortedCoins, setSortedCoins] = useState([]);
   // const [sortName, setSortName] = useState('');
-  // const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('');
   // const [cryptocurrency, setCryptocurrency] = useState([]);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
   // const sort = (name) => setSortName(name);
-
-  const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
 
   useEffect(() => {
     const update = () => {
@@ -34,34 +32,34 @@ function ListPage() {
 
   useEffect(() => {
     const getCoins = async () => {
-      const response = await getInfo(`?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
+      const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
+      if (firstCoinsIndex > 1999 || firstCoinsIndex < 0) return;
+      let response;
+      if (searchText.length !== 0) {
+        const responseCount = await getInfo(`?search=${searchText}&limit=2000`);
+        response = await getInfo(`?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
+        setTotalCoins(responseCount.length);
+      } else {
+        response = await getInfo(`?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
+        setTotalCoins(2000);
+      }
       setCurrentCoins(response);
     };
     getCoins();
-  }, [firstCoinsIndex, coinsPerPage, time]);
+  }, [coinsPerPage, time, currentPage, searchText]);
 
   // useEffect(() => {
   //   if (searchText.length !== 0) return;
   //   setSortedCoins(sortCoins(sortName, cryptocurrency));
   // }, [sortName, searchText, cryptocurrency]);
 
-  // const search = (text) => {
-  //   setSearchText(text);
-  //   const searchArray = [];
-  //   // eslint-disable-next-line array-callback-return
-  //   cryptocurrency.map((coin) => {
-  //     const name = coin.name.substr(0, text.length);
-  //     if (name.toLowerCase() === text.toLowerCase()) {
-  //       searchArray.push(coin);
-  //     }
-  //   });
-  //   setCurrentPage(1);
-  //   setSortedCoins(searchArray);
-  // };
+  const search = (text) => {
+    setSearchText(text);
+  };
 
   return (
     <div className="list-page">
-      <SearchBar />
+      <SearchBar search={search} />
       <Select />
       <Header />
       <CoinBlock coins={currentCoins} />

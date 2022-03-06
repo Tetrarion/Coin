@@ -1,78 +1,93 @@
 import React, { useEffect, useState } from 'react';
 
+const forwardImage = require('../../images/271228.png');
+const backwardImage = require('../../images/32542.png');
+
 function Pagination({ coinsPerPage, totalCoins, pagination }) {
-  const [prevElement, setPrevElement] = useState('');
   const [visiblePages, setVisiblePages] = useState([]);
-
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalCoins / coinsPerPage); i += 1) {
-    pageNumbers.push(i);
-  }
+  const [pageNumbers, setPageNumbers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    pageNumbers.splice(3, pageNumbers.length - 4, '...');
-    setVisiblePages(pageNumbers);
-  }, []);
-
-  const select = (event, pageNumber) => {
-    if (pageNumber === '...') return;
-    if (prevElement === '') {
-      event.target.classList.add('pagination__list-item--selected');
-    } else {
-      console.log(pageNumber);
-      console.log(event.target);
-      prevElement.classList.remove('pagination__list-item--selected');
-      event.target.classList.add('pagination__list-item--selected');
+    const pageArray = [];
+    for (let i = 1; i <= Math.ceil(totalCoins / coinsPerPage); i += 1) {
+      pageArray.push(i);
     }
-    setPrevElement(event.target);
+    setPageNumbers(pageArray);
+  }, [coinsPerPage, totalCoins]);
+
+  const increase = () => {
+    if (currentPage < Math.ceil(totalCoins / coinsPerPage)) setCurrentPage(currentPage + 1);
   };
 
-  const changeVisibleCoins = (pageNumber) => {
-    if (pageNumber === '...') return;
-    pagination(pageNumber);
-    if (pageNumber === 1 || pageNumber === 2) {
-      pageNumbers.splice(3, pageNumbers.length - 4, '...');
-      setVisiblePages(pageNumbers);
-    } else if (pageNumber === pageNumbers.length || pageNumber === pageNumbers.length - 1) {
-      pageNumbers.splice(1, pageNumbers.length - 4, '...');
-      setVisiblePages(pageNumbers);
-    } else {
-      const previousPage = pageNumber - 1;
-      const secondPage = pageNumber + 1;
-      pageNumbers.splice(secondPage, pageNumbers.length - (secondPage + 1), '...');
-      pageNumbers.splice(1, previousPage - 2, '...');
-      setVisiblePages(pageNumbers);
-    }
+  const decrease = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  if (pageNumbers.length === 1) return null;
+  useEffect(() => {
+    if (currentPage === '...' || currentPage === '....') return;
+    const newArray = pageNumbers.slice();
+    pagination(currentPage);
+    if (currentPage < 6) {
+      newArray.splice(6, newArray.length - 7, '....');
+    } else if (currentPage > newArray.length - 5) {
+      newArray.splice(1, newArray.length - 7, '....');
+    } else {
+      const previousPage = currentPage - 1;
+      const secondPage = currentPage + 1;
+      if (currentPage < Math.ceil(totalCoins / coinsPerPage) / 2) {
+        newArray.splice(secondPage, newArray.length - (secondPage + 1), '....');
+        newArray.splice(1, previousPage - 2, '...');
+      } else {
+        newArray.splice(secondPage, newArray.length - (secondPage + 1), '...');
+        newArray.splice(1, previousPage - 2, '....');
+      }
+    }
+    setVisiblePages(newArray);
+  }, [currentPage, pageNumbers]);
+
+  if (pageNumbers.length < 2) return null;
+  console.log(pageNumbers.length);
 
   return (
     <div className="pagination">
       <ul className="pagination__list">
+        <div className="page-forward" onClick={decrease} onKeyDown={decrease} role="button" tabIndex={0}>
+          <img className="page-forward__image" src={backwardImage} alt="page-forward__image" />
+        </div>
         {
-                    visiblePages.map((pageNumber, index) => (
-                      <li
-                        className="pagination__list-item"
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={index}
-                        onClick={(event) => {
-                          select(event, pageNumber);
-                          changeVisibleCoins(pageNumber);
-                        }}
-                        onKeyDown={(event) => {
-                          select(event);
-                          changeVisibleCoins(pageNumber);
-                        }}
-                        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                        role="button"
-                        tabIndex={0}
-                      >
-                        {pageNumber}
-                      </li>
-                    ))
+                    visiblePages.map((pageNumber) => {
+                      if (pageNumber !== currentPage) {
+                        return (
+                          <li
+                            className="pagination__list-item"
+                            key={pageNumber}
+                            onClick={() => {
+                              setCurrentPage(pageNumber);
+                            }}
+                            onKeyDown={() => {
+                              setCurrentPage(pageNumber);
+                            }}
+                            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                            role="button"
+                            tabIndex={0}
+                          >
+                            {pageNumber}
+                          </li>
+                        );
+                      } return (
+                        <li
+                          className="pagination__list-item pagination__list-item--selected"
+                          key={pageNumber}
+                        >
+                          {pageNumber}
+                        </li>
+                      );
+                    })
                 }
+        <div className="page-backward" onClick={increase} onKeyDown={increase} role="button" tabIndex={0}>
+          <img className="page-backward__image" src={forwardImage} alt="page-backward__image" />
+        </div>
       </ul>
     </div>
   );

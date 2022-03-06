@@ -1,7 +1,7 @@
-export default function Select({ sortName }) {
+export default function Select({ sort }) {
   return (
     <div className="select">
-      <select className="select__list" onChange={(event) => sortName(event.target.value)}>
+      <select className="select__list" onChange={(event) => sort(event.target.value)}>
         <option className="select__list-item" value="">--Please choose a sort name--</option>
         <option className="select__list-item" value="name">name</option>
         <option className="select__list-item" value="price">price</option>
