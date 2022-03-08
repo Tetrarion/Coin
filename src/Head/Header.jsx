@@ -4,8 +4,12 @@ import HeaderBlocks from '../Components/Header/HeaderBlocks';
 import totalPrice from '../utilities/totalprice';
 import priceDiff from '../utilities/priceDiff';
 import fixed from '../utilities/fixed';
+import SearchBar from '../Components/ListPageComponents/SearchBar';
+import Settings from '../Components/Header/Settings';
 
-function Header({ coins, tasks }) {
+function Header({
+  coins, tasks, search, takeCoinsPerPage,
+}) {
   const [totalprice, SetTotalPrice] = useState(0);
   const [priceDifferences, setPriceDifferences] = useState(null);
   const [priceProcent, setPriceProcent] = useState(null);
@@ -50,6 +54,8 @@ function Header({ coins, tasks }) {
     getProcent(totalAmount, priceDifference);
   });
 
+  const names = [10, 12, 15, 17, 20];
+
   return (
     <div className="header">
       <div className="popular-coins">
@@ -60,7 +66,7 @@ function Header({ coins, tasks }) {
       </div>
       <div className="navigation">
         <Link className="navigation__link" to={'/*'}>
-          List page
+          Coins
         </Link>
         <Link className="navigation__link" to="/storepage">
           Basket:
@@ -75,6 +81,8 @@ function Header({ coins, tasks }) {
           %)
         </Link>
       </div>
+      <SearchBar search={search} />
+      <Settings func={takeCoinsPerPage} names={names} />
     </div>
   );
 }

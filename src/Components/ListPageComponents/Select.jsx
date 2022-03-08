@@ -4,7 +4,7 @@ export default function Select({ func, names }) {
       <select className="select__list" onChange={(event) => func(event.target.value)}>
         {
           names.map((element) => (
-            <option className="select__list-item" value={element}>{element}</option>
+            <option className="select__list-item" key={element} value={element}>{element}</option>
           ))
         }
       </select>

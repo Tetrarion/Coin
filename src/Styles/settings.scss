@@ -1,0 +1,33 @@
+.settings {
+    &__icon {
+        width: 30px;
+    }
+
+    &__list {
+        position: fixed;
+        top: 30%;
+        right: 23%;
+        background-color: black;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 15px;
+
+        &-top {
+            display: block;
+            text-align: center;
+        }
+
+        &-item {
+            &-text {
+                display: inline-block;
+                margin-right: 30px;
+            }
+
+        }
+
+        &--hidden {
+            display: none;
+        }
+
+    }
+}
