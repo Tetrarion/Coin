@@ -1,24 +1,46 @@
 .pagination {
+    text-align: center;
+
     &__list {
+        display: inline-block;
+        background-color: rgb(92, 89, 89);
+        border-radius: 40px;
         text-align: center;
-        padding: 0;
+        padding: 5px 10px;
 
         &-item {
+            color: white;
             display: inline-block;
             width: 30px;
             height: 30px;
-            padding-top: 3px;
-            transition: 0.5s;
+            border-radius: 50%;
+            vertical-align: middle;
+            line-height: 30px;
+            transition: 0.3s;
             cursor: pointer;
             margin: 0 5px;
 
             &:hover {
-                background-color: aqua;
+                background-color: white;
+                color: black;
             }
 
             &--selected {
-                font-family : Impact;
+                background-color: white;
+                color: black;
             }
+        }
+    }
+
+    &__changer {
+        cursor: pointer;
+        display: inline-block;
+        height: 40px;
+        vertical-align: middle;
+        line-height: 46px;
+
+        &-image {
+            width: 20px;
         }
     }
 }

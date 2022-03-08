@@ -9,10 +9,11 @@ import getInfo from '../../API/api';
 
 function ListPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [coinsPerPage] = useState(10);
+  const [coinsPerPage, setCoinsPerPage] = useState(10);
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(2000);
   const [time, setTime] = useState(0);
+  const [totalPages, setTotalPages] = useState(200);
   // const [sortedCoins, setSortedCoins] = useState([]);
   // const [sortName, setSortName] = useState('');
   const [searchText, setSearchText] = useState('');
@@ -31,9 +32,12 @@ function ListPage() {
   }, []);
 
   useEffect(() => {
+    setTotalPages(Math.ceil(totalCoins / coinsPerPage));
+  }, [totalCoins, coinsPerPage]);
+
+  useEffect(() => {
     const getCoins = async () => {
       const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
-      if (firstCoinsIndex > 1999 || firstCoinsIndex < 0) return;
       let response;
       if (searchText.length !== 0) {
         const responseCount = await getInfo(`?search=${searchText}&limit=2000`);
@@ -48,6 +52,10 @@ function ListPage() {
     getCoins();
   }, [coinsPerPage, time, currentPage, searchText]);
 
+  const takeCoinsPerPage = (number) => setCoinsPerPage(number);
+
+  const names = [10, 12, 15, 17, 20];
+
   // useEffect(() => {
   //   if (searchText.length !== 0) return;
   //   setSortedCoins(sortCoins(sortName, cryptocurrency));
@@ -60,10 +68,10 @@ function ListPage() {
   return (
     <div className="list-page">
       <SearchBar search={search} />
-      <Select />
+      <Select func={takeCoinsPerPage} names={names} />
       <Header />
       <CoinBlock coins={currentCoins} />
-      <Pagination coinsPerPage={coinsPerPage} totalCoins={totalCoins} pagination={pagination} />
+      <Pagination totalPages={totalPages} pagination={pagination} />
     </div>
 
   );
