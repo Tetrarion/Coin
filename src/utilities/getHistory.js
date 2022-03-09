@@ -2,7 +2,7 @@ import getInfo from '../API/api';
 
 export default async function getHistory(interval, id) {
   let truncatedArray = [];
-  const dateInformation = await getInfo(`${id}/history?interval=${interval}`);
+  const dateInformation = await getInfo(`assets/${id}/history?interval=${interval}`);
   if (interval === 'd1') {
     truncatedArray = dateInformation.map((dateinfo) => {
       const container = {};

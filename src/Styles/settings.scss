@@ -1,13 +1,16 @@
 .settings {
+    display: inline;
+
     &__icon {
         width: 30px;
+        vertical-align: middle;
     }
 
     &__list {
         position: fixed;
         top: 30%;
-        right: 23%;
-        background-color: black;
+        right: 15%;
+        background-color: rgb(0, 0, 20);
         color: white;
         border-radius: 20px;
         padding: 10px 15px;

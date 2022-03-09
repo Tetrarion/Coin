@@ -5,7 +5,7 @@ const backwardImage = require('../../images/32542.png');
 
 function Pagination({ totalPages, pagination }) {
   const [visiblePages, setVisiblePages] = useState([]);
-  const [pageNumbers, setPageNumbers] = useState([]);
+  const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const screenWidth = window.screen.width;
@@ -15,7 +15,7 @@ function Pagination({ totalPages, pagination }) {
     for (let i = 1; i <= totalPages; i += 1) {
       pageArray.push(i);
     }
-    setPageNumbers(pageArray);
+    setPages(pageArray);
   }, [totalPages]);
 
   const increase = () => {
@@ -66,13 +66,16 @@ function Pagination({ totalPages, pagination }) {
 
   useEffect(() => {
     if (currentPage === '...' || currentPage === '....') return;
-    const newArray = pageNumbers.slice();
+    const newArray = pages.slice();
     pagination(currentPage);
-    if (screenWidth > 960) showPaginationForLargeScreen(newArray);
+    if (screenWidth > 960) {
+      if (totalPages < 22) setVisiblePages(newArray);
+      else showPaginationForLargeScreen(newArray);
+    } else if (totalPages < 8) setVisiblePages(newArray);
     else showPaginationForSmallScreen(newArray);
-  }, [currentPage, pageNumbers]);
+  }, [currentPage, pages]);
 
-  if (pageNumbers.length < 2) return null;
+  if (pages.length < 2) return null;
 
   return (
     <div className="pagination">

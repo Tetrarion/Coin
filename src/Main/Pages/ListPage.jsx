@@ -5,7 +5,7 @@ import Pagination from '../../Components/ListPageComponents/Pagination';
 // import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
 
-function ListPage({ searchText, coinsPerPage }) {
+function ListPage({ searchText, coinsPerPage, rate }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCoins, setCurrentCoins] = useState([]);
   const [totalCoins, setTotalCoins] = useState(2000);
@@ -36,11 +36,11 @@ function ListPage({ searchText, coinsPerPage }) {
       const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
       let response;
       if (searchText.length !== 0) {
-        const responseCount = await getInfo(`?search=${searchText}&limit=2000`);
-        response = await getInfo(`?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
+        const responseCount = await getInfo(`assets/?search=${searchText}&limit=2000`);
+        response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
         setTotalCoins(responseCount.length);
       } else {
-        response = await getInfo(`?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
+        response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
         setTotalCoins(2000);
       }
       setCurrentCoins(response);
@@ -56,7 +56,7 @@ function ListPage({ searchText, coinsPerPage }) {
   return (
     <div className="list-page">
       <Header />
-      <CoinBlock coins={currentCoins} />
+      <CoinBlock coins={currentCoins} rate={rate} />
       <Pagination totalPages={totalPages} pagination={pagination} />
     </div>
 

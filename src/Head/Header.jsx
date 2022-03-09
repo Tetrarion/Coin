@@ -8,7 +8,7 @@ import SearchBar from '../Components/ListPageComponents/SearchBar';
 import Settings from '../Components/Header/Settings';
 
 function Header({
-  coins, tasks, search, takeCoinsPerPage,
+  coins, rate, tasks, search, takeCoinsPerPage, getRate,
 }) {
   const [totalprice, SetTotalPrice] = useState(0);
   const [priceDifferences, setPriceDifferences] = useState(null);
@@ -62,7 +62,7 @@ function Header({
         <div className="popular-coins__top">
           MOST POPULAR COINS
         </div>
-        <HeaderBlocks currentCoins={currentCoins} />
+        <HeaderBlocks currentCoins={currentCoins} rate={rate} />
       </div>
       <div className="navigation">
         <Link className="navigation__link" to={'/*'}>
@@ -71,18 +71,20 @@ function Header({
         <Link className="navigation__link" to="/storepage">
           Basket:
           {' '}
-          $
-          {totalprice}
+          {rate.symbol}
+          {totalprice / rate.value}
           {' '}
-          {priceDifferences}
+          {priceDifferences / rate.value}
           {' '}
           (
           {priceProcent}
           %)
         </Link>
       </div>
-      <SearchBar search={search} />
-      <Settings func={takeCoinsPerPage} names={names} />
+      <div className="utils">
+        <SearchBar search={search} />
+        <Settings takeCoinsPerPage={takeCoinsPerPage} names={names} getRate={getRate} />
+      </div>
     </div>
   );
 }

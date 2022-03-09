@@ -19,7 +19,7 @@ export const loadCoin = (id, count, message) => async (dispatch) => {
   if (count === 0 || typeof count !== 'number' || count < 0) return;
   message.classList.remove('message--hidden');
   setTimeout(() => message.classList.add('message--hidden'), 3000);
-  const response = await getInfo(`${id}`);
+  const response = await getInfo(`assets/${id}`);
   const coinTotalPrice = response.priceUsd * count;
   dispatch(addCoin({
     response,

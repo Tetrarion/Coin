@@ -19,7 +19,7 @@
 
     .list-page {
         &__top {
-            margin-top: 10px;
+            margin-top: 60px;
 
             &-item {
                 width: 10%;
@@ -36,13 +36,30 @@
         }
     }
 
+    .utils {
+        display: flow-root;
+    }
+
     .search {
-        &__bar {
-            margin-top: 60px;
+        &__img {
+            float: right;
+            margin-right: 10px;
         }
 
-        &__img {
-            margin-left: 9%;
+        &__bar {
+            float: right;
+            margin: 0 5px 0 10px;
+
+            &--active {
+                opacity: 1;
+                width: 15%;
+            }
+        }
+    }
+
+    .settings {
+        &__icon {
+            float: right;
         }
     }
 

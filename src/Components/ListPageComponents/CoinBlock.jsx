@@ -5,7 +5,7 @@ import fixed from '../../utilities/fixed';
 import showInputForCount from '../../utilities/showInputForCount';
 import * as actions from '../../Store/actions';
 
-function CoinBlock({ coins }) {
+function CoinBlock({ coins, rate }) {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState(0);
@@ -26,7 +26,6 @@ function CoinBlock({ coins }) {
   return (
     <div className="list-page__coins-list">
       {
-                  // eslint-disable-next-line no-return-assign
                   coins.map((coin) => (
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
                     <div className="coin" id={coin.id} key={coin.id} onClick={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
@@ -42,24 +41,29 @@ function CoinBlock({ coins }) {
                         </div>
                       </Link>
                       <div className="coin__info">
-                        $
-                        {fixed(coin.priceUsd)}
+                        {rate.symbol}
+                        {' '}
+                        {fixed(coin.priceUsd / rate.value)}
                       </div>
                       <div className="coin__info-sm">
-                        $
-                        {fixed(coin.marketCapUsd)}
+                        {rate.symbol}
+                        {' '}
+                        {fixed(coin.marketCapUsd / rate.value)}
                       </div>
                       <div className="coin__info-sm">
-                        $
-                        {fixed(coin.vwap24Hr)}
+                        {rate.symbol}
+                        {' '}
+                        {fixed(coin.vwap24Hr / rate.value)}
                       </div>
                       <div className="coin__info-sm">
-                        $
-                        {fixed(coin.supply)}
+                        {rate.symbol}
+                        {' '}
+                        {fixed(coin.supply / rate.value)}
                       </div>
                       <div className="coin__info-sm">
-                        $
-                        {fixed(coin.volumeUsd24Hr)}
+                        {rate.symbol}
+                        {' '}
+                        {fixed(coin.volumeUsd24Hr / rate.value)}
                       </div>
                       <div className="coin__info">
                         {fixed(coin.changePercent24Hr)}
@@ -72,7 +76,6 @@ function CoinBlock({ coins }) {
                           onChange={(e) => {
                             setInputValue(e.target.valueAsNumber);
                           }}
-                          // onInput={(e) => { e.target.value = e.target.value.replace(/-/g, '1'); }}
                         />
                         <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue, message)); }}>
                           <div className="form-button__text">Add to basket</div>

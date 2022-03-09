@@ -1,7 +1,7 @@
 import React from 'react';
 import fixed from '../../utilities/fixed';
 
-export default function HeaderBlocks({ currentCoins }) {
+export default function HeaderBlocks({ currentCoins, rate }) {
   return (
     currentCoins.map((coin) => (
       <div className="popular-coins__info" key={coin.id}>
@@ -12,8 +12,8 @@ export default function HeaderBlocks({ currentCoins }) {
           {coin.name}
         </div>
         <div className="popular-coins__info-price">
-          $
-          {fixed(coin.priceUsd)}
+          {rate.symbol}
+          {fixed(coin.priceUsd / rate.value)}
         </div>
       </div>
     ))

@@ -1,7 +1,10 @@
 .search {
+    display: inline;
+
     &__bar {
-        margin: 40px 0 10px 0;
         font-size: $sm-font-size;
+        margin: 0 10px 0 5px;
+        vertical-align: middle;
         width: 0;
         opacity: 0;
         transition: 1s;
@@ -13,9 +16,8 @@
     }
 
     &__img {
-        width: 17px;
-        margin-right: 7px;
+        margin-left: 5px;
+        width: 30px;
         vertical-align: middle;
-        padding-bottom: 4px;
     }
 }
