@@ -71,10 +71,10 @@ function Header({
         <Link className="navigation__link" to="/storepage">
           Basket:
           {' '}
-          {rate.symbol}
-          {totalprice / rate.value}
+          $
+          {totalprice}
           {' '}
-          {priceDifferences / rate.value}
+          {priceDifferences}
           {' '}
           (
           {priceProcent}

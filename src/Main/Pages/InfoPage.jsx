@@ -5,7 +5,7 @@ import Information from '../../Components/InfoPageComponents/Information';
 import Select from '../../Components/ListPageComponents/Select';
 import Form from '../../Components/InfoPageComponents/Form';
 
-export default function InfoPage() {
+export default function InfoPage({ rate }) {
   const [choosedValue, setChoosedValue] = useState('m1');
 
   const params = useParams();
@@ -17,7 +17,7 @@ export default function InfoPage() {
 
   return (
     <div className="info-page">
-      <Information id={prodId} />
+      <Information id={prodId} rate={rate} />
       <Select func={chooseValue} names={names} />
       <History id={prodId} choosedValue={choosedValue} />
       <Form id={prodId} />

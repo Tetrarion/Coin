@@ -61,11 +61,12 @@
         &__icon {
             float: right;
         }
-    }
 
-    .select {
         &__list {
-            margin-left: 9%;  
+            position: fixed;
+            width: 30%;
+            top: 20%;
+            right: 35%;
         }
     }
 
