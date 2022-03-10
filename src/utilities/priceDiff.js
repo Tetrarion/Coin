@@ -12,7 +12,7 @@ function priceDiff(array, tasks, totalAmount) {
       }
     }
   }
-  price -= totalAmount;
+  price = totalAmount - price;
 
   return price;
 }

@@ -1,17 +1,18 @@
 export default function SelectL({ func, names }) {
   return (
     <div className="select">
-      <select className="select__list" onChange={(event) => func(event.target.value, event.target.id)}>
+      <input className="select__input" type="text" onChange={(event) => func(event.target.value)} name="city" list="ratesList" />
+      <datalist className="select__list" id="ratesList">
         {
             names.map((element) => (
-              <option className="select__list-item" key={element.id} value={element.rateUsd} id={element.currencySymbol}>
+              <option className="select__list-item" key={element.id} value={element.id}>
                 {element.id}
                 {' '}
                 {element.symbol}
               </option>
             ))
           }
-      </select>
+      </datalist>
     </div>
   );
 }

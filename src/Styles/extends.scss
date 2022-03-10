@@ -29,3 +29,23 @@
     padding: 20px 0;
     vertical-align: middle;
 }
+
+%form__button {
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+%coin__button {
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    background: rgb(212,75,56);
+    box-shadow: 0 -3px rgb(150, 48, 48) inset;
+    transition: 0.2s;
+    cursor: pointer;
+}

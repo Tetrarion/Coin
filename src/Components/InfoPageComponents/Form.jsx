@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../Store/actions';
 
-export default function Form({ id }) {
+export default function Form({ id, rateId }) {
   const [inputValue, setInputValue] = useState(0);
   const [message, setMessage] = useState('');
 
@@ -12,10 +12,10 @@ export default function Form({ id }) {
 
   const dispatch = useDispatch();
   return (
-    <div className="info-page__form">
-      <input className="info-page__form-input" type="number" onChange={(e) => setInputValue(e.target.valueAsNumber)} />
-      <button className="form-button form-button--color--green" onClick={() => dispatch(actions.loadCoin(id, inputValue, message))}>
-        <div className="form-button__text">Add to basket</div>
+    <div className="form">
+      <input className="form__input" type="number" onChange={(e) => setInputValue(e.target.valueAsNumber)} />
+      <button className="form__button" onClick={() => dispatch(actions.loadCoin(id, inputValue, message, rateId))}>
+        <div className="form__button-text">Add to basket</div>
       </button>
     </div>
   );

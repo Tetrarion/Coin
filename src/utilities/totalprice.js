@@ -3,7 +3,7 @@ function totalPrice(tasks) {
 
   // eslint-disable-next-line no-restricted-syntax
   for (const task of tasks) {
-    price += task.coinTotalPrice;
+    price += task.coinTotalPriceUsd;
   }
   return price;
 }

@@ -20,7 +20,7 @@ export default function InfoPage({ rate }) {
       <Information id={prodId} rate={rate} />
       <Select func={chooseValue} names={names} />
       <History id={prodId} choosedValue={choosedValue} />
-      <Form id={prodId} />
+      <Form id={prodId} rateId={rate.id} />
     </div>
   );
 }

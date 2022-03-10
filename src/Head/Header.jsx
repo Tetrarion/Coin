@@ -8,7 +8,7 @@ import SearchBar from '../Components/ListPageComponents/SearchBar';
 import Settings from '../Components/Header/Settings';
 
 function Header({
-  coins, rate, tasks, search, takeCoinsPerPage, getRate,
+  coins, rate, tasks, search, takeCoinsPerPage, getRateId,
 }) {
   const [totalprice, SetTotalPrice] = useState(0);
   const [priceDifferences, setPriceDifferences] = useState(null);
@@ -19,7 +19,7 @@ function Header({
 
   const getUpdateCoins = () => {
     const array = [];
-    tasks.forEach((task) => {
+    tasks.forEach(async (task) => {
       const updateCoins = coins.find((coin) => coin.id === task.key);
       array.push(updateCoins);
     });
@@ -83,7 +83,7 @@ function Header({
       </div>
       <div className="utils">
         <SearchBar search={search} />
-        <Settings takeCoinsPerPage={takeCoinsPerPage} names={names} getRate={getRate} />
+        <Settings takeCoinsPerPage={takeCoinsPerPage} names={names} getRateId={getRateId} />
       </div>
     </div>
   );

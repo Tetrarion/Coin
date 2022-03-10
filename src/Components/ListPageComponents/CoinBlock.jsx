@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import fixed from '../../utilities/fixed';
 import showInputForCount from '../../utilities/showInputForCount';
-import * as actions from '../../Store/actions';
+import Form from '../InfoPageComponents/Form';
 
 function CoinBlock({ coins, rate }) {
-  const dispatch = useDispatch();
-
-  const [inputValue, setInputValue] = useState(0);
   const [prevElement, setPrevElement] = useState('');
-  const [message, setMessage] = useState('');
 
   const savePrevElement = (targetElement) => {
     if (prevElement !== targetElement) {
@@ -18,10 +13,6 @@ function CoinBlock({ coins, rate }) {
       setPrevElement(targetElement);
     }
   };
-
-  useEffect(() => {
-    setMessage(document.querySelector('.message'));
-  }, []);
 
   return (
     <div className="list-page__coins-list">
@@ -70,16 +61,7 @@ function CoinBlock({ coins, rate }) {
                         %
                       </div>
                       <div className="coin__form coin__form--display--none">
-                        <input
-                          className="coin__form-input"
-                          type="number"
-                          onChange={(e) => {
-                            setInputValue(e.target.valueAsNumber);
-                          }}
-                        />
-                        <button className="form-button form-button--color--green" onClick={() => { dispatch(actions.loadCoin(coin.id, inputValue, message)); }}>
-                          <div className="form-button__text">Add to basket</div>
-                        </button>
+                        <Form id={coin.id} rateId={rate.id} />
                       </div>
                     </div>
                   ))

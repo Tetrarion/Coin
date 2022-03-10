@@ -1,0 +1,21 @@
+.form {
+    text-align: center;
+
+    &__input {
+        font-size: $sm-font-size;
+        margin: 0 20px 10px 0;
+    }
+
+    &__button {
+        @extend %form__button;
+
+        &:hover {
+            background: rgb(53, 167, 110);
+        }
+    
+        &-text {
+            color: white;
+            font-size: $sm-font-size;
+        }
+    }
+}

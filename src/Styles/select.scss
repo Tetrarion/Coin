@@ -1,6 +1,10 @@
 .select {
     display: table;
 
+    &__input {
+        font-size: $sm-font-size;
+    }
+
     &__list {
         margin-bottom: 10px;
         font-size: $sm-font-size;

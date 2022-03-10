@@ -13,6 +13,7 @@ export default function HeaderBlocks({ currentCoins, rate }) {
         </div>
         <div className="popular-coins__info-price">
           {rate.symbol}
+          {' '}
           {fixed(coin.priceUsd / rate.value)}
         </div>
       </div>

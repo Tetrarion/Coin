@@ -7,9 +7,11 @@ export default function reducer(state = [], action) {
       return [...state, {
         id: Math.random(),
         name: action.payload.name,
+        symbol: action.payload.symbol,
         count: action.payload.count,
-        priceUsd: action.payload.priceUsd,
+        price: action.payload.price,
         coinTotalPrice: action.payload.coinTotalPrice,
+        coinTotalPriceUsd: action.payload.coinTotalPriceUsd,
         key: action.payload.key,
       }];
     case actions.COIN_REMOVE: {

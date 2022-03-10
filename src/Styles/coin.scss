@@ -6,6 +6,19 @@
         background-color: rgb(230, 225, 225);
     }
 
+    &__button {
+        @extend %coin__button;
+
+        &:hover {
+            background: rgb(232,95,76);
+        }
+    
+        &-text {
+            color: white;
+            font-size: $sm-font-size;
+        }
+    }
+
     &__info {
         @extend %coin-info;
 
@@ -15,14 +28,6 @@
     }
 
     &__form {
-        text-align:center;
-        margin: 15px auto;
-
-        &-input {
-            font-size: $sm-font-size;
-            margin: 0 20px 10px 0;
-        }
-
         &--display--none {
             display: none;
         }

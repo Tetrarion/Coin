@@ -9,14 +9,18 @@ import getInfo from './API/api';
 import Header from './Head/Header';
 import Message from './Components/Message';
 
+const initialState = {
+  id: 'united-states-dollar',
+  value: 1,
+  symbol: '$',
+};
+
 function App() {
   const [coins, setCoins] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [coinsPerPage, setCoinsPerPage] = useState(10);
-  const [rate, setRate] = useState({
-    symbol: '$',
-    value: 1,
-  });
+  const [rateId, setRateId] = useState('');
+  const [rate, setRate] = useState(initialState);
 
   const tasks = useSelector((state) => state);
 
@@ -29,18 +33,31 @@ function App() {
     getCoins();
   }, []);
 
+  useEffect(() => {
+    const getRate = async () => {
+      if (rateId !== '') {
+        const response = await getInfo(`rates/${rateId}`);
+        if (response !== undefined) {
+          setRate({
+            id: response.id,
+            value: response.rateUsd,
+            symbol: response.currencySymbol,
+          });
+        }
+      }
+    };
+    getRate();
+  }, [rateId]);
+
   const search = (text) => setSearchText(text);
 
   const takeCoinsPerPage = (number) => setCoinsPerPage(number);
 
-  const getRate = (value, symbol) => setRate({
-    symbol,
-    value,
-  });
+  const getRateId = (id) => setRateId(id);
 
   return (
     <BrowserRouter>
-      <Header coins={coins} rate={rate} tasks={tasks} search={search} takeCoinsPerPage={takeCoinsPerPage} getRate={getRate} />
+      <Header coins={coins} rate={rate} tasks={tasks} search={search} takeCoinsPerPage={takeCoinsPerPage} getRateId={getRateId} />
       <Routes>
         <Route path="/*" element={<ListPage searchText={searchText} coinsPerPage={coinsPerPage} rate={rate} />} />
         <Route path="/storepage" element={<StorePage tasks={tasks} />} />

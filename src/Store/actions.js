@@ -4,26 +4,34 @@ import getInfo from '../API/api';
 export const addCoin = (data) => ({
   type: actions.COIN_ADD,
   payload: {
-    name: data.response.name,
+    name: data.coinResponse.name,
+    symbol: data.rateResponse.currencySymbol,
     count: data.count,
-    priceUsd: data.response.priceUsd,
+    price: data.price,
     coinTotalPrice: data.coinTotalPrice,
-    key: data.response.id,
+    coinTotalPriceUsd: data.coinTotalPriceUsd,
+    key: data.coinResponse.id,
   },
 });
 export const removeCoin = (id) => ({
   type: actions.COIN_REMOVE,
   payload: { id },
 });
-export const loadCoin = (id, count, message) => async (dispatch) => {
+export const loadCoin = (id, count, message, rateId) => async (dispatch) => {
   if (count === 0 || typeof count !== 'number' || count < 0) return;
+  const coinResponse = await getInfo(`assets/${id}`);
+  const rateResponse = await getInfo(`rates/${rateId}`);
+  const coinTotalPrice = coinResponse.priceUsd * count * rateResponse.rateUsd;
+  const coinTotalPriceUsd = coinResponse.priceUsd * count;
+  const price = coinResponse.priceUsd * rateResponse.rateUsd;
+  dispatch(addCoin({
+    rateResponse,
+    coinResponse,
+    count,
+    price,
+    coinTotalPrice,
+    coinTotalPriceUsd,
+  }));
   message.classList.remove('message--hidden');
   setTimeout(() => message.classList.add('message--hidden'), 3000);
-  const response = await getInfo(`assets/${id}`);
-  const coinTotalPrice = response.priceUsd * count;
-  dispatch(addCoin({
-    response,
-    count,
-    coinTotalPrice,
-  }));
 };

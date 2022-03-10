@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import CoinBlock from '../../Components/ListPageComponents/CoinBlock';
 import Header from '../../Components/ListPageComponents/Header';
 import Pagination from '../../Components/ListPageComponents/Pagination';
-// import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
 
 function ListPage({ searchText, coinsPerPage, rate }) {
@@ -11,13 +10,8 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   const [totalCoins, setTotalCoins] = useState(2000);
   const [time, setTime] = useState(0);
   const [totalPages, setTotalPages] = useState(200);
-  // const [sortedCoins, setSortedCoins] = useState([]);
-  // const [sortName, setSortName] = useState('');
-  // const [cryptocurrency, setCryptocurrency] = useState([]);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
-
-  // const sort = (name) => setSortName(name);
 
   useEffect(() => {
     const update = () => {
@@ -46,12 +40,7 @@ function ListPage({ searchText, coinsPerPage, rate }) {
       setCurrentCoins(response);
     };
     getCoins();
-  }, [coinsPerPage, time, currentPage, searchText]);
-
-  // useEffect(() => {
-  //   if (searchText.length !== 0) return;
-  //   setSortedCoins(sortCoins(sortName, cryptocurrency));
-  // }, [sortName, searchText, cryptocurrency]);
+  }, [coinsPerPage, time, currentPage, searchText, rate]);
 
   return (
     <div className="list-page">

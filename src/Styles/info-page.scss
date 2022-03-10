@@ -1,17 +1,6 @@
 .info-page {
     font-size: $lg-font-size;
 
-    &__form {
-        text-align: center;
-        margin-top: 20px;
-        font-size: $sm-font-size;
-
-        &-input {
-            font-size: $sm-font-size;
-            margin: 0 20px 10px 0;
-        }
-    }
-
     &__list {
         text-align: center;
 
