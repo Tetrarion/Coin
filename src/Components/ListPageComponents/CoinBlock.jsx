@@ -61,7 +61,7 @@ function CoinBlock({ coins, rate }) {
                         %
                       </div>
                       <div className="coin__form coin__form--display--none">
-                        <Form id={coin.id} rateId={rate.id} />
+                        <Form id={coin.id} rateId={rate.id} priceUsd={coin.priceUsd} symbol={rate.symbol} />
                       </div>
                     </div>
                   ))

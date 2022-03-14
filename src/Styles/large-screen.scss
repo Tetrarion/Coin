@@ -18,21 +18,37 @@
     }
 
     .list-page {
-        &__top {
-            margin-top: 60px;
-
-            &-item {
-                width: 10%;
-
-                &-sm {
-                    width: 10%;
-                    display: inline-block;
-                }
-            }
-        }
-
         &__coins-list {
             margin-left: 9%;
+        }
+    }
+
+    .top {
+        &__list {
+            margin-left: 7%;
+            width: 83.8%;
+
+            &-item {
+                width: 12.5%;
+                line-height: 50px;
+
+                &:hover {
+                    background-color: rgb(158, 151, 151);
+                }
+                
+                &-sm {
+                    display: inline-block;
+                    line-height: 50px;
+
+                    &:hover {
+                        background-color: rgb(158, 151, 151);
+                    }
+                }
+
+                &-basket {
+                    width: 20%;
+                }
+            }
         }
     }
 
@@ -112,7 +128,7 @@
         }
 
         &__coins-purchase-list {
-            margin-left: 10%;
+            margin-left: 9%;
         }
     }
 

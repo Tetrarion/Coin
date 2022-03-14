@@ -1,4 +1,4 @@
-function totalPrice(tasks) {
+function getTotalPrice(tasks) {
   let price = 0;
 
   // eslint-disable-next-line no-restricted-syntax
@@ -8,4 +8,4 @@ function totalPrice(tasks) {
   return price;
 }
 
-export default totalPrice;
+export default getTotalPrice;

@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const storePageNames = ['Name', 'Count', 'Price', 'Total price', ' '];
+export const storePageNames = ['Name', 'Count', 'Price', 'Total price'];

@@ -4,14 +4,16 @@ import { storePageNames } from '../../Data/storePageNames';
 export default function Header({ tasks }) {
   if (tasks.length) {
     return (
-      <ul className="basket__top">
-        {
+      <ul className="top">
+        <div className="top__list">
+          {
                   storePageNames.map((name) => (
-                    <div className="basket__top-item">
+                    <div className="top__list-item-basket">
                       {name}
                     </div>
                   ))
               }
+        </div>
       </ul>
     );
   } return null;

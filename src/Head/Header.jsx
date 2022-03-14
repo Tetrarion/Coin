@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderBlocks from '../Components/Header/HeaderBlocks';
-import totalPrice from '../utilities/totalprice';
+import getTotalPrice from '../utilities/totalprice';
 import priceDiff from '../utilities/priceDiff';
 import fixed from '../utilities/fixed';
 import SearchBar from '../Components/ListPageComponents/SearchBar';
 import Settings from '../Components/Header/Settings';
+import BasketButton from '../Components/Header/Basketbutton';
 
 function Header({
   coins, rate, tasks, search, takeCoinsPerPage, getRateId,
 }) {
-  const [totalprice, SetTotalPrice] = useState(0);
+  const [totalPrice, SetTotalPrice] = useState(0);
   const [priceDifferences, setPriceDifferences] = useState(null);
   const [priceProcent, setPriceProcent] = useState(null);
 
@@ -26,21 +27,21 @@ function Header({
     return array;
   };
 
-  const getProcent = (totalAmount, priceDifference) => {
+  const saveProcent = (totalAmount, priceDifference) => {
     if (!tasks.length) return setPriceProcent(null);
     const procent = priceDifference / (totalAmount / 100);
     setPriceProcent(fixed(procent));
     return '';
   };
 
-  const getTotalPrice = () => {
+  const saveTotalPrice = () => {
     if (!tasks.length) return SetTotalPrice(0);
-    const totalAmount = totalPrice(tasks);
+    const totalAmount = getTotalPrice(tasks);
     SetTotalPrice(fixed(totalAmount));
     return totalAmount;
   };
 
-  const getPriceDifferences = (totalAmount) => {
+  const savePriceDifferences = (totalAmount) => {
     if (!tasks.length) return setPriceDifferences(null);
     const array = getUpdateCoins();
     const priceDifference = priceDiff(array, tasks, totalAmount);
@@ -49,9 +50,9 @@ function Header({
   };
 
   useEffect(() => {
-    const totalAmount = getTotalPrice();
-    const priceDifference = getPriceDifferences(totalAmount);
-    getProcent(totalAmount, priceDifference);
+    const totalAmount = saveTotalPrice();
+    const priceDifference = savePriceDifferences(totalAmount);
+    saveProcent(totalAmount, priceDifference);
   });
 
   const names = [10, 12, 15, 17, 20];
@@ -68,18 +69,7 @@ function Header({
         <Link className="navigation__link" to={'/*'}>
           Coins
         </Link>
-        <Link className="navigation__link" to="/storepage">
-          Basket:
-          {' '}
-          $
-          {totalprice}
-          {' '}
-          {priceDifferences}
-          {' '}
-          (
-          {priceProcent}
-          %)
-        </Link>
+        <BasketButton totalPrice={totalPrice} priceDifferences={priceDifferences} priceProcent={priceProcent} />
       </div>
       <div className="utils">
         <SearchBar search={search} />
