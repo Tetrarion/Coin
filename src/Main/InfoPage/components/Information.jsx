@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import fixed from '../../utilities/fixed';
-import getInfo from '../../API/api';
+import fixed from '../../../utilities/fixed';
+import getInfo from '../../../API/api';
 
 export default function Information({ id, rate }) {
   const [info, SetInfo] = useState('');

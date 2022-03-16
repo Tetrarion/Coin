@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderBlocks from '../Components/Header/HeaderBlocks';
+import HeaderBlocks from './components/HeaderBlocks';
 import getTotalPrice from '../utilities/totalprice';
 import priceDiff from '../utilities/priceDiff';
 import fixed from '../utilities/fixed';
-import SearchBar from '../Components/ListPageComponents/SearchBar';
-import Settings from '../Components/Header/Settings';
-import BasketButton from '../Components/Header/Basketbutton';
+import SearchBar from './components/SearchBar';
+import Settings from './components/Settings';
+import BasketButton from './components/BasketButton';
 
 function Header({
   coins, rate, tasks, search, takeCoinsPerPage, getRateId,

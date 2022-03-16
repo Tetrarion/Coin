@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import History from '../../Components/InfoPageComponents/History';
-import Information from '../../Components/InfoPageComponents/Information';
-import Select from '../../Components/ListPageComponents/Select';
-import Form from '../../Components/InfoPageComponents/Form';
+import History from './components/History';
+import Information from './components/Information';
+import Select from '../../components/Select';
+import { Form } from '../../components/Form';
 
 export default function InfoPage({ rate }) {
   const [choosedValue, setChoosedValue] = useState('m1');

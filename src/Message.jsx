@@ -1,4 +1,4 @@
-const massageImage = require('../images/796_oooo.plus.png');
+const massageImage = require('./images/796_oooo.plus.png');
 
 export default function Message() {
   return (

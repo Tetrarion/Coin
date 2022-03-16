@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
-import Select from '../ListPageComponents/Select';
-import SelectL from '../ListPageComponents/SelectL';
+import Select from '../../components/Select';
+import SelectL from './SelectL';
 import getInfo from '../../API/api';
 
 const settingsImage = require('../../images/40031.png');

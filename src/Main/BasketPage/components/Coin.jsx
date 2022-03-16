@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import fixed from '../../utilities/fixed';
-import * as actions from '../../Store/actions';
+import fixed from '../../../utilities/fixed';
+import * as actions from '../../../Store/actions';
 
-function Coin({ task }) {
+export function Coin({ task }) {
   const {
     id, name, symbol, count, price, coinTotalPrice,
   } = task;
@@ -38,5 +38,3 @@ function Coin({ task }) {
     </div>
   );
 }
-
-export default Coin;

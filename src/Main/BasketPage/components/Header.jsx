@@ -1,7 +1,7 @@
 import React from 'react';
-import { storePageNames } from '../../Data/storePageNames';
+import { storePageNames } from '../../../Data/storePageNames';
 
-export default function Header({ tasks }) {
+export function Header({ tasks }) {
   if (tasks.length) {
     return (
       <ul className="top">

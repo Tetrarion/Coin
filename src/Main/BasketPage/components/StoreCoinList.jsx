@@ -1,7 +1,7 @@
 import React from 'react';
-import Coin from './Coin';
+import { Coin } from './Coin';
 
-function StoreCoinList({ tasks }) {
+export function StoreCoinList({ tasks }) {
   if (tasks.length) {
     return (
       <div className="basket__coins-purchase-list">
@@ -15,4 +15,3 @@ function StoreCoinList({ tasks }) {
     <h1 className="basket__info-string">There is nothing in your basket yet</h1>
   );
 }
-export default StoreCoinList;

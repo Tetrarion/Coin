@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import fixed from '../../utilities/fixed';
-import showInputForCount from '../../utilities/showInputForCount';
-import Form from '../InfoPageComponents/Form';
+import fixed from '../../../utilities/fixed';
+import showInputForCount from '../../../utilities/showInputForCount';
+import { Form } from '../../../components/Form';
 
 function CoinBlock({ coins, rate }) {
   const [prevElement, setPrevElement] = useState('');

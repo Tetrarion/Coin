@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const forwardImage = require('../../images/271228.png');
-const backwardImage = require('../../images/32542.png');
+const forwardImage = require('../../../images/271228.png');
+const backwardImage = require('../../../images/32542.png');
 
 function Pagination({ totalPages, pagination }) {
   const [visiblePages, setVisiblePages] = useState([]);

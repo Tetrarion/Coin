@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ListPage from './Main/Pages/ListPage';
+import ListPage from './Main/LitsPage/ListPage';
 import './Styles/styles.scss';
-import StorePage from './Main/Pages/StorePage';
-import InfoPage from './Main/Pages/InfoPage';
+import { StorePage } from './Main/BasketPage/StorePage';
+import InfoPage from './Main/InfoPage/InfoPage';
 import getInfo from './API/api';
-import Header from './Head/Header';
-import Message from './Components/Message';
+import Header from './Header/Header';
+import Message from './Message';
 
 const initialState = {
   id: 'united-states-dollar',

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {
   AreaChart, Area, YAxis, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
-import getHistory from '../../utilities/getHistory';
+import getHistory from '../../../utilities/getHistory';
 
 export default function History({ id, choosedValue }) {
   const [history, setHistory] = useState('');

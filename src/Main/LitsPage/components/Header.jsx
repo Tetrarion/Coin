@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useState } from 'react';
 
-const upArrowImage = require('../../images/down--v2.png');
-const downArrowImage = require('../../images/down--v1.png');
+const upArrowImage = require('../../../images/down--v2.png');
+const downArrowImage = require('../../../images/down--v1.png');
 
 export default function Header({ sort }) {
   const [prevElement, setPrevElement] = useState('');

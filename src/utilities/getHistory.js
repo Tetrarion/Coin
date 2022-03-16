@@ -1,4 +1,5 @@
 import getInfo from '../API/api';
+import fixed from './fixed';
 
 export default async function getHistory(interval, id) {
   let truncatedArray = [];
@@ -6,14 +7,14 @@ export default async function getHistory(interval, id) {
   if (interval === 'd1') {
     truncatedArray = dateInformation.map((dateinfo) => {
       const container = {};
-      container.priceUsd = dateinfo.priceUsd;
+      container.priceUsd = fixed(dateinfo.priceUsd);
       container.date = dateinfo.date.substr(0, 10);
       return container;
     });
   } else {
     truncatedArray = dateInformation.map((dateinfo) => {
       const container = {};
-      container.priceUsd = dateinfo.priceUsd;
+      container.priceUsd = fixed(dateinfo.priceUsd);
       container.date = dateinfo.date.substr(11, 5);
       return container;
     });

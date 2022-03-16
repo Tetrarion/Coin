@@ -1,9 +1,19 @@
 .form {
     text-align: center;
+    vertical-align: middle;
 
     &__input {
         font-size: $sm-font-size;
-        margin: 0 20px 10px 0;
+        margin: 5px 10px 0 0;
+
+        &-error-text {
+            font-size: 15px;
+            background-color: #900;
+            color: white;
+            border-radius: 0 0 5px 5px;
+            padding: 10px 0;
+            margin-right: 10px;
+        }
     }
 
     &__button {
@@ -23,5 +33,6 @@
         color: gray;
         font-size: 14px;
         margin-bottom: 10px;
+        margin-top: 10px;
     }
 }

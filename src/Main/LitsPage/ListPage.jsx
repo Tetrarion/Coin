@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CoinBlock from '../../Components/ListPageComponents/CoinBlock';
-import Header from '../../Components/ListPageComponents/Header';
-import Pagination from '../../Components/ListPageComponents/Pagination';
+import CoinBlock from './components/CoinBlock';
+import Header from './components/Header';
+import Pagination from './components/Pagination';
 import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
 

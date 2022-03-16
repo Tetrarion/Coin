@@ -18,7 +18,6 @@ export const removeCoin = (id) => ({
   payload: { id },
 });
 export const loadCoin = (id, count, message, rateId) => async (dispatch) => {
-  if (count === 0 || typeof count !== 'number' || count < 0) return;
   const coinResponse = await getInfo(`assets/${id}`);
   const rateResponse = await getInfo(`rates/${rateId}`);
   const coinTotalPrice = coinResponse.priceUsd * count * rateResponse.rateUsd;
