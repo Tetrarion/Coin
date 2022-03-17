@@ -1,4 +1,4 @@
-export default function Select({ func, names }) {
+export function Select({ func, names }) {
   return (
     <div className="select">
       <select className="select__list" onChange={(event) => func(event.target.value)}>

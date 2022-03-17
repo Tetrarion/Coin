@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 const upArrowImage = require('../../../images/down--v2.png');
 const downArrowImage = require('../../../images/down--v1.png');
 
-export default function Header({ sort }) {
+export function Header({ sort }) {
   const [prevElement, setPrevElement] = useState('');
 
   const showImage = (element) => {
     sort(element.id);
-    if (element !== prevElement && prevElement !== '') prevElement.lastChild.classList.add('top__list-item-img--hidden');
+    if (element !== prevElement && prevElement) prevElement.lastChild.classList.add('top__list-item-img--hidden');
     setPrevElement(element);
     if (element.lastChild.classList.contains('top__list-item-img--hidden')) element.lastChild.classList.remove('top__list-item-img--hidden');
     if (element.id === `${element.getAttribute('name')} up`) {

@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import getHistory from '../../../utilities/getHistory';
 
-export default function History({ id, choosedValue }) {
+export function History({ id, choosedValue }) {
   const [history, setHistory] = useState('');
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CoinBlock from './components/CoinBlock';
-import Header from './components/Header';
-import Pagination from './components/Pagination';
+import { CoinBlock } from './components/CoinBlock';
+import { Header } from './components/Header';
+import { Pagination } from './components/Pagination';
 import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
 
@@ -60,11 +60,11 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   }, [coinsPerPage, time, currentPage, searchText, rate, sortedCoins.length]);
 
   useEffect(() => {
-    if (sortName !== '') setSortedCoins(sortCoins(sortName, allCoins));
+    if (sortName) setSortedCoins(sortCoins(sortName, allCoins));
   }, [sortName, allCoins]);
 
   useEffect(() => {
-    if (searchText.length !== 0 || sortedCoins.length === 0) return;
+    if (searchText.length || !sortedCoins.length) return;
     setCurrentCoins(sortedCoins.slice(firstCoinsIndex, lastCoinsIndex));
   }, [sortedCoins, searchText, firstCoinsIndex]);
 

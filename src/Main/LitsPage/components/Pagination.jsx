@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const forwardImage = require('../../../images/271228.png');
 const backwardImage = require('../../../images/32542.png');
 
-function Pagination({ totalPages, pagination }) {
+export function Pagination({ totalPages, pagination }) {
   const [visiblePages, setVisiblePages] = useState([]);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -120,5 +120,3 @@ function Pagination({ totalPages, pagination }) {
     </div>
   );
 }
-
-export default Pagination;

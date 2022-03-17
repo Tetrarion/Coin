@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 const loopImage = require('../../images/3641364.png');
 
-export default function SearchBar({ search }) {
+export function SearchBar({ search }) {
   const [className, setClassName] = useState('search__bar');
 
   const showSearchBar = () => {
@@ -10,7 +10,7 @@ export default function SearchBar({ search }) {
   };
 
   const hiddenSearchBar = (text) => {
-    if (text.length !== 0) return;
+    if (text.length) return;
     setClassName('search__bar');
   };
 

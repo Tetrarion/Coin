@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderBlocks from './components/HeaderBlocks';
+import { HeaderBlocks } from './components/HeaderBlocks';
 import getTotalPrice from '../utilities/totalprice';
 import priceDiff from '../utilities/priceDiff';
 import fixed from '../utilities/fixed';
-import SearchBar from './components/SearchBar';
-import Settings from './components/Settings';
-import BasketButton from './components/BasketButton';
+import { SearchBar } from './components/SearchBar';
+import { Settings } from './components/Settings';
+import { BasketButton } from './components/BasketButton';
 
 function Header({
   coins, rate, tasks, search, takeCoinsPerPage, getRateId,
@@ -14,6 +14,8 @@ function Header({
   const [totalPrice, SetTotalPrice] = useState(0);
   const [priceDifferences, setPriceDifferences] = useState(null);
   const [priceProcent, setPriceProcent] = useState(null);
+
+  const names = [10, 12, 15, 17, 20];
 
   const currentCoins = coins.slice(0, 4);
   currentCoins.splice(2, 1);
@@ -54,8 +56,6 @@ function Header({
     const priceDifference = savePriceDifferences(totalAmount);
     saveProcent(totalAmount, priceDifference);
   });
-
-  const names = [10, 12, 15, 17, 20];
 
   return (
     <div className="header">

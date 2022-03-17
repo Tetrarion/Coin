@@ -4,7 +4,7 @@ import fixed from '../../../utilities/fixed';
 import showInputForCount from '../../../utilities/showInputForCount';
 import { Form } from '../../../components/Form';
 
-function CoinBlock({ coins, rate }) {
+export function CoinBlock({ coins, rate }) {
   const [prevElement, setPrevElement] = useState('');
 
   const savePrevElement = (targetElement) => {
@@ -60,7 +60,7 @@ function CoinBlock({ coins, rate }) {
                         {fixed(coin.changePercent24Hr)}
                         %
                       </div>
-                      <div className="coin__form coin__form--display--none">
+                      <div className="coin__form coin__form--none">
                         <Form id={coin.id} rateId={rate.id} priceUsd={coin.priceUsd} symbol={rate.symbol} />
                       </div>
                     </div>
@@ -69,5 +69,3 @@ function CoinBlock({ coins, rate }) {
     </div>
   );
 }
-
-export default CoinBlock;

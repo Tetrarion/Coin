@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
-import Select from '../../components/Select';
-import SelectL from './SelectL';
+import { Select } from '../../components/Select';
+import { SelectL } from './SelectL';
 import getInfo from '../../API/api';
 
 const settingsImage = require('../../images/40031.png');
 
-export default function Settings({ takeCoinsPerPage, names, getRateId }) {
+export function Settings({ takeCoinsPerPage, names, getRateId }) {
   const [className, setClassName] = useState('settings__list settings__list--hidden');
   const [rates, setRates] = useState([]);
 
