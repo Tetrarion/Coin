@@ -16,19 +16,6 @@
         }
     }
 
-    &__button {
-        @extend %form__button;
-
-        &:hover {
-            background: rgb(53, 167, 110);
-        }
-    
-        &-text {
-            color: white;
-            font-size: $sm-font-size;
-        }
-    }
-
     &__text {
         color: gray;
         font-size: 14px;

@@ -3,11 +3,12 @@
 @import '../Header/styles/header-styles';
 @import './top';
 @import './coin';
-@import '../components/form';
-@import '../components/select';
+@import '../components/Form/form';
+@import '../components/Button/button';
+@import '../components/Select/select';
 @import '../Main/LitsPage/styles/pagination';
 @import '../Main/BasketPage/styles/basket';
 @import '../Main/InfoPage/styles/infoPage-styles';
-@import '../components/input-container';
+@import '../components/Form/input-container';
 @import './message.scss';
 @import './large-screen';

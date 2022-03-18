@@ -45,19 +45,19 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   useEffect(() => {
     const getCoins = async () => {
       let response;
-      if (searchText.length !== 0) {
+      if (searchText.length) {
         const responseCount = await getInfo(`assets/?search=${searchText}&limit=2000`);
         response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
         setTotalCoins(responseCount.length);
       } else {
-        if (sortedCoins.length !== 0) return;
+        if (sortedCoins.length) return;
         response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
         setTotalCoins(2000);
       }
       setCurrentCoins(response);
     };
     getCoins();
-  }, [coinsPerPage, time, currentPage, searchText, rate, sortedCoins.length]);
+  }, [coinsPerPage, time, currentPage, searchText, rate, sortedCoins.length, firstCoinsIndex]);
 
   useEffect(() => {
     if (sortName) setSortedCoins(sortCoins(sortName, allCoins));
@@ -66,7 +66,7 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   useEffect(() => {
     if (searchText.length || !sortedCoins.length) return;
     setCurrentCoins(sortedCoins.slice(firstCoinsIndex, lastCoinsIndex));
-  }, [sortedCoins, searchText, firstCoinsIndex]);
+  }, [sortedCoins, searchText, firstCoinsIndex, lastCoinsIndex]);
 
   return (
     <div className="list-page">

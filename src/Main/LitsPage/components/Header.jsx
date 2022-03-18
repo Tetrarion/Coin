@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useState } from 'react';
-
-const upArrowImage = require('../../../images/down--v2.png');
-const downArrowImage = require('../../../images/down--v1.png');
+import upArrowImage from '../../../images/down--v2.png';
+import downArrowImage from '../../../images/down--v1.png';
 
 export function Header({ sort }) {
   const [prevElement, setPrevElement] = useState('');
@@ -22,8 +20,8 @@ export function Header({ sort }) {
   };
 
   return (
-    <ul className="top" onClick={(event) => showImage(event.target)} onKeyDown={(event) => sort(event.target.text)} role="button" tabIndex={0}>
-      <div className="top__list">
+    <div className="top" onClick={(event) => showImage(event.target)} onKeyDown={(event) => sort(event.target.text)} role="button" tabIndex={0}>
+      <ul className="top__list">
         <li className="top__list-item" id="Rank" name="Rank">
           Rank
           {' '}
@@ -64,7 +62,7 @@ export function Header({ sort }) {
           {' '}
           <img className="top__list-item-img top__list-item-img--hidden" src="" alt="item-img" />
         </li>
-      </div>
-    </ul>
+      </ul>
+    </div>
   );
 }

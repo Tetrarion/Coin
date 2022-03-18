@@ -15,9 +15,13 @@
         }
     }
 
-    &__img {
-        margin-left: 5px;
+    &__image {
         width: 30px;
         vertical-align: middle;
+
+        &-container {
+            display: inline-block;
+            margin-left: 5px;
+        }
     }
 }

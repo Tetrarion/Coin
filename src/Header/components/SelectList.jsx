@@ -1,4 +1,4 @@
-export function SelectL({ func, names }) {
+export function SelectList({ func, names }) {
   return (
     <div className="select">
       <input className="select__input" type="text" onChange={(event) => func(event.target.value)} name="city" list="ratesList" />

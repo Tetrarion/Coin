@@ -1,7 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as actions from '../Store/actions';
+import * as actions from '../../Store/actions';
+import { Button } from '../Button/Button';
 
 export function Form({
   id, rateId, priceUsd, symbol,
@@ -55,9 +55,7 @@ export function Form({
           {errorMessage}
         </div>
       </div>
-      <button className="form__button" onClick={checkForCorrect}>
-        <div className="form__button-text">Add to basket</div>
-      </button>
+      <Button text="Add to basket" func={checkForCorrect} />
       <div className="form__text">
         {currencySymbol}
         {' '}

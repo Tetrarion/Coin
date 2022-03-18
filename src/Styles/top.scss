@@ -1,10 +1,10 @@
 .top {
     &__list {
         margin-top: 40px;
-        margin-left: -40px;
+        padding: 0;
         background-color: rgb(80, 78, 78);
         color: white;
-        margin-bottom: -16px;
+        margin-bottom: 0;
 
         &-item {
             @extend %top-style;

@@ -4,8 +4,8 @@ import { storePageNames } from '../../../Data/storePageNames';
 export function Header({ tasks }) {
   if (tasks.length) {
     return (
-      <ul className="top">
-        <div className="top__list">
+      <div className="top">
+        <ul className="top__list">
           {
                   storePageNames.map((name) => (
                     <div className="top__list-item-basket">
@@ -13,8 +13,8 @@ export function Header({ tasks }) {
                     </div>
                   ))
               }
-        </div>
-      </ul>
+        </ul>
+      </div>
     );
   } return null;
 }

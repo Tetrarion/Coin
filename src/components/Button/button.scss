@@ -1,0 +1,12 @@
+.button {
+    @extend %form__button;
+
+    &:hover {
+        background: rgb(53, 167, 110);
+    }
+
+    &__text {
+        color: white;
+        font-size: $sm-font-size;
+    }
+}

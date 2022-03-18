@@ -1,10 +1,10 @@
 function getTotalPrice(tasks) {
   let price = 0;
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const task of tasks) {
+  tasks.forEach((task) => {
     price += task.coinTotalPriceUsd;
-  }
+  });
+
   return price;
 }
 

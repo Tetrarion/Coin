@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-const loopImage = require('../../images/3641364.png');
+import loopImage from '../../images/3641364.png';
 
 export function SearchBar({ search }) {
   const [className, setClassName] = useState('search__bar');
@@ -16,7 +15,9 @@ export function SearchBar({ search }) {
 
   return (
     <div className="search">
-      <img className="search__img" src={loopImage} alt="loop__image" onClick={showSearchBar} onKeyDown={showSearchBar} role="button" tabIndex={0} />
+      <div className="search__image-container" onClick={showSearchBar} onKeyDown={showSearchBar} role="button" tabIndex={0}>
+        <img className="search__image" src={loopImage} alt="loop__image" />
+      </div>
       <input className={className} type="text" placeholder="Search bar" onChange={(event) => search(event.target.value)} onBlur={(event) => hiddenSearchBar(event.target.value)} />
     </div>
   );

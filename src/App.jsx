@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ListPage from './Main/LitsPage/ListPage';
-import './Styles/styles.scss';
 import { StorePage } from './Main/BasketPage/StorePage';
 import InfoPage from './Main/InfoPage/InfoPage';
 import getInfo from './API/api';
 import Header from './Header/Header';
 import Message from './Message';
+import './Styles/styles.scss';
 
 const initialState = {
   id: 'united-states-dollar',
@@ -35,9 +35,9 @@ function App() {
 
   useEffect(() => {
     const getRate = async () => {
-      if (rateId !== '') {
+      if (rateId) {
         const response = await getInfo(`rates/${rateId}`);
-        if (response !== undefined) {
+        if (response) {
           setRate({
             id: response.id,
             value: response.rateUsd,

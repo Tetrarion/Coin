@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import fixed from '../../../utilities/fixed';
 import showInputForCount from '../../../utilities/showInputForCount';
-import { Form } from '../../../components/Form';
+import { Form } from '../../../components/Form/Form';
 
 export function CoinBlock({ coins, rate }) {
   const [prevElement, setPrevElement] = useState('');
@@ -18,8 +18,7 @@ export function CoinBlock({ coins, rate }) {
     <div className="list-page__coins-list">
       {
                   coins.map((coin) => (
-                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-                    <div className="coin" id={coin.id} key={coin.id} onClick={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
+                    <div className="coin" id={coin.id} key={coin.id} onClick={(event) => savePrevElement(event.currentTarget)} onKeyDown={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
                       <div className="coin__info">
                         {coin.rank}
                       </div>

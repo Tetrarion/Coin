@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const sortCoins = (sortName, coins) => {
   const array = coins.slice();
   switch (sortName) {

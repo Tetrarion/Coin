@@ -4,6 +4,10 @@
     &__icon {
         width: 30px;
         vertical-align: middle;
+
+        &-container {
+            display: inline-block;
+        }
     }
 
     &__list {

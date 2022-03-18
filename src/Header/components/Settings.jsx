@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
-import { Select } from '../../components/Select';
-import { SelectL } from './SelectL';
+import { Select } from '../../components/Select/Select';
+import { SelectList } from './SelectList';
 import getInfo from '../../API/api';
-
-const settingsImage = require('../../images/40031.png');
+import settingsImage from '../../images/40031.png';
 
 export function Settings({ takeCoinsPerPage, names, getRateId }) {
   const [className, setClassName] = useState('settings__list settings__list--hidden');
@@ -24,7 +22,9 @@ export function Settings({ takeCoinsPerPage, names, getRateId }) {
 
   return (
     <div className="settings">
-      <img className="settings__icon" src={settingsImage} alt="settings__icon" onClick={showSettings} onKeyDown={showSettings} role="button" tabIndex={0} />
+      <div className="settings__icon-container" onClick={showSettings} onKeyDown={showSettings} role="button" tabIndex={0}>
+        <img className="settings__icon" src={settingsImage} alt="settings__icon" />
+      </div>
       <div className={className} onBlur={hideSettings}>
         <div className="settings__list-top">
           Settings
@@ -39,7 +39,7 @@ export function Settings({ takeCoinsPerPage, names, getRateId }) {
           <div className="settings__list-item-text">
             Rates
           </div>
-          <SelectL func={getRateId} names={rates} />
+          <SelectList func={getRateId} names={rates} />
         </div>
       </div>
     </div>

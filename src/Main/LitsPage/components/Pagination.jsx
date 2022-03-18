@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
-
-const forwardImage = require('../../../images/271228.png');
-const backwardImage = require('../../../images/32542.png');
+import forwardImage from '../../../images/271228.png';
+import backwardImage from '../../../images/32542.png';
 
 export function Pagination({ totalPages, pagination }) {
   const [visiblePages, setVisiblePages] = useState([]);
@@ -90,13 +90,8 @@ export function Pagination({ totalPages, pagination }) {
                           <li
                             className="pagination__list-item"
                             key={pageNumber}
-                            onClick={() => {
-                              setCurrentPage(pageNumber);
-                            }}
-                            onKeyDown={() => {
-                              setCurrentPage(pageNumber);
-                            }}
-                            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                            onClick={() => setCurrentPage(pageNumber)}
+                            onKeyDown={() => setCurrentPage(pageNumber)}
                             role="button"
                             tabIndex={0}
                           >

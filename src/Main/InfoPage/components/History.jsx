@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React from 'react';
 import {
   AreaChart, Area, YAxis, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
-import getHistory from '../../../utilities/getHistory';
 
-export function History({ id, choosedValue }) {
-  const [history, setHistory] = useState('');
-
-  useEffect(() => {
-    async function data() {
-      setHistory(await getHistory(choosedValue, id));
-    }
-    data();
-  }, [choosedValue]);
-
+export function History({ history }) {
   return (
     <div className="chart">
       <ResponsiveContainer width="100%" height={300}>
