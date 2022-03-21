@@ -1,0 +1,46 @@
+.pagination {
+    text-align: center;
+}
+
+.pagination__list {
+    display: inline-block;
+    background-color: rgb(92, 89, 89);
+    border-radius: 40px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.pagination__list-item {
+    color: white;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+    line-height: 30px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pagination__list-item:hover {
+    background-color: white;
+    color: black;
+}
+
+.pagination__list-item--selected {
+    background-color: white;
+    color: black;
+}
+
+.pagination__changer {
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 46px;
+}
+
+.pagination__changer-image {
+    width: 20px;
+}

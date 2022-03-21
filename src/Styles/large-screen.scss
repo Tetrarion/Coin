@@ -117,6 +117,16 @@
         }
     }
 
+    .form {
+        &__input {
+            font-size: 25px;
+        }
+    }
+
+    .input-container {
+        vertical-align: bottom;
+    }
+
     .basket {
         &__top {
             padding: 0;

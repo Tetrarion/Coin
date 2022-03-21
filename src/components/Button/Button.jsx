@@ -1,9 +1,9 @@
 import React from 'react';
 import './button.css';
 
-export function Button({ text, func }) {
+export function Button({ type, text, func }) {
   return (
-    <button className="button" onClick={func}>
+    <button className={`button button--${type}`} onClick={func}>
       <div className="button__text">{text}</div>
     </button>
   );

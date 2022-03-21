@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ListPage from './Main/LitsPage/ListPage';
+import ListPage from './Main/LitsPage/CoinsPage';
 import { StorePage } from './Main/BasketPage/StorePage';
 import InfoPage from './Main/InfoPage/InfoPage';
 import getInfo from './API/api';

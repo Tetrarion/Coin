@@ -55,7 +55,7 @@ export function Form({
           {errorMessage}
         </div>
       </div>
-      <Button text="Add to basket" func={checkForCorrect} />
+      <Button type="add" text="Add to basket" func={checkForCorrect} />
       <div className="form__text">
         {currencySymbol}
         {' '}

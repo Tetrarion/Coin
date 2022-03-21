@@ -28,7 +28,7 @@ export default function InfoPage({ rate }) {
     <div className="info-page">
       <Information id={prodId} rate={rate} />
       <Select func={chooseValue} names={names} />
-      <History history={history} />
+      <History data={history} XAxisKey="date" YAxisKey="priceUsd" />
       <Form id={prodId} rateId={rate.id} />
     </div>
   );

@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import forwardImage from '../../../images/271228.png';
 import backwardImage from '../../../images/32542.png';
+import '../styles/pagination.css';
 
-export function Pagination({ totalPages, pagination }) {
+export function Pagination({
+  totalPages, visiblePagesFromCurrentPage, visiblePagesFromThеEdges, pagination,
+}) {
   const [visiblePages, setVisiblePages] = useState([]);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const screenWidth = window.screen.width;
 
   useEffect(() => {
     const pageArray = [];
@@ -26,39 +27,24 @@ export function Pagination({ totalPages, pagination }) {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  const showPaginationForSmallScreen = (newArray) => {
-    if (currentPage < 4) {
-      newArray.splice(4, newArray.length - 5, '....');
-    } else if (currentPage > newArray.length - 3) {
-      newArray.splice(1, newArray.length - 5, '....');
-    } else {
-      const previousPage = currentPage - 1;
-      const secondPage = currentPage + 1;
-      if (currentPage < totalPages / 2) {
-        newArray.splice(secondPage, newArray.length - (secondPage + 1), '....');
-        if (currentPage > 4) newArray.splice(1, previousPage - 2, '...');
+  const showPagination = (newArray) => {
+    if (currentPage < visiblePagesFromThеEdges) {
+      newArray.splice(visiblePagesFromThеEdges, newArray.length - (visiblePagesFromThеEdges + 1), '....');
+    } else if (currentPage > newArray.length - (visiblePagesFromThеEdges - 1)) {
+      newArray.splice(1, newArray.length - (visiblePagesFromThеEdges + 1), '....');
+    } else if (currentPage < totalPages / 2) {
+      if (currentPage - visiblePagesFromCurrentPage <= 2) {
+        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '....');
       } else {
-        if (currentPage < newArray.length - 3) newArray.splice(secondPage, newArray.length - (secondPage + 1), '...');
-        newArray.splice(1, previousPage - 2, '....');
+        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '....');
+        newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '...');
       }
-    }
-    setVisiblePages(newArray);
-  };
-
-  const showPaginationForLargeScreen = (newArray) => {
-    if (currentPage < 20) {
-      newArray.splice(20, newArray.length - 21, '....');
-    } else if (currentPage > newArray.length - 19) {
-      newArray.splice(1, newArray.length - 21, '....');
-    } else {
-      const previousPage = currentPage - 8;
-      const secondPage = currentPage + 8;
-      if (currentPage < totalPages / 2) {
-        newArray.splice(secondPage, newArray.length - (secondPage + 1), '....');
-        newArray.splice(1, previousPage - 2, '...');
+    } else if (currentPage > totalPages / 2) {
+      if (currentPage + visiblePagesFromCurrentPage > totalPages - 2) {
+        newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '....');
       } else {
-        newArray.splice(secondPage, newArray.length - (secondPage + 1), '...');
-        newArray.splice(1, previousPage - 2, '....');
+        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '...');
+        newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '....');
       }
     }
     setVisiblePages(newArray);
@@ -68,11 +54,8 @@ export function Pagination({ totalPages, pagination }) {
     if (currentPage === '...' || currentPage === '....') return;
     const newArray = pages.slice();
     pagination(currentPage);
-    if (screenWidth > 960) {
-      if (totalPages < 22) setVisiblePages(newArray);
-      else showPaginationForLargeScreen(newArray);
-    } else if (totalPages < 8) setVisiblePages(newArray);
-    else showPaginationForSmallScreen(newArray);
+    if (totalPages <= visiblePagesFromThеEdges + 1) setVisiblePages(newArray);
+    else showPagination(newArray);
   }, [currentPage, pages]);
 
   if (pages.length < 2) return null;

@@ -1,14 +1,13 @@
 import React from 'react';
-import { storePageNames } from '../../../Data/storePageNames';
 
-export function Header({ tasks }) {
+export function Header({ tasks, names }) {
   if (tasks.length) {
     return (
       <div className="top">
         <ul className="top__list">
           {
-                  storePageNames.map((name) => (
-                    <div className="top__list-item-basket">
+                  names.map((name) => (
+                    <div className="top__list-item-basket" key={name}>
                       {name}
                     </div>
                   ))

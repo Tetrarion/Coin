@@ -5,6 +5,12 @@ export default {
 
   title: 'Button',
   component: Button,
+  argTypes: {
+    type: {
+      options: ['add', 'remove'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 function Template(args) {
@@ -12,8 +18,8 @@ function Template(args) {
   return <Button {...args} />;
 }
 
-export const Primary = Template.bind({});
-Primary.args = {
-  text: 'Button',
-  func: () => console.log(1),
+export const Default = Template.bind({});
+Default.args = {
+  type: 'add',
+  text: 'Add to basket',
 };

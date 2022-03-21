@@ -1,8 +1,22 @@
 .button {
     @extend %form__button;
 
-    &:hover {
-        background: rgb(53, 167, 110);
+    &--add {
+        background: rgb(64,199,129);
+        box-shadow: 0 -3px rgb(53,167,110) inset;
+
+        &:hover {
+            background: rgb(53, 167, 110);
+        }
+    }
+
+    &--remove {
+        background: rgb(212,75,56);
+        box-shadow: 0 -3px rgb(150, 48, 48) inset;
+
+        &:hover {
+            background: rgb(232,95,76);
+        }
     }
 
     &__text {

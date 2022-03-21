@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import fixed from '../../../utilities/fixed';
 import * as actions from '../../../Store/actions';
+import { Button } from '../../../components/Button/Button';
 
 export function Coin({ task }) {
   const {
@@ -29,11 +30,7 @@ export function Coin({ task }) {
         {fixed(coinTotalPrice)}
       </div>
       <div className="coin__purchase-info">
-        <button className="coin__button" onClick={() => dispatch(actions.removeCoin(id))} tabIndex={0} onKeyDown={() => dispatch(actions.removeCoin(id))}>
-          <div className="coin__button-text">
-            Remove
-          </div>
-        </button>
+        <Button type="remove" text="Remove" func={() => dispatch(actions.removeCoin(id))} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { CoinBlock } from './components/CoinBlock';
-import { Header } from './components/Header';
+import { CoinBlock } from './components/CoinList';
+import { Header } from './components/CoinsHeader';
 import { Pagination } from './components/Pagination';
 import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
@@ -14,6 +14,8 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   const [sortName, setSortName] = useState('');
   const [allCoins, setAllCoins] = useState(0);
   const [sortedCoins, setSortedCoins] = useState([]);
+  const [visiblePagesFromCurrentPage, setVisiblePagesFromCurrentPage] = useState(1);
+  const [visiblePagesFromThеEdges, setVisiblePagesFromThеEdges] = useState(3);
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
@@ -21,6 +23,15 @@ function ListPage({ searchText, coinsPerPage, rate }) {
 
   const firstCoinsIndex = (currentPage * coinsPerPage) - coinsPerPage;
   const lastCoinsIndex = firstCoinsIndex + coinsPerPage;
+
+  const screenWidth = window.screen.width;
+
+  useEffect(() => {
+    if (screenWidth > 960) {
+      setVisiblePagesFromCurrentPage(8);
+      setVisiblePagesFromThеEdges(20);
+    }
+  }, [screenWidth]);
 
   useEffect(() => {
     const update = () => {
@@ -72,7 +83,12 @@ function ListPage({ searchText, coinsPerPage, rate }) {
     <div className="list-page">
       <Header sort={sort} />
       <CoinBlock coins={currentCoins} rate={rate} />
-      <Pagination totalPages={totalPages} pagination={pagination} />
+      <Pagination
+        totalPages={totalPages}
+        visiblePagesFromCurrentPage={visiblePagesFromCurrentPage}
+        visiblePagesFromThеEdges={visiblePagesFromThеEdges}
+        pagination={pagination}
+      />
     </div>
 
   );

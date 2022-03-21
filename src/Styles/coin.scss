@@ -6,19 +6,6 @@
         background-color: rgb(230, 225, 225);
     }
 
-    &__button {
-        @extend %coin__button;
-
-        &:hover {
-            background: rgb(232,95,76);
-        }
-    
-        &-text {
-            color: white;
-            font-size: $sm-font-size;
-        }
-    }
-
     &__info {
         @extend %coin-info;
 

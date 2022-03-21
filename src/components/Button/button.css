@@ -1,3 +1,30 @@
 .button {
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.button--add {
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+}
+
+.button--remove {
+    background: rgb(212,75,56);
+    box-shadow: 0 -3px rgb(150, 48, 48) inset;
+}
+
+.button--add:hover {
     background: rgb(53, 167, 110);
+}
+
+.button--remove:hover {
+    background: rgb(232,95,76);
+}
+
+.button__text {
+    color: white;
+    font-size: 17px;
 }
