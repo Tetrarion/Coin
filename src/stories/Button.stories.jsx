@@ -7,8 +7,13 @@ export default {
   component: Button,
   argTypes: {
     type: {
+      description: 'It`s a button modifier',
       options: ['add', 'remove'],
       control: { type: 'radio' },
+    },
+    text: {
+      description: 'Button text',
+      control: { type: 'text' },
     },
   },
 };

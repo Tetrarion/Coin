@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { CoinBlock } from './components/CoinList';
-import { Header } from './components/CoinsHeader';
+import { Header } from '../BasketPage/components/Header';
 import { Pagination } from './components/Pagination';
 import { sortCoins } from '../../utilities/sortCoins';
 import getInfo from '../../API/api';
+import ASCImage from '../../images/down--v2.png';
+import DESCImage from '../../images/down--v1.png';
 
 function ListPage({ searchText, coinsPerPage, rate }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,6 +18,9 @@ function ListPage({ searchText, coinsPerPage, rate }) {
   const [sortedCoins, setSortedCoins] = useState([]);
   const [visiblePagesFromCurrentPage, setVisiblePagesFromCurrentPage] = useState(1);
   const [visiblePagesFromThеEdges, setVisiblePagesFromThеEdges] = useState(3);
+
+  const names = ['Rank', 'Name', 'Price', 'MarketCap', 'wap (24Hr)', 'Supply', 'Volume (24Hr)', 'Change (24Hr)'];
+  const namesForLargeScreeen = ['MarketCap', 'wap (24Hr)', 'Supply', 'Volume (24Hr)'];
 
   const pagination = (pageNamber) => setCurrentPage(pageNamber);
 
@@ -81,7 +86,14 @@ function ListPage({ searchText, coinsPerPage, rate }) {
 
   return (
     <div className="list-page">
-      <Header sort={sort} />
+      <Header
+        sort={sort}
+        screenWidth={screenWidth}
+        names={names}
+        namesForLargeScreeen={namesForLargeScreeen}
+        ASCImage={ASCImage}
+        DESCImage={DESCImage}
+      />
       <CoinBlock coins={currentCoins} rate={rate} />
       <Pagination
         totalPages={totalPages}

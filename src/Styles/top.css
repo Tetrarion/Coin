@@ -1,0 +1,44 @@
+.top__list {
+    margin-top: 40px;
+    padding: 0;
+    background-color: rgb(80, 78, 78);
+    color: white;
+    margin-bottom: 0;
+}
+
+.top__list-item {
+    display: inline-block;
+    font-size: 20px;
+    text-align:center;
+    vertical-align: middle;
+    font-family : Impact;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.top__list-item-lg {
+    font-size: 20px;
+    text-align:center;
+    vertical-align: middle;
+    font-family : Impact;
+    cursor: pointer;
+    padding: 10px 0;
+    display: none;
+}
+
+.top__list-item-img {
+    width: 20px;
+}
+
+.top__list-item-img--hidden {
+    display: none;
+}
+
+@media screen and (min-width:960px) {
+    .top__list-item-lg {
+        display: inline-block;
+    }
+}
+            
+        
+    

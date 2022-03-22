@@ -6,7 +6,18 @@ export default {
   title: 'Graph',
   component: History,
   argTypes: {
-    data: { control: 'array' },
+    data: {
+      description: 'Array of objects',
+      control: { type: 'object' },
+    },
+    XAxisKey: {
+      description: 'Which object key will be used as X axis',
+      control: { type: 'object' },
+    },
+    YAxisKey: {
+      description: 'Which object key will be used as Y axis',
+      control: { type: 'object' },
+    },
   },
 };
 
@@ -15,7 +26,7 @@ function Template(args) {
   return <History {...args} />;
 }
 
-const obj = [
+const arr = [
   {
     priceUsd: '6379.3997635993342453',
     time: 1530403200000,
@@ -42,14 +53,9 @@ const obj = [
   },
 ];
 
-/**
- * Only use me once per page for the preferred user action.
- */
-
 export const PriceHistory = Template.bind({});
 PriceHistory.args = {
-  /** That */
-  data: obj,
+  data: arr,
   XAxisKey: 'priceUsd',
   YAxisKey: 'time',
 };

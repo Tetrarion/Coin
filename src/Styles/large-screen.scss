@@ -29,16 +29,15 @@
             width: 82%;
 
             &-item {
-                width: 12.5%;
                 line-height: 50px;
 
                 &:hover {
                     background-color: rgb(158, 151, 151);
                 }
                 
-                &-sm {
-                    display: inline-block;
+                &-lg {
                     line-height: 50px;
+                    display: inline-block;
 
                     &:hover {
                         background-color: rgb(158, 151, 151);

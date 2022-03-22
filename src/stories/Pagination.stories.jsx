@@ -5,7 +5,24 @@ export default {
 
   title: 'Pagination',
   component: Pagination,
-  argTypes: { pagination: { action: 'pageNumber' } },
+  argTypes: {
+    pagination: {
+      description: 'It`s a function that send a number of current page',
+      action: 'pageNumber',
+    },
+    totalPages: {
+      description: 'Total number of pages',
+      control: { type: 'text' },
+    },
+    visiblePagesFromCurrentPage: {
+      description: 'How much pages will be displayed from the current page',
+      control: { type: 'text' },
+    },
+    visiblePagesFromThеEdges: {
+      description: 'How much pages will be displayed from the edges of block',
+      control: { type: 'text' },
+    },
+  },
 };
 
 function Template(args) {

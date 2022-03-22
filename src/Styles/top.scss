@@ -8,16 +8,11 @@
 
         &-item {
             @extend %top-style;
-    
-            &-sm {
+            display: inline-block;
+
+            &-lg {
                 @extend %top-style;
                 display: none;
-                width: 12.5%;
-            }
-
-            &-basket {
-                @extend %top-style;
-                line-height: 50px;
             }
 
             &-img {

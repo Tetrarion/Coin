@@ -1,5 +1,6 @@
 export const sortCoins = (sortName, coins) => {
   const array = coins.slice();
+  console.log(sortName);
   switch (sortName) {
     case 'Name':
     case 'Name down':
