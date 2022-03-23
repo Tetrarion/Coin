@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import forwardImage from '../../../images/271228.png';
 import backwardImage from '../../../images/32542.png';
-import '../styles/pagination.css';
 
 export function Pagination({
   totalPages, visiblePagesFromCurrentPage, visiblePagesFromThеEdges, pagination,

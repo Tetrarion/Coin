@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../../../Styles/top.css';
 
 export function Header({
   sort, screenWidth, names, namesForLargeScreeen, ASCImage, DESCImage,

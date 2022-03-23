@@ -1,0 +1,18 @@
+.input {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.input__bar {
+    font-size: 25px;
+    margin: 10px 5px 0 0;
+}
+
+.input__error-text {
+    font-size: 15px;
+    background-color: #900;
+    color: white;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 0;
+    margin-right: 10px;
+}

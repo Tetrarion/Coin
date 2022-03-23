@@ -116,14 +116,12 @@
         }
     }
 
-    .form {
-        &__input {
+    .input {
+        vertical-align: bottom;
+
+        &__bar {
             font-size: 25px;
         }
-    }
-
-    .input-container {
-        vertical-align: bottom;
     }
 
     .basket {

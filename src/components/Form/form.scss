@@ -1,17 +1,5 @@
 .form {
-    &__input {
-        font-size: $sm-font-size;
-        margin: 5px 10px 0 0;
-
-        &-error-text {
-            font-size: 15px;
-            background-color: #900;
-            color: white;
-            border-radius: 0 0 5px 5px;
-            padding: 10px 0;
-            margin-right: 10px;
-        }
-    }
+    text-align: center;
 
     &__text {
         color: gray;

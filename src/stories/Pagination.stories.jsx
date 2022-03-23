@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pagination } from '../Main/LitsPage/components/Pagination';
+import '../Main/LitsPage/styles/pagination.css';
 
 export default {
 
@@ -12,15 +13,15 @@ export default {
     },
     totalPages: {
       description: 'Total number of pages',
-      control: { type: 'text' },
+      control: { type: 'number' },
     },
     visiblePagesFromCurrentPage: {
       description: 'How much pages will be displayed from the current page',
-      control: { type: 'text' },
+      control: { type: 'number' },
     },
     visiblePagesFromThеEdges: {
       description: 'How much pages will be displayed from the edges of block',
-      control: { type: 'text' },
+      control: { type: 'number' },
     },
   },
 };

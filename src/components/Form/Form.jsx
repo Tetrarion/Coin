@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../Store/actions';
 import { Button } from '../Button/Button';
+import { Input } from '../Input/Input';
 
 export function Form({
   id, rateId, priceUsd, symbol,
@@ -49,12 +50,7 @@ export function Form({
 
   return (
     <div className="form">
-      <div className="input-container">
-        <input className="form__input" type="number" onChange={(e) => showTotalPrice(e.target.valueAsNumber)} />
-        <div className="form__input-error-text" hidden={hidden}>
-          {errorMessage}
-        </div>
-      </div>
+      <Input errorMessage={errorMessage} showValue={showTotalPrice} hidden={hidden} />
       <Button type="add" text="Add to basket" func={checkForCorrect} />
       <div className="form__text">
         {currencySymbol}
