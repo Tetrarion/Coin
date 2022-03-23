@@ -10,6 +10,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.0",
+    "cypress": "^9.5.2",
     "eslint-config-airbnb": "^19.0.4",
     "lightweight-charts": "^3.7.0",
     "prop-types": "^15.8.1",
