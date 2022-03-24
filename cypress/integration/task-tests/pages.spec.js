@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-describe('Test pages', () => {
+describe('Pages', () => {
   it('Visits the basket page', () => {
     cy.visit('https://tetrarion.github.io/Coin/');
 

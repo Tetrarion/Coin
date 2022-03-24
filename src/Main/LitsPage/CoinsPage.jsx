@@ -52,7 +52,7 @@ function ListPage({ searchText, coinsPerPage, rate }) {
 
   useEffect(() => {
     const getAllCoins = async () => {
-      const response = await getInfo('assets/?limit=2000');
+      const response = await getInfo('assets?limit=2000');
       setAllCoins(response);
     };
     getAllCoins();
@@ -62,12 +62,12 @@ function ListPage({ searchText, coinsPerPage, rate }) {
     const getCoins = async () => {
       let response;
       if (searchText.length) {
-        const responseCount = await getInfo(`assets/?search=${searchText}&limit=2000`);
-        response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
+        const responseCount = await getInfo(`assets?search=${searchText}&limit=2000`);
+        response = await getInfo(`assets?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
         setTotalCoins(responseCount.length);
       } else {
         if (sortedCoins.length) return;
-        response = await getInfo(`assets/?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
+        response = await getInfo(`assets?offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
         setTotalCoins(2000);
       }
       setCurrentCoins(response);
