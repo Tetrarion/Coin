@@ -9,7 +9,8 @@
     &__info {
         @extend %coin-info;
 
-        &-sm {
+        &-lg {
+            @extend %coin-info;
             display: none;
         }
     }

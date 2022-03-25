@@ -11,6 +11,7 @@ describe('Store', () => {
       .click();
 
     cy.get('a[href*="/storepage"]')
+      .should('include.text', '$')
       .click();
 
     cy.get('.coin')

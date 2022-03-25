@@ -1,7 +1,17 @@
 describe('Form', () => {
-  it('Enter numeric (integer and fractional) and string value', () => {
+  it('Show form', () => {
     cy.visit('http://localhost:3000/');
 
+    cy.get('.coin')
+      .each(($el) => {
+        cy.get($el)
+          .click()
+          .find('.coin__form')
+          .should('be.visible')
+      });
+  });
+
+  it('Enter numeric (integer and fractional) and string value', () => {
     cy.get('.coin').first()
       .click()
       .find('.input__bar')

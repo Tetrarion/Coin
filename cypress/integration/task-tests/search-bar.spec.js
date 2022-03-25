@@ -19,8 +19,8 @@ describe('Search-bar', () => {
     cy.wait('@getCoins').then(() => {
       cy.get('.coin')
         .first()
-        .find('.coin__info-name')
-        .contains('Cardano');
+        .get('.coin__info-name')
+        .should('include.text', 'C');
     });
   });
 });

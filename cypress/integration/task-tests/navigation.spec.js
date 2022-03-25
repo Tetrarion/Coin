@@ -1,4 +1,4 @@
-describe('Pages', () => {
+describe('Navigation', () => {
   it('Visits the basket page', () => {
     cy.visit('https://tetrarion.github.io/Coin/');
 

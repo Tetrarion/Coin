@@ -35,22 +35,22 @@ export function CoinBlock({ coins, rate }) {
                         {' '}
                         {fixed(coin.priceUsd / rate.value)}
                       </div>
-                      <div className="coin__info-sm">
+                      <div className="coin__info-lg">
                         {rate.symbol}
                         {' '}
                         {fixed(coin.marketCapUsd / rate.value)}
                       </div>
-                      <div className="coin__info-sm">
+                      <div className="coin__info-lg">
                         {rate.symbol}
                         {' '}
                         {fixed(coin.vwap24Hr / rate.value)}
                       </div>
-                      <div className="coin__info-sm">
+                      <div className="coin__info-lg">
                         {rate.symbol}
                         {' '}
                         {fixed(coin.supply / rate.value)}
                       </div>
-                      <div className="coin__info-sm">
+                      <div className="coin__info-lg">
                         {rate.symbol}
                         {' '}
                         {fixed(coin.volumeUsd24Hr / rate.value)}
