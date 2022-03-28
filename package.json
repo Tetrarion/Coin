@@ -10,6 +10,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.0",
+    "babel-jest": "^27.5.1",
     "cypress": "^9.5.2",
     "eslint-config-airbnb": "^19.0.4",
     "lightweight-charts": "^3.7.0",
@@ -23,18 +24,27 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "sass": "^1.49.7",
+    "ts-jest": "^27.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint --fix --ext .js,.jsx .",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   },
   "eslintConfig": {
     "extends": [
@@ -86,6 +96,7 @@
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "0.0.9",
     "gh-pages": "^3.2.3",
+    "jest": "^27.5.1",
     "node-sass": "^7.0.1",
     "webpack": "^5.70.0"
   }

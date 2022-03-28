@@ -11,7 +11,7 @@ import { BasketButton } from './components/BasketButton';
 function Header({
   coins, rate, tasks, search, takeCoinsPerPage, getRateId,
 }) {
-  const [totalPrice, SetTotalPrice] = useState(0);
+  const [totalPrice, SetTotalPrice] = useState('');
   const [priceDifferences, setPriceDifferences] = useState(null);
   const [priceProcent, setPriceProcent] = useState(null);
 
