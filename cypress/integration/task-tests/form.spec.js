@@ -7,7 +7,7 @@ describe('Form', () => {
         cy.get($el)
           .click()
           .find('.coin__form')
-          .should('be.visible')
+          .should('be.visible');
       });
   });
 
@@ -48,30 +48,36 @@ describe('Form', () => {
   });
 
   it('Test error message', () => {
-    cy.get('.coin')
-      .each(($el, index) => {
-        if (index === 0) {
-          cy.get($el)
-            .find('.input__bar')
-            .clear()
-            .type(-11);
-          cy.get($el)
-            .find('.button')
-            .click();
-          cy.get('.input__error-text')
-            .should('be.visible');
+    cy.get('.input__error-text')
+      .should('not.be.visible').then(() => {
+        cy.get('.coin')
+          .each(($el, index) => {
+            if (index === 0) {
+              cy.get($el)
+                .find('.input__bar')
+                .clear()
+                .type(-11);
+              cy.get($el)
+                .find('.button')
+                .click();
+              cy.get('.input__error-text')
+                .should('be.visible');
 
-          cy.get($el)
-            .click()
-            .find('.input__bar')
-            .clear()
-            .type(11);
-          cy.get($el)
-            .find('.button')
-            .click();
-          cy.get('.input__error-text')
-            .should('be.hidden');
-        }
+              cy.get('.input__error-text')
+                .should('not.be.visible').then(() => {
+                  cy.get($el)
+                    .click()
+                    .find('.input__bar')
+                    .clear()
+                    .type(11);
+                  cy.get($el)
+                    .find('.button')
+                    .click();
+                  cy.get('.input__error-text')
+                    .should('be.hidden');
+                });
+            }
+          });
       });
   });
 });

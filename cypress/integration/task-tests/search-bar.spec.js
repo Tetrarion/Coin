@@ -12,15 +12,44 @@ describe('Search-bar', () => {
     cy.get('.search__bar')
       .type('a');
 
-    cy.intercept('https://api.coincap.io/v2/assets*').as(
-      'getCoins',
-    );
-
-    cy.wait('@getCoins').then(() => {
+    cy.wait(1000).then(() => {
       cy.get('.coin')
         .first()
-        .get('.coin__info-name')
-        .should('include.text', 'C');
+        .find('.coin__info-symbol')
+        .contains(/^A\w+/)
+    });
+
+    cy.get('.search__bar')
+      .clear()
+      .type('b');
+
+    cy.wait(1000).then(() => {
+      cy.get('.coin')
+        .first()
+        .find('.coin__info-symbol')
+        .contains(/^B\w+/)
+    });
+
+    cy.get('.search__bar')
+      .clear()
+      .type('c');
+
+    cy.wait(1000).then(() => {
+      cy.get('.coin')
+        .first()
+        .find('.coin__info-name')
+        .contains(/^C\w+/)
+    });
+
+    cy.get('.search__bar')
+      .clear()
+      .type('bit');
+
+    cy.wait(1000).then(() => {
+      cy.get('.coin')
+        .first()
+        .find('.coin__info-name')
+        .contains(/^Bit\w+/)
     });
   });
 });
