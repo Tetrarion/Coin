@@ -15,5 +15,7 @@ describe('Navigation', () => {
 
   it('Visits the coin info page', () => {
     cy.get('a[href*="infopage/bitcoin"]').click();
+
+    cy.url().should('include', '/infopage/bitcoin');
   });
 });

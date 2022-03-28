@@ -1,5 +1,4 @@
 function priceDiff(array, tasks, totalAmount) {
-  console.log(totalAmount);
   let price = 0;
 
   tasks.forEach((task) => {
