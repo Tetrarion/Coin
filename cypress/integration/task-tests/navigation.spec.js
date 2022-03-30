@@ -1,6 +1,6 @@
 describe('Navigation', () => {
   it('Visits the basket page', () => {
-    cy.visit('https://tetrarion.github.io/Coin/');
+    cy.visit('http://localhost:3000/');
 
     cy.get('.navigation__link').contains('Basket').click();
 

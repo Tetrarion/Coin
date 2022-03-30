@@ -1,6 +1,4 @@
-import { sortCoins } from '../src/utilities/sortCoins';
-
-const array = [
+export const array = [
   {
     name: 'Apple',
     priceUsd: 12.32,
@@ -23,7 +21,7 @@ const array = [
   },
 ];
 
-const arraySortingByName = [
+export const arraySortingByName = [
   {
     name: 'Apple',
     priceUsd: 12.32,
@@ -46,7 +44,7 @@ const arraySortingByName = [
   },
 ];
 
-const arraySortingByPrice = [
+export const arraySortingByPrice = [
   {
     name: 'Orange',
     priceUsd: 2.30,
@@ -68,11 +66,3 @@ const arraySortingByPrice = [
     priceUsd: 56.98,
   },
 ];
-
-test('Sort array by name', () => {
-  expect(sortCoins('Name', array)).toEqual(arraySortingByName);
-});
-
-test('Sort array by price', () => {
-  expect(sortCoins('Price', array)).toEqual(arraySortingByPrice);
-});

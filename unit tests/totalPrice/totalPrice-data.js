@@ -1,6 +1,4 @@
-import getTotalPrice from '../src/utilities/totalprice';
-
-const coins = [
+export const coins = [
   {
     name: 'Bitcoin',
     coinTotalPriceUsd: 3456.32,
@@ -18,7 +16,3 @@ const coins = [
     coinTotalPriceUsd: 2345.23,
   },
 ];
-
-test('Adds total price of each coin', () => {
-  expect(getTotalPrice(coins)).toBeCloseTo(242492.21);
-});

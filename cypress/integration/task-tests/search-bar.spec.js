@@ -9,55 +9,68 @@ describe('Search-bar', () => {
   });
 
   it('Enter something into search bar and see if coins list changed', () => {
-    cy.get('.coin__info-symbol').last().as('Symbol');
-
     cy.get('.search__bar')
-      .type('a');
+      .type('ak');
 
-    cy.intercept('https://api.coincap.io/v2/assets*').as('getCoins');
+    cy.intercept('https://api.coincap.io/v2/assets?search=ak&*').as('getAk');
 
-    cy.wait('@getCoins').then(() => {
+    cy.wait('@getAk').then(() => {
+      cy.get('.coin[id^=ak]');
+
       cy.get('.coin')
-        .first()
-        .find('.coin__info-symbol')
-        .invoke('text')
-        .should('match', /^A\w+/);
+        .each(($el) => {
+          cy.get($el)
+            .find('.coin__info-name')
+            .invoke('text')
+            .should('match', /^Ak\w+/);
+        });
     });
 
     cy.get('.search__bar')
       .clear()
-      .type('e');
+      .type('qui');
 
-    cy.wait('@getCoins').then(() => {
+    cy.intercept('https://api.coincap.io/v2/assets?search=qui&*').as('getQui');
+
+    cy.wait('@getQui').then(() => {
+      cy.get('.coin[id^=qui]');
+
       cy.get('.coin')
-        .first()
-        .find('.coin__info-symbol')
-        .invoke('text')
-        .should('match', /^E\w+/);
+        .each(($el) => {
+          cy.get($el)
+            .find('.coin__info-name')
+            .invoke('text')
+            .should('match', /^Qui\w+/);
+        });
     });
 
     cy.get('.search__bar')
       .clear()
-      .type('c');
+      .type('biz');
 
-    cy.wait('@getCoins').then(() => {
-      cy.get('.coin')
-        .first()
-        .find('.coin__info-name')
-        .invoke('text')
-        .should('match', /^C\w+/);
+    cy.intercept('https://api.coincap.io/v2/assets?search=biz&*').as('getBiz');
+
+    cy.wait('@getBiz').then(() => {
+      cy.get('.coin[id^=biz]')
+        .should('have.length', 0);
     });
 
     cy.get('.search__bar')
       .clear()
-      .type('bit');
+      .type('bir');
 
-    cy.wait('@getCoins').then(() => {
+    cy.intercept('https://api.coincap.io/v2/assets?search=bir&*').as('getBir');
+
+    cy.wait('@getBir').then(() => {
+      cy.get('.coin[id^=bir]');
+
       cy.get('.coin')
-        .first()
-        .find('.coin__info-name')
-        .invoke('text')
-        .should('match', /^Bit\w+/);
+        .each(($el) => {
+          cy.get($el)
+            .find('.coin__info-name')
+            .invoke('text')
+            .should('match', /^Bir\w+/);
+        });
     });
   });
 });

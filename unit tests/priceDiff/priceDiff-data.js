@@ -1,6 +1,4 @@
-import priceDiff from '../src/utilities/priceDiff';
-
-const newCoins = [
+export const newCoins = [
   {
     id: 1,
     priceUsd: 1234.54,
@@ -23,7 +21,7 @@ const newCoins = [
   },
 ];
 
-const coinsInBasket = [
+export const coinsInBasket = [
   {
     key: 1,
     priceUsd: 1230.28,
@@ -50,9 +48,3 @@ const coinsInBasket = [
     count: 1.23,
   },
 ];
-
-const totalAmount = 131359.28;
-
-test('Find price differences of two arrays', () => {
-  expect(priceDiff(newCoins, coinsInBasket, totalAmount)).toBeCloseTo(-41057.71);
-});

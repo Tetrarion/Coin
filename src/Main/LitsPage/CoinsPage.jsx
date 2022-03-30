@@ -62,8 +62,8 @@ function ListPage({ searchText, coinsPerPage, rate }) {
     const getCoins = async () => {
       let response;
       if (searchText.length) {
+        response = await getInfo(`assets?search=${searchText}&offset=${firstCoinsIndex}&limit=${coinsPerPage}`);
         const responseCount = await getInfo(`assets?search=${searchText}&limit=2000`);
-        response = await getInfo(`assets?offset=${firstCoinsIndex}&limit=${coinsPerPage}&search=${searchText}`);
         setTotalCoins(responseCount.length);
       } else {
         if (sortedCoins.length) return;
