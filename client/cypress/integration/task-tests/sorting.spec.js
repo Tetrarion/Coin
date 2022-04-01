@@ -22,7 +22,7 @@ describe('Sorting', () => {
                       .should('contain', 2000);
                   } else if (index === 1) {
                     cy.get($info)
-                      .should(' ');
+                      .should('exist');
                   } else if (index === 3) {
                     cy.get($info)
                       .should('contain', '-');

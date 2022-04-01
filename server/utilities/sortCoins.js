@@ -14,7 +14,7 @@ export const sortCoins = (sortName, coins, firstIndex, coinsPerPage) => {
           return 1;
         }
         return 0;
-      });
+      }).slice(firstIndex, lastIndex);
     case 'Name up':
       return array.sort((a, b) => {
         const nameA = a.name.toUpperCase();
@@ -26,7 +26,7 @@ export const sortCoins = (sortName, coins, firstIndex, coinsPerPage) => {
           return 1;
         }
         return 0;
-      }).slice(firstIndex, lastCoinsIndex);
+      }).slice(firstIndex, lastIndex);
     case 'Price':
     case 'Price down':
       return array.sort((a, b) => a.priceUsd - b.priceUsd).slice(firstIndex, lastIndex);
