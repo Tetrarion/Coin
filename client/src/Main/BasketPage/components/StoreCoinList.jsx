@@ -10,8 +10,7 @@ export function StoreCoinList({ tasks }) {
         }
       </div>
     );
-  }
-  return (
+  } return (
     <h1 className="basket__info-string">There is nothing in your basket yet</h1>
   );
 }

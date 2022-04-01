@@ -1,7 +1,7 @@
-import { useQuery } from '@apollo/client';
 import * as actions from './actionTypes';
 import { GET_RATE } from '../query/rates';
-import { GET_COIN } from '../query/coins';
+import { GET_COIN_PRICE } from '../query/coins';
+import { client } from '../client';
 
 export const addCoin = (data) => ({
   type: actions.COIN_ADD,
@@ -20,18 +20,20 @@ export const removeCoin = (id) => ({
   payload: { id },
 });
 export const loadCoin = (id, count, message, rateId) => async (dispatch) => {
-  const { data: rate } = useQuery(GET_RATE, {
-    variables: {
-      id: rateId,
-    },
-  });
-  const { data: coin } = useQuery(GET_COIN, {
+  let coinResponse = await client.query({
+    query: GET_COIN_PRICE,
     variables: {
       id,
     },
   });
-  const coinResponse = coin.getCoin;
-  const rateResponse = rate.getRate;
+  let rateResponse = await client.query({
+    query: GET_RATE,
+    variables: {
+      id: rateId,
+    },
+  });
+  coinResponse = coinResponse.data.getCoin;
+  rateResponse = rateResponse.data.getRate;
   const coinTotalPrice = coinResponse.priceUsd * count * rateResponse.rateUsd;
   const coinTotalPriceUsd = coinResponse.priceUsd * count;
   const price = coinResponse.priceUsd * rateResponse.rateUsd;

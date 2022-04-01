@@ -2,7 +2,7 @@ describe('Pagination', () => {
   it('Will the coins change when you change the page', () => {
     cy.visit('http://localhost:3000/');
 
-    cy.intercept('https://api.coincap.io/v2/assets?offset=*').as('getCoins');
+    cy.intercept('http://localhost:4000/graphql*').as('getCoins');
 
     cy.wait('@getCoins').then(() => {
       cy.get('.pagination__list-item')

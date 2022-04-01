@@ -3,12 +3,12 @@ import { useQuery } from '@apollo/client';
 import { Select } from '../../components/Select/Select';
 import { SelectList } from './SelectList';
 import settingsImage from '../../images/40031.png';
-import { GET_ALL_RATES } from '../../query/rates';
+import { GET_ALL_RATES_INFO } from '../../query/rates';
 
 export function Settings({ takeCoinsPerPage, names, getRateId }) {
   const [className, setClassName] = useState('settings__list settings__list--hidden');
   const [rates, setRates] = useState([]);
-  const { loading, data } = useQuery(GET_ALL_RATES);
+  const { loading, data } = useQuery(GET_ALL_RATES_INFO);
 
   const showSettings = () => setClassName('settings__list');
 

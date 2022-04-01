@@ -25,11 +25,10 @@ export const schema = buildSchema(`
 
   type Point {
     priceUsd: Float
-    time: Int
+    date: String
   }
 
   type Query {
-      getAllCoins: [Coin]
       getCoin(id: String): Coin 
       getCurrentCoins(firstIndex: Int, coinsPerPage: Int): [Coin]
       getRate(id: String): Rate
@@ -37,5 +36,6 @@ export const schema = buildSchema(`
       getHistory(id: String, interval: String): [Point]
       getCurrentSearchedCoins(search: String, firstIndex: Int, coinsPerPage: Int): [Coin]
       getSearchedCoins(search: String): [Coin]
+      getCurrentSortedCoins(sortingName: String, firstIndex: Int, coinsPerPage: Int): [Coin]
   }
 `);

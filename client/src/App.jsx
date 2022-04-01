@@ -7,8 +7,8 @@ import { StorePage } from './Main/BasketPage/StorePage';
 import InfoPage from './Main/InfoPage/InfoPage';
 import Header from './Header/Header';
 import Message from './Message';
-import { GET_RATE } from './query/rates';
-import { GET_CURRENT_COINS } from './query/coins';
+import { GET_RATE_INFO } from './query/rates';
+import { GET_CURRENT_COINS_FOR_HEADER } from './query/coins';
 import './Styles/styles.scss';
 
 const initialState = {
@@ -23,12 +23,12 @@ function App() {
   const [coinsPerPage, setCoinsPerPage] = useState(10);
   const [rateId, setRateId] = useState('united-states-dollar');
   const [rate, setRate] = useState(initialState);
-  const { data } = useQuery(GET_RATE, {
+  const { loading, data } = useQuery(GET_RATE_INFO, {
     variables: {
       id: rateId,
     },
   });
-  const { loading: loadingCurrentCoins, data: currentCoins } = useQuery(GET_CURRENT_COINS, {
+  const { loading: loadingCurrentCoins, data: currentCoins } = useQuery(GET_CURRENT_COINS_FOR_HEADER, {
     variables: {
       firstIndex: 0,
       coinsPerPage: 4,
@@ -43,24 +43,21 @@ function App() {
   }, [currentCoins]);
 
   useEffect(() => {
-    const getRate = async () => {
-      if (rateId) {
-        const response = data.getRate;
-        if (response) {
-          setRate({
-            id: response.id,
-            value: response.rateUsd,
-            symbol: response.currencySymbol,
-          });
-        }
+    if (rateId && !loading) {
+      const response = data.getRate;
+      if (response) {
+        setRate({
+          id: response.id,
+          value: response.rateUsd,
+          symbol: response.currencySymbol,
+        });
       }
-    };
-    getRate();
+    }
   }, [data]);
 
   const search = (text) => setSearchText(text);
 
-  const takeCoinsPerPage = (number) => setCoinsPerPage(number);
+  const takeCoinsPerPage = (number) => setCoinsPerPage(Number(number));
 
   const getRateId = (id) => setRateId(id);
 

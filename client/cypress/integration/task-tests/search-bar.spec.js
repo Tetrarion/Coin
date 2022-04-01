@@ -12,7 +12,7 @@ describe('Search-bar', () => {
     cy.get('.search__bar')
       .type('ak');
 
-    cy.intercept('https://api.coincap.io/v2/assets?search=ak&*').as('getAk');
+    cy.intercept('http://localhost:4000/graphql*').as('getAk');
 
     cy.wait('@getAk').then(() => {
       cy.get('.coin[id^=ak]');
@@ -30,7 +30,7 @@ describe('Search-bar', () => {
       .clear()
       .type('qui');
 
-    cy.intercept('https://api.coincap.io/v2/assets?search=qui&*').as('getQui');
+    cy.intercept('http://localhost:4000/graphql*').as('getQui');
 
     cy.wait('@getQui').then(() => {
       cy.get('.coin[id^=qui]');
@@ -48,7 +48,7 @@ describe('Search-bar', () => {
       .clear()
       .type('biz');
 
-    cy.intercept('https://api.coincap.io/v2/assets?search=biz&*').as('getBiz');
+    cy.intercept('http://localhost:4000/graphql*').as('getBiz');
 
     cy.wait('@getBiz').then(() => {
       cy.get('.coin[id^=biz]')
@@ -59,7 +59,7 @@ describe('Search-bar', () => {
       .clear()
       .type('bir');
 
-    cy.intercept('https://api.coincap.io/v2/assets?search=bir&*').as('getBir');
+    cy.intercept('http://localhost:4000/graphql*').as('getBir');
 
     cy.wait('@getBir').then(() => {
       cy.get('.coin[id^=bir]');

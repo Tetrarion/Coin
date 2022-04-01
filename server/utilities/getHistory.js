@@ -1,6 +1,6 @@
-import fixed from './fixed';
+import fixed from './fixed.js';
 
-export default async function getHistory(dateInformation, interval) {
+export default function getFixedHistory(dateInformation, interval) {
   let truncatedArray = [];
   if (interval === 'd1') {
     truncatedArray = dateInformation.map((dateinfo) => {

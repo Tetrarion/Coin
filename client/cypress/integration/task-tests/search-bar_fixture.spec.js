@@ -33,7 +33,7 @@ describe('Search-bar', () => {
       .clear()
       .type('biz');
 
-    cy.intercept('https://api.coincap.io/v2/assets?search=biz&*').as('getBiz');
+    cy.intercept('http://localhost:4000/graphql*').as('getBiz');
 
     cy.wait('@getBiz').then(() => {
       cy.get('.coin[id^=biz]')

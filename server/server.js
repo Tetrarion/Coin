@@ -3,12 +3,10 @@ import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { schema } from './schema.js';
 import cors from 'cors';
+import getFixedHistory from './utilities/getHistory.js';
+import { sortCoins } from './utilities/sortCoins.js';
 
 const root = {
-  getAllCoins: async () => {
-    const responce = await getInfo('assets?limit=2000');
-    return responce;
-  },
   getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
     return responce;
@@ -26,7 +24,8 @@ const root = {
     return responce;
   },
   getHistory: async ({ id, interval }) => {
-    const responce = await getInfo(`assets/${id}/history?interval=${interval}`);
+    let responce = await getInfo(`assets/${id}/history?interval=${interval}`);
+    responce = getFixedHistory(responce, interval);
     return responce;
   },
   getCurrentSearchedCoins: async ({ search, firstIndex, coinsPerPage }) => {
@@ -35,6 +34,11 @@ const root = {
   },
   getSearchedCoins: async ({ search }) => {
     const responce = await getInfo(`assets?search=${search}&limit=2000`);
+    return responce;
+  },
+  getCurrentSortedCoins: async ({ sortingName, firstIndex, coinsPerPage }) => {
+    let responce = await getInfo('assets?limit=2000');
+    responce = sortCoins(sortingName, responce, firstIndex, coinsPerPage);
     return responce;
   },
 };

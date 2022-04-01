@@ -5,7 +5,6 @@ import { History } from './components/History';
 import { Information } from './components/Information';
 import { Select } from '../../components/Select/Select';
 import { Form } from '../../components/Form/Form';
-import getHistory from '../../utilities/getHistory';
 import { GET_HISTORY } from '../../query/history';
 
 export default function InfoPage({ rate }) {
@@ -15,7 +14,7 @@ export default function InfoPage({ rate }) {
   const params = useParams();
   const prodId = params.id;
 
-  const [loading, data] = useQuery(GET_HISTORY, {
+  const { loading, data } = useQuery(GET_HISTORY, {
     variables: {
       id: prodId,
       interval: choosedValue,
@@ -27,8 +26,8 @@ export default function InfoPage({ rate }) {
   const chooseValue = (value) => setChoosedValue(value);
 
   useEffect(() => {
-    if (!loading) setHistory(getHistory(data.getHistory, choosedValue));
-  }, [choosedValue, data]);
+    if (!loading) setHistory(data.getHistory, choosedValue);
+  }, [data]);
 
   return (
     <div className="info-page">

@@ -2,6 +2,10 @@ describe('Store', () => {
   it('Add elements to store', () => {
     cy.visit('http://localhost:3000/');
 
+    cy.intercept('http://localhost:4000/graphql').as(
+      'getCoins',
+    );
+
     cy.get('.coin').first()
       .click()
       .find('.input__bar')
@@ -19,10 +23,6 @@ describe('Store', () => {
 
     cy.get('a[href*="/*"]')
       .click();
-
-    cy.intercept('https://api.coincap.io/v2/assets*').as(
-      'getCoins',
-    );
 
     cy.wait('@getCoins').then(() => {
       cy.get('.coin')
