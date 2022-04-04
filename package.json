@@ -9,6 +9,15 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "jest"
   },
+  "eslintConfig": {
+    "rules": {
+      "import/prefer-default-export": "off",
+      "linebreak-style": [
+        "error",
+        "windows"
+      ]
+    }
+  },
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
