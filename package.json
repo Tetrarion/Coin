@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "nodemon -r dotenv/config server.js",
+    "heroku-postbuild": "cd .. && cd client && npm install && npm run build",
     "test": "jest"
   },
   "jest": {
