@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import axiosInstance from "./axiosInstance.js";
 
 const { API_KEY } = process.env;
 
 const header = {
-  key: '714d358f-ed54-4ffb-b0e1-45e7f27b372c',
+  key: API_KEY,
   mode: 'no-cors',
 };
 
