@@ -19,18 +19,6 @@
       "@babel/preset-env"
     ]
   },
-  "eslintConfig": {
-    "extends": [
-      "airbnb"
-    ],
-    "rules": {
-      "import/prefer-default-export": "off",
-      "linebreak-style": [
-        "error",
-        "windows"
-      ]
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -40,15 +28,11 @@
     "babel-jest": "^27.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "ts-jest": "^27.1.4"
-  },
-  "devDependencies": {
-    "eslint": "^8.12.0"
   }
 }
