@@ -2,7 +2,7 @@ import { sortCoins } from '../../utilities/sortCoins';
 import * as data from './sorting-data';
 
 test('Sort array by name', () => {
-  expect(sortCoins('Name', data.array, 0, 5)).toEqual(data.arraySortingByName);
+  expect(sortCoins('Name', data.array)).toEqual(data.arraySortingByName);
 });
 
 test('Sort array by price', () => {

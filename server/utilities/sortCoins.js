@@ -1,4 +1,12 @@
 export const sortCoins = (sortName, coins, firstIndex, coinsPerPage) => {
+  const defaultProps = {
+    firstIndex: 0,
+    coinsPerPage: 10,
+  };
+
+  if (!firstIndex) firstIndex = defaultProps.firstIndex;
+  if (!coinsPerPage) coinsPerPage = defaultProps.coinsPerPage;
+
   const lastIndex = firstIndex + coinsPerPage;
   const array = coins.slice();
   switch (sortName) {
