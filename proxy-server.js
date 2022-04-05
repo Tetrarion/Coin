@@ -50,7 +50,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(graphqlHTTP({
+app.use("/graphql", graphqlHTTP({
   schema,
   rootValue: root,
   graphiql: true,
