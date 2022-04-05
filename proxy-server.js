@@ -54,7 +54,7 @@ app.use(cors());
 app.use("/graphql", graphqlHTTP({
   schema,
   rootValue: root,
-  graphiql: true,
+  context,
 }));
 
 app.get("/playground", graphQLPlayground({ endpoint: "/graphql" }));
