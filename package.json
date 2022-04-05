@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd proxy-server && node proxy-server.js\" \"node server.js\"",
+    "start": "concurrently \"cd proxy-server && npm start\" \"node server.js\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
