@@ -7,7 +7,7 @@ import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
 const port = process.env.PORT | 4000;
-const graphqlPath = process.env.GRAPHQL || 'graphql'
+const graphqlPath = process.env.GRAPHQL_PATH | '/graphql'
 
 const root = {
   getCoin: async ({ id }) => {
@@ -50,7 +50,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(`/${graphqlPath}`, graphqlHTTP({
+app.use(`${graphqlPath}`, graphqlHTTP({
   schema,
   rootValue: root,
   graphiql: true,
