@@ -18,7 +18,16 @@ export function CoinBlock({ coins, rate }) {
     <div className="list-page__coins-list">
       {
                   coins.map((coin) => (
-                    <div className="coin" id={coin.id} key={coin.id} rank={coin.rank} onClick={(event) => savePrevElement(event.currentTarget)} onKeyDown={(event) => savePrevElement(event.currentTarget)} role="button" tabIndex={0}>
+                    <div
+                      className="coin"
+                      id={coin.id}
+                      key={coin.id}
+                      rank={coin.rank}
+                      onClick={(event) => savePrevElement(event.currentTarget)}
+                      onKeyDown={(event) => savePrevElement(event.currentTarget)}
+                      role="button"
+                      tabIndex={0}
+                    >
                       <div className="coin__info">
                         {coin.rank}
                       </div>

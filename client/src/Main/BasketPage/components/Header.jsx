@@ -25,7 +25,9 @@ export function Header({
     sort(element.id);
     if (element !== prevElement && prevElement) prevElement.lastChild.classList.add('top__list-item-img--hidden');
     setPrevElement(element);
-    if (element.lastChild.classList.contains('top__list-item-img--hidden')) element.lastChild.classList.remove('top__list-item-img--hidden');
+    if (element.lastChild.classList.contains('top__list-item-img--hidden')) {
+      element.lastChild.classList.remove('top__list-item-img--hidden');
+    }
     if (element.id === `${element.getAttribute('name')} up`) {
       element.setAttribute('id', `${element.getAttribute('name')} down`);
       element.lastChild.setAttribute('src', ASCImage);
@@ -74,7 +76,13 @@ export function Header({
   }
   if (namesForLargeScreeen) {
     return (
-      <div className="top" onClick={(event) => showImage(event.target)} onKeyDown={(event) => showImage(event.target)} role="button" tabIndex={0}>
+      <div
+        className="top"
+        onClick={(event) => showImage(event.target)}
+        onKeyDown={(event) => showImage(event.target)}
+        role="button"
+        tabIndex={0}
+      >
         <ul className="top__list">
           {
                                 names.map((name) => {
@@ -99,7 +107,13 @@ export function Header({
       </div>
     );
   } return (
-    <div className="top" onClick={(event) => showImage(event.target)} onKeyDown={(event) => sort(event.target.text)} role="button" tabIndex={0}>
+    <div
+      className="top"
+      onClick={(event) => showImage(event.target)}
+      onKeyDown={(event) => sort(event.target.text)}
+      role="button"
+      tabIndex={0}
+    >
       <ul className="top__list">
         {
                                 names.map((name) => (

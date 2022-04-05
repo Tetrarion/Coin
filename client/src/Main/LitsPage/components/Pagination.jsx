@@ -33,16 +33,28 @@ export function Pagination({
       newArray.splice(1, newArray.length - (visiblePagesFromThеEdges + 1), '....');
     } else if (currentPage < totalPages / 2) {
       if (currentPage - visiblePagesFromCurrentPage <= 2) {
-        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '....');
+        newArray.splice(
+          currentPage + visiblePagesFromCurrentPage,
+          newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)),
+          '....',
+        );
       } else {
-        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '....');
+        newArray.splice(
+          currentPage + visiblePagesFromCurrentPage,
+          newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)),
+          '....',
+        );
         newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '...');
       }
     } else if (currentPage > totalPages / 2) {
       if (currentPage + visiblePagesFromCurrentPage > totalPages - 2) {
         newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '....');
       } else {
-        newArray.splice(currentPage + visiblePagesFromCurrentPage, newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)), '...');
+        newArray.splice(
+          currentPage + visiblePagesFromCurrentPage,
+          newArray.length - (visiblePagesFromCurrentPage + (currentPage + 1)),
+          '...',
+        );
         newArray.splice(1, currentPage - (visiblePagesFromCurrentPage + 2), '....');
       }
     }
