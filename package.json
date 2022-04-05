@@ -1,38 +1,26 @@
 {
-  "name": "server",
+  "name": "coin",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install && npm start",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd proxy-server && npm install && npm start && cd .. && cd client && npm install && npm run build"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tetrarion/Coin.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tetrarion/Coin/issues"
+  },
+  "homepage": "https://github.com/Tetrarion/Coin#readme",
   "dependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "axios": "^0.26.1",
-    "babel-jest": "^27.5.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.8.0",
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
-    "ts-jest": "^27.1.4"
+    "express": "^4.17.3"
   }
 }
