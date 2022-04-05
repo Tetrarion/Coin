@@ -6,6 +6,8 @@ import cors from 'cors';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
+const port = process.env.PORT | 4000;
+
 const root = {
   getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
@@ -52,4 +54,4 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root,
   graphiql: true,
 }));
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.listen(port, () => console.log(`Now browse to localhost:${port}/graphql`));
