@@ -1,7 +1,7 @@
 import getInfo from './API/api.js';
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-import expressPlayground from 'graphql-playground-middleware-express';
+import { expressPlayground } from 'graphql-playground-middleware-express';
 import { schema } from './schema.js';
 import cors from 'cors';
 import getFixedHistory from './utilities/getHistory.js';
