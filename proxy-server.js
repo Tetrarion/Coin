@@ -1,13 +1,13 @@
 import getInfo from './API/api.js';
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
+import expressPlayground from 'graphql-playground-middleware-express';
 import { schema } from './schema.js';
 import cors from 'cors';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
 const port = process.env.PORT | 4000;
-const graphqlPath = process.env.GRAPHQL_PATH | '/graphql'
 
 const root = {
   getCoin: async ({ id }) => {
@@ -50,9 +50,12 @@ const app = express();
 
 app.use(cors());
 
-app.use(`${graphqlPath}`, graphqlHTTP({
+app.use(graphqlHTTP({
   schema,
   rootValue: root,
   graphiql: true,
 }));
-app.listen(port, () => console.log(`Now browse to localhost:${port}/graphql`));
+
+app.get("/playground", expressPlayground({ endpoint: "/graphql" }));
+
+app.listen(port, () => console.log(`Now browse to localhost:${port}`));
