@@ -61,7 +61,9 @@
       "linebreak-style": [
         "error",
         "unix"
-      ]
+      ],
+      "react/prop-types": "off",
+      "max-len": ["error", { "code": 130 }]
     },
     "overrides": [
       {

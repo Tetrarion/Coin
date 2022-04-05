@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Select({ func, names }) {
   return (
     <div className="select">
