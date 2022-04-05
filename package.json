@@ -6,8 +6,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "heroku-postbuild": "cd proxy-server && npm install && npm start && cd .. && cd client && npm install && npm run build"
+    "start": "node server.js && cd proxy-server && node proxy-server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
