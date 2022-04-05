@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js && cd proxy-server && node proxy-server.js",
+    "start": "concurrently \"cd proxy-server && node proxy-server.js\" \"node server.js\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
@@ -23,5 +23,8 @@
   "dependencies": {
     "express": "^4.17.3",
     "heroku-builds": "^0.0.29"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0"
   }
 }
