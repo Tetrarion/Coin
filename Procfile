@@ -1,2 +1,2 @@
-web: node proxy-server.js --port $PORT
+worker: node proxy-server.js --port $PORT
 
