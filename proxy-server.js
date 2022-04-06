@@ -45,14 +45,16 @@ const resolvers = {
   }
 }
 
-const app = express();
-
-app.use(cors());
-
 const server = new ApolloServer({ 
   typeDefs: schema, 
   resolvers, 
 });
+
+await server.start();
+
+const app = express();
+
+app.use(cors());
 
 server.applyMiddleware({ app, path: '/graphql' });
 
