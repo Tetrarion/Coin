@@ -58,4 +58,4 @@ app.use("/graphql", graphqlHTTP({
 
 app.get("/playground", graphQLPlayground({ endpoint: "/graphql" }));
 
-app.listen(port, () => console.log(`Now browse to localhost:${port}`));
+app.listen(port, () => console.log(`Now browse to localhost:${port}/graphql`));
