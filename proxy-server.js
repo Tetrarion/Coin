@@ -1,5 +1,6 @@
 import getInfo from './API/api.js';
 import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
 import cors from 'cors';
 import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
