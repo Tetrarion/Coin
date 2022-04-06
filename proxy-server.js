@@ -1,5 +1,6 @@
 import getInfo from './API/api.js';
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-express';
+import cors from 'cors';
 import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
@@ -43,9 +44,15 @@ const resolvers = {
   }
 }
 
-const app = new ApolloServer({ 
+const app = express();
+
+app.use(cors());
+
+const server = new ApolloServer({ 
   typeDefs: schema, 
   resolvers, 
 });
+
+server.applyMiddleware({ app, path: '/graphql' });
 
 app.listen({ port: process.env.PORT || 4000 }).then(({ url }) => console.log(`Server ready at ${url}`));
