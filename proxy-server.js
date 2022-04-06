@@ -1,22 +1,20 @@
 import getInfo from './API/api.js';
-import { ApolloServer } from 'apollo-server-express';
-import express from 'express';
-import cors from 'cors';
+import { ApolloServer } from 'apollo-server';
 import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
 const resolvers = {
   Query: {
-    getCoin: async ({ id }) => {
+    getCoin: async (_, { id }) => {
       const responce = await getInfo(`assets/${id}`);
       return responce;
     },
-    getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
+    getCurrentCoins: async (_, { firstIndex, coinsPerPage }) => {
       const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
       return responce;
     },
-    getRate: async ({ id }) => {
+    getRate: async (_, { id }) => {
       const responce = await getInfo(`rates/${id}`);
       return responce;
     },
@@ -24,20 +22,20 @@ const resolvers = {
       const responce = await getInfo(`rates`);
       return responce;
     },
-    getHistory: async ({ id, interval }) => {
+    getHistory: async (_, { id, interval }) => {
       let responce = await getInfo(`assets/${id}/history?interval=${interval}`);
       responce = getFixedHistory(responce, interval);
       return responce;
     },
-    getCurrentSearchedCoins: async ({ search, firstIndex, coinsPerPage }) => {
+    getCurrentSearchedCoins: async (_, { search, firstIndex, coinsPerPage }) => {
       const responce = await getInfo(`assets?search=${search}&offset=${firstIndex}&limit=${coinsPerPage}`);
       return responce;
     },
-    getSearchedCoins: async ({ search }) => {
+    getSearchedCoins: async (_, { search }) => {
       const responce = await getInfo(`assets?search=${search}&limit=2000`);
       return responce;
     },
-    getCurrentSortedCoins: async ({ sortingName, firstIndex, coinsPerPage }) => {
+    getCurrentSortedCoins: async (_, { sortingName, firstIndex, coinsPerPage }) => {
       let responce = await getInfo('assets?limit=2000');
       responce = sortCoins(sortingName, responce, firstIndex, coinsPerPage);
       return responce;
@@ -50,12 +48,4 @@ const server = new ApolloServer({
   resolvers, 
 });
 
-await server.start();
-
-const app = express();
-
-app.use(cors());
-
-server.applyMiddleware({ app, path: '/graphql' });
-
-app.listen({ port: process.env.PORT || 4000 });
+server.listen({ port: process.env.PORT || 4000 });
