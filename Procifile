@@ -1,2 +1,2 @@
-web: node server.js --port $PORT
+worker: node server.js --port $PORT
 
