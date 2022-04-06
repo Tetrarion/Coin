@@ -4,8 +4,6 @@ import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
-const port = process.env.PORT | 4000;
-
 const resolvers = {
   Query: {
     getCoin: async ({ id }) => {
@@ -50,4 +48,4 @@ const app = new ApolloServer({
   resolvers, 
 });
 
-app.listen(port).then(({ url }) => console.log(`Server ready at ${url}`));
+app.listen({ port: process.env.PORT || 4000 }).then(({ url }) => console.log(`Server ready at ${url}`));
