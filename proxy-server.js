@@ -55,4 +55,4 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }));
 
-server.listen(port);
+app.listen(port);
