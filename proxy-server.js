@@ -6,6 +6,8 @@ import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
+const port = process.env.PORT || 4000
+
 const root = {
   getCoin: async (_, { id }) => {
     const responce = await getInfo(`assets/${id}`);
@@ -53,4 +55,4 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }));
 
-server.listen({ port: process.env.PORT || 4000 });
+server.listen(port);
