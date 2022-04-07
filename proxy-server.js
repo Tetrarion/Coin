@@ -6,17 +6,34 @@ import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
-const coin = {
-  id: "bitcoin",
-  name: "bitcoin",
-  priceUsd: 12,
-};
+const coin = [
+  {
+    id: "bitcoin",
+    name: "bitcoin",
+    priceUsd: 12,
+  },
+  {
+    id: "ez",
+    name: "ez",
+    priceUsd: 12,
+  },
+  {
+    id: "beer",
+    name: "beer",
+    priceUsd: 12,
+  },
+  {
+    id: "moon",
+    name: "moon",
+    priceUsd: 12,
+  },
+]
 
 const port = process.env.PORT || 4000
 
 const root = {
   getCoin: ({ id }) => {
-    return coin;
+    return coin.find((el) => el.id === id);
   },
   getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
     const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
