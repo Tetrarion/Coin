@@ -9,15 +9,15 @@ import { sortCoins } from './utilities/sortCoins.js';
 const port = process.env.PORT || 4000
 
 const root = {
-  getCoin: async (_, { id }) => {
+  getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
     return responce;
   },
-  getCurrentCoins: async (_, { firstIndex, coinsPerPage }) => {
+  getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
     const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
     return responce;
   },
-  getRate: async (_, { id }) => {
+  getRate: async ({ id }) => {
     const responce = await getInfo(`rates/${id}`);
     return responce;
   },
@@ -25,20 +25,20 @@ const root = {
     const responce = await getInfo(`rates`);
     return responce;
   },
-  getHistory: async (_, { id, interval }) => {
+  getHistory: async ({ id, interval }) => {
     let responce = await getInfo(`assets/${id}/history?interval=${interval}`);
     responce = getFixedHistory(responce, interval);
     return responce;
   },
-  getCurrentSearchedCoins: async (_, { search, firstIndex, coinsPerPage }) => {
+  getCurrentSearchedCoins: async ({ search, firstIndex, coinsPerPage }) => {
     const responce = await getInfo(`assets?search=${search}&offset=${firstIndex}&limit=${coinsPerPage}`);
     return responce;
   },
-  getSearchedCoins: async (_, { search }) => {
+  getSearchedCoins: async ({ search }) => {
     const responce = await getInfo(`assets?search=${search}&limit=2000`);
     return responce;
   },
-  getCurrentSortedCoins: async (_, { sortingName, firstIndex, coinsPerPage }) => {
+  getCurrentSortedCoins: async ({ sortingName, firstIndex, coinsPerPage }) => {
     let responce = await getInfo('assets?limit=2000');
     responce = sortCoins(sortingName, responce, firstIndex, coinsPerPage);
     return responce;
