@@ -48,4 +48,4 @@ const server = new ApolloServer({
   resolvers, 
 });
 
-app.listen({ port: process.env.PORT || 4000 });
+server.listen({ port: process.env.PORT || 4000 });
