@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000
 const root = {
   getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
-    return responce;
+    return JSON.stringify(responce);
   },
   getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
     const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
