@@ -1,10 +1,8 @@
 import 'dotenv/config';
 import axios from 'axios';
 
-const { BASE_URL } = process.env;
-
 const axiosInstance = axios.create({
-  baseURL: 'https://api.coincap.io/v2/',
+  baseURL: process.env.BASE_URL,
 });
 
 export default axiosInstance;
