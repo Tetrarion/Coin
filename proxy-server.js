@@ -1,5 +1,6 @@
 import getInfo from './API/api.js';
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
 import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
@@ -43,9 +44,17 @@ const resolvers = {
   }
 }
 
+const app = express();
+
 const server = new ApolloServer({ 
+  introspection: true,
+  playground: true,
   typeDefs: schema, 
   resolvers, 
 });
 
-server.listen({ port: process.env.PORT || 4000 });
+await server.start()
+
+server.applyMiddleware({ app, path: '/graphql' });
+
+app.listen({ port: process.env.PORT || 4000 });
