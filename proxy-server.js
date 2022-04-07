@@ -7,8 +7,12 @@ import { sortCoins } from './utilities/sortCoins.js';
 const resolvers = {
   Query: {
     getCoin: async (_, { id }) => {
-      const responce = await getInfo(`assets/${id}`);
-      return responce;
+      try {
+        const responce = await getInfo(`assets/${id}`);
+        return responce;
+      } catch(err) {
+        return err;
+      }
     },
     getCurrentCoins: async (_, { firstIndex, coinsPerPage }) => {
       const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
