@@ -1,39 +1,40 @@
-import getInfo from './API/api.js';
 import express from 'express';
 import cors from 'cors';
 import {graphqlHTTP } from 'express-graphql';
+import getInfo from './API/api.js';
 import { schema } from './schema.js';
 import getFixedHistory from './utilities/getHistory.js';
 import { sortCoins } from './utilities/sortCoins.js';
 
-const coin = [
-  {
-    id: "bitcoin",
-    name: "bitcoin",
-    priceUsd: 12,
-  },
-  {
-    id: "ez",
-    name: "ez",
-    priceUsd: 12,
-  },
-  {
-    id: "beer",
-    name: "beer",
-    priceUsd: 12,
-  },
-  {
-    id: "moon",
-    name: "moon",
-    priceUsd: 12,
-  },
-]
+// const coin = [
+//   {
+//     id: "bitcoin",
+//     name: "bitcoin",
+//     priceUsd: 12,
+//   },
+//   {
+//     id: "ez",
+//     name: "ez",
+//     priceUsd: 12,
+//   },
+//   {
+//     id: "beer",
+//     name: "beer",
+//     priceUsd: 12,
+//   },
+//   {
+//     id: "moon",
+//     name: "moon",
+//     priceUsd: 12,
+//   },
+// ]
 
 const port = process.env.PORT || 4000
 
 const root = {
   getCoin: ({ id }) => {
-    return coin.find((el) => el.id === id);
+    const responce = await getInfo(`assets/${id}`);
+    return responce;
   },
   getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
     const responce = await getInfo(`assets?offset=${firstIndex}&limit=${coinsPerPage}`);
