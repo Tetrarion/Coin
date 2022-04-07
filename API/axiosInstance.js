@@ -4,7 +4,7 @@ import axios from 'axios';
 const { BASE_URL } = process.env;
 
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: 'https://api.coincap.io/v2/',
 });
 
 export default axiosInstance;
