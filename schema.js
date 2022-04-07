@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server';
+import { buildSchema  } from 'graphql';
 
-export const schema = gql`
+export const schema = buildSchema`
   type Coin {
     id: String
     rank: Int
