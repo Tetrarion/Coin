@@ -1,6 +1,6 @@
 import { buildSchema  } from 'graphql';
 
-export const schema = buildSchema`
+export const schema = buildSchema(`
   type Coin {
     id: String
     rank: Int
@@ -38,4 +38,4 @@ export const schema = buildSchema`
       getSearchedCoins(search: String): [Coin]
       getCurrentSortedCoins(sortingName: String, firstIndex: Int, coinsPerPage: Int): [Coin]
   }
-`;
+`);
