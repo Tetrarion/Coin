@@ -6,6 +6,7 @@ const { API_KEY } = process.env;
 const header = {
   key: API_KEY,
   mode: 'no-cors',
+  'Content-Type': 'application/json',
 };
 
 export default async function getInfo(url) {
