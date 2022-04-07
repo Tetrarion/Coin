@@ -15,7 +15,7 @@ const coin = {
 const port = process.env.PORT || 4000
 
 const root = {
-  getCoin: () => {
+  getCoin: ({ id }) => {
     return coin;
   },
   getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {
