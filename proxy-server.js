@@ -32,7 +32,7 @@ import { sortCoins } from './utilities/sortCoins.js';
 const port = process.env.PORT || 4000
 
 const root = {
-  getCoin: ({ id }) => {
+  getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
     return responce;
   },
