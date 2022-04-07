@@ -4,7 +4,6 @@ import axiosInstance from "./axiosInstance.js";
 const header = {
   key: process.env.API_KEY,
   mode: 'no-cors',
-  'Content-Type': 'application/json',
 };
 
 export default async function getInfo(url) {
