@@ -34,7 +34,6 @@ const port = process.env.PORT || 4000
 const root = {
   getCoin: async ({ id }) => {
     const responce = await getInfo(`assets/${id}`);
-    console.log(responce);
     return responce;
   },
   getCurrentCoins: async ({ firstIndex, coinsPerPage }) => {

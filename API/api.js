@@ -14,6 +14,6 @@ export default async function getInfo(url) {
     const info = await axiosInstance.get(`${url}`, header);
     return info.data.data;
   } catch (err) {
-    return getInfo(url);
+    return err;
   }
 }
